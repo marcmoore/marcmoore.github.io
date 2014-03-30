@@ -7,7 +7,8 @@
 	<meta name="author" content="Mark M.">
 	<script type="text/javascript" src="http://code.jquery.com/jquery-1.9.1.js"></script>
 	<script type="text/javascript" src="js/jquery.onepage-scroll.min.js"></script>
-	<link href='css/onepage-scroll.css' rel='stylesheet' type='text/css'>
+	<link href="css/onepage-scroll.css" rel="stylesheet" type="text/css">
+	<link href="css/csshake.css" rel="stylesheet" type="text/css">
 	<meta name="viewport" content="initial-scale=1, width=device-width, maximum-scale=1, minimum-scale=1, user-scalable=no">
 <style>
 	html {
@@ -26,6 +27,7 @@
     
     a {
     	text-decoration: none;
+    	color: #65677b;
     }
     
     a:hover {
@@ -48,17 +50,15 @@
 	    margin-left: -72px;
     }
     
-    .page1 span {
+    .page1>span {
 	    position: absolute;
 	    top: 50%;
 	    margin-top: 150px;
 	    margin-left: -118px;
     }
     
-    .page3 a {
+    .page3>a {
 	    display: block;
-	    color: #65677b;
-	    margin-top: 50px;
     }
     
 </style>
@@ -75,15 +75,17 @@ $(document).ready(function(){
 <body>
 	<div class="main">
 		<section class="page1">
-			<img src="images/icon.png" />
-			<span>Get VeryCD Music Download Source.</span>
+			<img class="shake shake-constant" src="images/icon.png" />
+			<span>Get <span class="shake shake-little shake-constant">VeryCD</span> Music Download Source.</span>
 		</section>
 		<section class="page2">
 			<img src="images/intro_1.png" />
 		</section>
 		<section class="page3">
 			<img src="images/intro_2.png" />
-			<a href="http://weibo.com/markmoore">@MrMuscles</a>
+			<a class="shake shake-little shake-constant hover-stop" href="http://weibo.com/markmoore">@MrMuscles</a>
+			<span><a href="http://elrumordelaluz.github.io/csshake/">Shake</a> plugin by <a href="http://twitter.com/elrumordelaluz">@elrumordelaluz</a>. </span>
+			<span><a href="https://github.com/peachananr/onepage-scroll">One page scroll</a> plugin by<a href="https://twitter.com/peachananr">@peachananr. </a>
 		</section>
 	</div>
 </body>
