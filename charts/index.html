@@ -215,20 +215,25 @@
     };
 
     window.onload = function(){
+        var options = {
+            tooltipEvents: [],
+            animation: false,
+            responsive : true
+        };
+
         var ctx1 = document.getElementById("chart1").getContext("2d");
         var ctx2 = document.getElementById("chart2").getContext("2d");
         var ctx3 = document.getElementById("chart3").getContext("2d");
         var ctx4 = document.getElementById("chart4").getContext("2d");
         var ctx5 = document.getElementById("chart5").getContext("2d");
         var ctx6 = document.getElementById("chart6").getContext("2d");
-                
 
-        window.myBar = new Chart(ctx1).Bar(barChartData, {animation: false, responsive : true});
-        window.myDoughnut = new Chart(ctx2).Doughnut(doughnutData, {animation: false, responsive : true});
-        window.myLine = new Chart(ctx3).Line(lineChartData, {animation: false, responsive: true});
-        window.myPie = new Chart(ctx4).Pie(pieData, {animation: false, responsive: true});
-        window.myPolarArea = new Chart(ctx5).PolarArea(polarData, {animation: false, responsive:true});
-        window.myRadar = new Chart(ctx6).Radar(radarChartData, {animation: false, responsive: true});
+        window.myBar = new Chart(ctx1).Bar(barChartData, options);
+        window.myDoughnut = new Chart(ctx2).Doughnut(doughnutData, options);
+        window.myLine = new Chart(ctx3).Line(lineChartData, options);
+        window.myPie = new Chart(ctx4).Pie(pieData, options);
+        window.myPolarArea = new Chart(ctx5).PolarArea(polarData, options);
+        window.myRadar = new Chart(ctx6).Radar(radarChartData, options);
     }
 </script>
 </body>
