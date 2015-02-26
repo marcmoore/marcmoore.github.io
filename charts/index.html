@@ -223,12 +223,12 @@
         var ctx6 = document.getElementById("chart6").getContext("2d");
                 
 
-        window.myBar = new Chart(ctx1).Bar(barChartData, {responsive : true});
-        window.myDoughnut = new Chart(ctx2).Doughnut(doughnutData, {responsive : true});
-        window.myLine = new Chart(ctx3).Line(lineChartData, {responsive: true});
-        window.myPie = new Chart(ctx4).Pie(pieData, {responsive: true});
-        window.myPolarArea = new Chart(ctx5).PolarArea(polarData, {responsive:true});
-        window.myRadar = new Chart(ctx6).Radar(radarChartData, {responsive: true});
+        window.myBar = new Chart(ctx1).Bar(barChartData, {animation: false, responsive : true});
+        window.myDoughnut = new Chart(ctx2).Doughnut(doughnutData, {animation: false, responsive : true});
+        window.myLine = new Chart(ctx3).Line(lineChartData, {animation: false, responsive: true});
+        window.myPie = new Chart(ctx4).Pie(pieData, {animation: false, responsive: true});
+        window.myPolarArea = new Chart(ctx5).PolarArea(polarData, {animation: false, responsive:true});
+        window.myRadar = new Chart(ctx6).Radar(radarChartData, {animation: false, responsive: true});
     }
 </script>
 </body>
