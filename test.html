@@ -2,26 +2,98 @@
 <body>
 <style>
 .container {
-	margin: 0 auto;
+	margin: 10px auto;
+	width: 1190px;
 }
 
 .container::after {
 	clear: both;
+	content: "";
+	display: block;
 }
 
 .test {
 	width: 190px;
 	height: 120px;
-	background: url(test.png);
+	background: url(testimages/test.png);
 	background-position: 1s;
 	-webkit-transition-duration: 500ms;
 	float: left;
+	margin-top: 10px;
 	margin-right: 10px;
 }
 
 .test:hover {
 	background-position: 0 -120px;
 	-webkit-transition-duration: 500ms;
+}
+
+.test:nth-child(6n) {
+	margin-right: 0;
+}
+
+.test2 {
+	width: 190px;
+	height: 120px;
+	overflow: hidden;
+	float: left;
+	margin-top: 10px;
+	margin-right: 10px;
+}
+
+.test2 img {
+	-webkit-transition-duration: 500ms;
+	position: relative;
+}
+
+.test2:hover .img1 {
+	-webkit-transform: scale(0.9,0.9);
+	z-index: 999;
+}
+
+.test2:hover .img2 {
+	margin-top: -120px;
+	z-index: 1000;
+}
+
+.test2:nth-child(6n) {
+	margin-right: 0;
+}
+
+.test3 {
+	width: 190px;
+	height: 120px;
+	overflow: hidden;
+	float: left;
+	margin-top: 10px;
+	margin-right: 10px;
+}
+
+.test3 img {
+	-webkit-transition-duration: 500ms;
+	position: absolute;
+}
+
+.test3 .img1 {
+	z-index: 1000;
+	opacity: 0.9;
+}
+
+.test3:hover .img1 {
+	opacity: 0;
+}
+
+.test3 .img2 {
+	-webkit-transform: scale(0.9,0.9);
+	z-index: 999;
+}
+
+.test3:hover .img2 {
+	-webkit-transform: scale(1,1);
+}
+
+.test3:nth-child(6n) {
+	margin-right: 0;
 }
 </style>
 <div class="container">
@@ -33,6 +105,110 @@
 	<div class="test"></div>
 	<div class="test"></div>
 	<div class="test"></div>
+	<div class="test"></div>
+	<div class="test"></div>
+	<div class="test"></div>
+	<div class="test"></div>
+</div>
+<div class="container container2">
+	<div class="test2">
+		<img class="img1" src="testimages/alaska-word.png"/>
+		<img class="img2" src="testimages/alaska-pics.png"/>
+	</div>
+	<div class="test2">
+		<img class="img1" src="testimages/caribbean-word.png"/>
+		<img class="img2" src="testimages/caribbean-pics.png"/>
+	</div>
+	<div class="test2">
+		<img class="img1" src="testimages/hong kong & macau-word.png"/>
+		<img class="img2" src="testimages/hong kong & macau-pics.png"/>
+	</div>
+	<div class="test2">
+		<img class="img1" src="testimages/japan & korea-word.png"/>
+		<img class="img2" src="testimages/japan & korea-pics.png"/>
+	</div>
+	<div class="test2">
+		<img class="img1" src="testimages/mediterranean-word.png"/>
+		<img class="img2" src="testimages/mediterranean-pics.png"/>
+	</div>
+	<div class="test2">
+		<img class="img1" src="testimages/middle east-word.png"/>
+		<img class="img2" src="testimages/middle east-pics.png"/>
+	</div>
+	<div class="test2">
+		<img class="img1" src="testimages/northern europe-word.png"/>
+		<img class="img2" src="testimages/northern europe-pics.png"/>
+	</div>
+	<div class="test2">
+		<img class="img1" src="testimages/polar-word.png"/>
+		<img class="img2" src="testimages/polar-pics.png"/>
+	</div>
+	<div class="test2">
+		<img class="img1" src="testimages/southeast asia-word.png"/>
+		<img class="img2" src="testimages/southeast asia-pics.png"/>
+	</div>
+	<div class="test2">
+		<img class="img1" src="testimages/world trip-word.png"/>
+		<img class="img2" src="testimages/world trip-pics.png"/>
+	</div>
+	<div class="test2">
+		<img class="img1" src="testimages/alaska-word.png"/>
+		<img class="img2" src="testimages/alaska-pics.png"/>
+	</div>
+	<div class="test2">
+		<img class="img1" src="testimages/others-word.png"/>
+		<img class="img2" src="testimages/others-pics.png"/>
+	</div>
+</div>
+<div class="container">
+	<div class="test3">
+		<img class="img1" src="testimages/alaska-word.png"/>
+		<img class="img2" src="testimages/alaska-pics.png"/>
+	</div>
+	<div class="test3">
+		<img class="img1" src="testimages/caribbean-word.png"/>
+		<img class="img2" src="testimages/caribbean-pics.png"/>
+	</div>
+	<div class="test3">
+		<img class="img1" src="testimages/hong kong & macau-word.png"/>
+		<img class="img2" src="testimages/hong kong & macau-pics.png"/>
+	</div>
+	<div class="test3">
+		<img class="img1" src="testimages/japan & korea-word.png"/>
+		<img class="img2" src="testimages/japan & korea-pics.png"/>
+	</div>
+	<div class="test3">
+		<img class="img1" src="testimages/mediterranean-word.png"/>
+		<img class="img2" src="testimages/mediterranean-pics.png"/>
+	</div>
+	<div class="test3">
+		<img class="img1" src="testimages/middle east-word.png"/>
+		<img class="img2" src="testimages/middle east-pics.png"/>
+	</div>
+	<div class="test3">
+		<img class="img1" src="testimages/northern europe-word.png"/>
+		<img class="img2" src="testimages/northern europe-pics.png"/>
+	</div>
+	<div class="test3">
+		<img class="img1" src="testimages/polar-word.png"/>
+		<img class="img2" src="testimages/polar-pics.png"/>
+	</div>
+	<div class="test3">
+		<img class="img1" src="testimages/southeast asia-word.png"/>
+		<img class="img2" src="testimages/southeast asia-pics.png"/>
+	</div>
+	<div class="test3">
+		<img class="img1" src="testimages/world trip-word.png"/>
+		<img class="img2" src="testimages/world trip-pics.png"/>
+	</div>
+	<div class="test3">
+		<img class="img1" src="testimages/alaska-word.png"/>
+		<img class="img2" src="testimages/alaska-pics.png"/>
+	</div>
+	<div class="test3">
+		<img class="img1" src="testimages/others-word.png"/>
+		<img class="img2" src="testimages/others-pics.png"/>
+	</div>
 </div>
 </body>
 </html>
