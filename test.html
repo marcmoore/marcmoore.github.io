@@ -94,6 +94,82 @@
 .test3:nth-child(6n) {
 	margin-right: 0;
 }
+
+.container3 {
+	height: 150px;
+	border: 1px solid #ccc;
+}
+
+.label {
+	font-size: 12px;
+	margin: 20px 50px;
+	cursor: pointer;
+	color: #6F6D6B;
+	width: 90px;
+}
+
+.label::after {
+	content: "";
+	display: block;
+	clear: both;
+}
+
+.checkbox {
+	width: 12px;
+	height: 12px;
+	overflow: hidden;
+	float: left;
+	margin-right: 5px;
+}
+
+.checkbox1 img {
+	-webkit-transition-duration: 300ms;
+	position: absolute;
+}
+
+.checkbox1 .img1 {
+	z-index: 1000;
+}
+
+.checkbox1.checked .img1 {
+	opacity: 0;
+}
+
+.checkbox1 .img2 {
+	z-index: 999;
+}
+
+.checkbox2 img {
+	-webkit-transition-duration: 300ms;
+	position: absolute;
+}
+
+.checkbox2 .img1 {
+	z-index: 1000;
+}
+
+.checkbox2.checked .img1 {
+	opacity: 0;
+}
+
+.checkbox2 .img2 {
+	z-index: 999;
+	-webkit-transform: scale(0,0);
+}
+
+.checkbox2.checked .img2 {
+	-webkit-transform: scale(1,1);
+}
+
+.checkbox3 img {
+	-webkit-transition-duration: 300ms;
+	position: relative;
+}
+
+.checkbox3.checked .img1 {
+	margin-top: -12px;
+}
+
 </style>
 <div class="container">
 	<div class="test"></div>
@@ -209,5 +285,56 @@
 		<img class="img2" src="testimages/others-pics.png"/>
 	</div>
 </div>
+
+<div class="container container3">
+	<div id="checkbox1" class="label checkbox1">
+		<div class="checkbox">
+			<img class="img1" width="12px" src="testimages/check-1.png" />
+			<img class="img2" width="12px" src="testimages/check-2.png" />
+		</div>
+		点我点我点我
+	</div>
+	<div id="checkbox2" class="label checkbox2">
+		<div class="checkbox">
+			<img class="img1" width="12px" src="testimages/check-1.png" />
+			<img class="img2" width="12px" src="testimages/check-2.png" />
+		</div>
+		点我点我点我
+	</div>
+	<div id="checkbox3" class="label checkbox3">
+		<div class="checkbox">
+			<img class="img1" width="12px" src="testimages/check-1.png" />
+			<img class="img2" width="12px" src="testimages/check-2.png" />
+		</div>
+		点我点我点我
+	</div>
+</div>
+
+<script>
+	var checkbox1 = document.getElementById("checkbox1"),
+		checkbox2 = document.getElementById("checkbox2"),
+		checkbox3 = document.getElementById("checkbox3");
+		
+	checkbox1.onclick = function () {
+		if (this.className === "label checkbox1")
+			this.className = "label checkbox1 checked";
+		else
+			this.className = "label checkbox1";
+	}
+	
+	checkbox2.onclick = function () {
+		if (this.className === "label checkbox2")
+			this.className = "label checkbox2 checked";
+		else
+			this.className = "label checkbox2";
+	}
+	
+	checkbox3.onclick = function () {
+		if (this.className === "label checkbox3")
+			this.className = "label checkbox3 checked";
+		else
+			this.className = "label checkbox3";
+	}
+</script>
 </body>
 </html>
