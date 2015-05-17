@@ -1,0 +1,38 @@
+<html>
+<body>
+<style>
+.container {
+	margin: 0 auto;
+}
+
+.container::after {
+	clear: both;
+}
+
+.test {
+	width: 190px;
+	height: 120px;
+	background: url(test.png);
+	background-position: 1s;
+	-webkit-transition-duration: 500ms;
+	float: left;
+	margin-right: 10px;
+}
+
+.test:hover {
+	background-position: 0 -120px;
+	-webkit-transition-duration: 500ms;
+}
+</style>
+<div class="container">
+	<div class="test"></div>
+	<div class="test"></div>
+	<div class="test"></div>
+	<div class="test"></div>
+	<div class="test"></div>
+	<div class="test"></div>
+	<div class="test"></div>
+	<div class="test"></div>
+</div>
+</body>
+</html>
