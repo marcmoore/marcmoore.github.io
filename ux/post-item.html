@@ -1,0 +1,69 @@
+<html>
+<head>
+<style>
+.container {
+	width: 400px;
+	height: 160px;
+	overflow: hidden;
+}
+
+.bg {
+	width: 400px;
+	height: 160px;
+	background: url(pic.png);
+	-webkit-transition-duration: 1000ms;
+}
+
+.mask {
+	width: 400px;
+	height: 160px;
+	background: url(mask.png);
+	position: absolute;
+	z-index: 100;
+}
+
+.circle {
+	width: 101px;
+	height: 101px;
+	background: url(Polygon.png);
+	position: absolute;
+	z-index: 101;
+	margin-top: 30px;
+	margin-left: 150px;
+	-webkit-transition-duration: 1000ms;
+}
+
+.title {
+	width: 54px;
+	height: 53px;
+	background: url(title.png);
+	position: absolute;
+	z-index: 102;
+	margin-top: 53px;
+	margin-left: 173px;
+	-webkit-transition-duration: 1000ms;
+}
+
+.container:hover .bg {
+	-webkit-transform: scale(1.1,1.1);
+}
+
+.container:hover .circle {
+	-webkit-transform: rotate(40deg) scale(0.9,0.9);
+
+}
+
+.container:hover .title {
+	-webkit-transform: scale(1.1,1.1);
+}
+</style>
+</head>
+<body>
+<div class="container">
+	<div class="mask"></div>
+	<div class="circle"></div>
+	<div class="title"></div>
+	<div class="bg"></div>
+</div>
+</body>
+</html>
