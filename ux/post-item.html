@@ -29,8 +29,19 @@
 	position: absolute;
 	z-index: 101;
 	margin-top: 30px;
-	margin-left: 150px;
+	margin-left: 130px;
 	-webkit-transition-duration: 1000ms;
+}
+
+.circle1 {
+	width: 101px;
+	height: 101px;
+	background: url(Polygon.png);
+	position: absolute;
+	z-index: 101;
+	margin-top: 30px;
+	margin-left: 170px;
+	-webkit-transition-duration: 1200ms;
 }
 
 .title {
@@ -49,8 +60,11 @@
 }
 
 .container:hover .circle {
-	-webkit-transform: rotate(40deg) scale(0.9,0.9);
+	-webkit-transform: rotate(40deg) scale(0.3,0.3);
+}
 
+.container:hover .circle1 {
+	-webkit-transform: rotate(40deg) scale(0.3,0.3);
 }
 
 .container:hover .title {
@@ -62,6 +76,7 @@
 <div class="container">
 	<div class="mask"></div>
 	<div class="circle"></div>
+	<div class="circle1"></div>
 	<div class="title"></div>
 	<div class="bg"></div>
 </div>
