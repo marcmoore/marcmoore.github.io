@@ -82,6 +82,7 @@
 	color: #428BEF;
 	overflow: hidden;
 	position: relative;
+	cursor: pointer;
 }
 
 .btn1 span {
@@ -110,6 +111,56 @@
 .btn1:hover span {
 	opacity: 1;
 }
+
+.btn2 {
+	position: relative;	
+	width: 170px;
+	height: 40px;
+	margin-top: 30px;
+	line-height: 40px;
+	border: 1px solid #428BEF;
+	text-align: center;
+	font-size: 14px;
+	color: #428BEF;
+	display: block;
+	overflow: hidden;
+	cursor: pointer;
+	-webkit-user-select: none;
+	-moz-user-select: none;
+	-ms-user-select: none;
+	user-select: none;
+}
+
+.ripple {
+	position: absolute;
+	background: rgba(66,139,239,.75);
+	border-radius: 100%;
+	-webkit-transform: scale(0);
+	-ms-transform: scale(0);
+	transform: scale(0);
+	pointer-events: none;
+}
+
+.ripple.show {
+	-webkit-animation: ripple .5s ease-out;
+	animation: ripple .5s ease-out;
+}
+@-webkit-keyframes 
+ripple { 
+	to {
+		-webkit-transform: scale(1.5);
+		transform: scale(1.5);
+		opacity: 0;
+	}
+}
+@keyframes 
+ripple {
+	to {
+		-webkit-transform: scale(1.5);
+		transform: scale(1.5);
+		opacity: 0;
+	}
+}
 </style>
 </head>
 <body>
@@ -126,5 +177,32 @@
 	<div class="hover"></div>
 	<span>DISCOVER</span>
 </div>
+
+<div class="btn2">DISCOVER</div>
+	
+	
+<script>
+var addRippleEffect = function (e) {
+    var target = e.target;
+    if (target.className.toLowerCase() !== 'btn2') return false;
+    var rect = target.getBoundingClientRect();
+    var ripple = target.querySelector('.ripple');
+    if (!ripple) {
+        ripple = document.createElement('span');
+        ripple.className = 'ripple';
+        ripple.style.height = ripple.style.width = Math.max(rect.width, rect.height) + 'px';
+        target.appendChild(ripple);
+    }
+    ripple.classList.remove('show');
+    var top = e.pageY - rect.top - ripple.offsetHeight / 2 - document.body.scrollTop;
+    var left = e.pageX - rect.left - ripple.offsetWidth / 2 - document.body.scrollLeft;
+    ripple.style.top = top + 'px';
+    ripple.style.left = left + 'px';
+    ripple.classList.add('show');
+    return false;
+}
+
+document.addEventListener('click', addRippleEffect, false);
+</script>
 </body>
 </html>
