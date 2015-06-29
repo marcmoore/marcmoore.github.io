@@ -1,0 +1,139 @@
+<html>
+<head>
+<meta name="viewport" content="width=device-width, user-scalable=0" />
+<script type="text/javascript" src="iscroll.js"></script>
+<script type="text/javascript">
+
+var myScroll;
+
+function loaded () {
+	myScroll = new IScroll('#wrapper', {
+		scrollX: true,
+		scrollY: false,
+		momentum: false,
+		snap: true,
+		snapSpeed: 400,
+		keyBindings: true
+	});
+}
+
+document.addEventListener('touchmove', function (e) { e.preventDefault(); }, false);
+</script>
+<style>
+* {
+	-webkit-box-sizing: border-box;
+	-moz-box-sizing: border-box;
+	box-sizing: border-box;
+}
+
+html {
+	-ms-touch-action: none;
+}
+
+body, ul, li {
+	padding: 0;
+	margin: 0;
+	border: 0;
+}
+
+body {
+	font-size: 12px;
+	font-family: ubuntu, helvetica, arial;
+	overflow: hidden; /* this is important to prevent the whole page to bounce */
+}
+
+#viewport {
+	position: relative;
+	width: 320px;
+	height: 264px;
+	margin: 0 auto;
+	overflow: hidden;
+	margin-top: 60px;
+}
+
+#wrapper {
+	width: 320px;
+	height: 264px;
+	margin: 0;
+}
+
+#scroller {
+	position: absolute;
+	z-index: 1;
+	-webkit-tap-highlight-color: rgba(0,0,0,0);
+	width: 1280px;
+	height: 264px;
+	-webkit-transform: translateZ(0);
+	-moz-transform: translateZ(0);
+	-ms-transform: translateZ(0);
+	-o-transform: translateZ(0);
+	transform: translateZ(0);
+	-webkit-touch-callout: none;
+	-webkit-user-select: none;
+	-moz-user-select: none;
+	-ms-user-select: none;
+	user-select: none;
+	-webkit-text-size-adjust: none;
+	-moz-text-size-adjust: none;
+	-ms-text-size-adjust: none;
+	-o-text-size-adjust: none;
+	text-size-adjust: none;
+}
+
+.slide {
+	width: 320px;
+	height: 264px;
+	float: left;
+}
+
+.painting {
+	width: 300px;
+	height: 264px;
+	margin: 0 auto;
+}
+
+.step1 {
+	background: url(1.jpg);
+	background-size: contain;
+}
+
+.step2 {
+	background: url(2.jpg);
+	background-size: contain;
+}
+
+.step3 {
+	background: url(3.jpg);
+	background-size: contain;
+}
+
+.step4 {
+	background: url(4.jpg);
+	background-size: contain;
+}
+
+</style>
+</head>
+<body>
+<body onload="loaded()">
+
+<div id="viewport">
+	<div id="wrapper">
+		<div id="scroller">
+			<div class="slide">
+				<div class="painting step1"></div>
+			</div>
+			<div class="slide">
+				<div class="painting step2"></div>
+			</div>
+			<div class="slide">
+				<div class="painting step3"></div>
+			</div>
+			<div class="slide">
+				<div class="painting step4"></div>
+			</div>
+		</div>
+	</div>
+</div>
+</body>
+</html>
