@@ -3,6 +3,7 @@
 <style>
 html {
 	height: 100%;
+	font-family: Tahoma, Helvetica, Arial,sans-serif;
 }
 
 body {
@@ -10,17 +11,27 @@ body {
 	margin: 0;
 }
 
+.first-section {
+	width: 100%;
+	height: 100%;
+}
+
+.first-section::after {
+	clear: both;
+}
+
 .big-box {
 	width: 50%;
 	height: 100%;
 	float: left;
+	position: relative;
 }
 
 .mark {
 	background: rgba(40, 40, 40, 1);
 }
 
-.mark .icon {
+.big-box .icon {
 	width: 72px;
 	height: 76px;
 	position: relative;
@@ -29,6 +40,87 @@ body {
 	margin-left: -36px;
 	margin-top: -38px;
 	background: url(images/icon-mark.png);
+	-webkit-transition-duration: 200ms;
+}
+
+.big-box:hover .icon {
+	opacity: 0;
+}
+
+.big-box .nav {
+	width: 100%;
+	height: 100%;
+	background: rgba(40, 40, 40, 1);
+	position: absolute;
+	top: 0;
+	-webkit-transition-duration: 500ms;
+	opacity: 0;
+}
+
+.big-box:hover .nav {
+	opacity: 1;
+}
+
+.big-box .nav .name-style {
+	width: 139px;
+	height: 22px;
+	margin: 1em auto;
+	background: url(images/Mark-Moore-style.png);
+}
+
+.big-box .nav .name {
+	width: 92px;
+	height: 12px;
+	margin: 1em auto;
+	background: url(images/Mark-Moore.png);
+}
+
+.big-box .position {
+	color: rgba(252, 54, 60, 1);
+	text-align: center;
+	font-size: 60px;
+	position: relative;
+	top: 10%;
+}
+
+.big-box .position-connect {
+	height: 80px;
+	width: 1px;
+	background: rgba(252, 54, 60, 1);
+	margin: 0.1em auto;
+}
+
+.big-box .category{
+	position: relative;
+	top: 30%;
+}
+
+.big-box .category ul {
+	list-style: none;
+	-webkit-margin-before: 0;
+	-webkit-margin-after: 0;
+	-webkit-padding-start: 0;
+}
+
+.big-box .category ul li {
+	border-top: 1px solid rgba(252, 54, 60, 1);
+	height: 50px;
+	text-align: center;
+	line-height: 50px;
+	color: rgba(252, 54, 60, 1);
+	font-size: 14px;
+	font-weight: lighter;
+	-webkit-transition-duration: 200ms;
+	cursor: pointer;
+}
+
+.big-box .category ul li:last-child {
+	border-bottom: 1px solid rgba(252, 54, 60, 1);
+}
+
+.big-box .category ul li:hover {
+	background: rgba(252, 54, 60, 1);
+	color: rgba(40, 40, 40, 1);
 }
 
 .ash {
@@ -45,17 +137,101 @@ body {
 	margin-top: -38px;
 	background: url(images/icon-ash.png);
 }
+
+.ash .nav {
+	background: rgba(252, 54, 60, 1);
+}
+
+.ash .nav .name-style {
+	width: 90px;
+	height: 23px;
+	background: url(images/Ash-Zou-style.png);
+}
+
+.ash .nav .name {
+	width: 61px;
+	height: 12px;
+	background: url(images/Ash-Zou.png);
+}
+
+.ash .position {
+	color: rgba(40, 40, 40, 1);
+	text-align: center;
+	font-size: 60px;
+	position: relative;
+	top: 10%;
+}
+
+.ash .position-connect {
+	height: 80px;
+	width: 1px;
+	background: rgba(40, 40, 40, 1);
+	margin: 0.1em auto;
+}
+
+.ash .category ul li {
+	border-top: 1px solid rgba(40, 40, 40, 1);
+	color: rgba(40, 40, 40, 1);
+}
+
+.ash .category ul li:last-child {
+	border-bottom: 1px solid rgba(40, 40, 40, 1);
+}
+
+.ash .category ul li:hover {
+	background: rgba(40, 40, 40, 1);
+	color: rgba(252, 54, 60, 1);
+}
+
+/*.second-section {
+	width: 100%;
+	height: 100%;
+	background: red;
+}*/
 </style>
 </head>
 <body>
 <div class="first-section">
 	<div class="big-box mark">
 		<div class="icon"></div>
+		<div class="nav">
+			<div class="name-style"></div>
+			<div class="name"></div>
+			<div class="position">
+				<div class="position-major">Product Manager</div>
+				<div class="position-connect"></div>
+				<div class="position-minor">Front-End Engineer</div>
+			</div>
+			<div class="category">
+				<ul>
+					<li>Works</li>
+					<li>About me</li>
+					<li>Contact</li>
+				</ul>
+			</div>
+		</div>
 	</div>
 	<div class="big-box ash">
 		<div class="icon"></div>
+		<div class="nav">
+			<div class="name-style"></div>
+			<div class="name"></div>
+			<div class="position">
+				<div class="position-major">UI Designer</div>
+				<div class="position-connect"></div>
+				<div class="position-minor">Art Direction</div>
+			</div>
+			<div class="category">
+				<ul>
+					<li>Works</li>
+					<li>About me</li>
+					<li>Contact</li>
+				</ul>
+			</div>
+		</div>
 	</div>
 </div>
-
+<div class="second-section"></div>
+<script src=""></script>
 </body>
 </html>
