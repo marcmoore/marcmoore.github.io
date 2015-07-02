@@ -129,6 +129,63 @@ body {
 	color: rgba(40, 40, 40, 1);
 }
 
+.big-box .contacts {
+	position: relative;
+	top: 45%;
+}
+
+.big-box .contacts>div {
+	width: 33.3333333%;
+	height: 27px;
+	float: left;
+	-webkit-transition-duration: 200ms;
+	cursor: pointer;
+}
+
+.big-box .contacts .wechat .qr-code {
+	width: 102px;
+	height: 118px;
+	position: absolute;
+	top: -118px;
+	right: 20%;
+	margin-right: -35px;
+	opacity: 0;
+	-webkit-transition-duration: 200ms;
+}
+
+.mark .contacts .wechat {
+	position: relative;
+	background: url(images/mark_wechat_bl.png) 80% 0 no-repeat;
+}
+
+.mark .contacts .wechat .qr-code {
+	background: url(images/mark_qr_code.png);
+}
+
+.mark .contacts .wechat:hover {
+	background: url(images/mark_wechat_re.png) 80% 0 no-repeat;
+}
+
+.mark .contacts .wechat:hover .qr-code {
+	opacity: 1;
+}
+
+.mark .contacts .qq {
+	background: url(images/mark_QQ_bl.png) 50% 0 no-repeat;
+}
+
+.mark .contacts .qq:hover {
+	background: url(images/mark_QQ_re.png) 50% 0 no-repeat;
+}
+
+.mark .contacts .weibo {
+	background: url(images/mark_weibo_bl.png) 20% 0 no-repeat;
+}
+
+.mark .contacts .weibo:hover {
+	background: url(images/mark_weibo_re.png) 20% 0 no-repeat;
+}
+
 .ash {
 	background: rgba(252, 54, 60, 1);
 }
@@ -189,11 +246,100 @@ body {
 	color: rgba(252, 54, 60, 1);
 }
 
-/*.second-section {
+.ash .contacts .wechat {
+	position: relative;
+	background: url(images/ash_wechat_bl.png) 80% 0 no-repeat;
+}
+
+.ash .contacts .wechat .qr-code {
+	background: url(images/ash_qr_code.png);
+}
+
+.ash .contacts .wechat:hover {
+	background: url(images/ash_wechat_wh.png) 80% 0 no-repeat;
+}
+
+.ash .contacts .wechat:hover .qr-code {
+	opacity: 1;
+}
+
+.ash .contacts .qq {
+	background: url(images/ash_QQ_bl.png) 50% 0 no-repeat;
+}
+
+.ash .contacts .qq:hover {
+	background: url(images/ash_QQ_wh.png) 50% 0 no-repeat;
+}
+
+.ash .contacts .weibo {
+	background: url(images/ash_weibo_bl.png) 20% 0 no-repeat;
+}
+
+.ash .contacts .weibo:hover {
+	background: url(images/ash_weibo_wh.png) 20% 0 no-repeat;
+}
+
+.second-section {
 	width: 100%;
 	height: 100%;
-	background: red;
-}*/
+}
+
+.second-section::after {
+	clear: both;
+}
+
+.nav-bar {
+	width: 30%;
+	height: 100%;
+	float: left;
+}
+
+.avatar {
+	width: 100%;
+	height: 20%;
+	background: rgba(40, 40, 40, 0.7);
+}
+
+.favor {
+	width: 100%;
+	height: 20%;
+	background: url(images/mark_icon.png) 50% no-repeat;
+}
+
+.nav-bar ul {
+	list-style: none;
+	-webkit-margin-before: 0;
+	-webkit-margin-after: 0;
+	-webkit-padding-start: 0;
+}
+
+.nav-bar ul li {
+	border-top: 1px solid #656565;
+	height: 50px;
+	text-align: center;
+	line-height: 50px;
+	color: #656565;
+	font-size: 14px;
+	font-weight: lighter;
+	-webkit-transition-duration: 200ms;
+	cursor: pointer;
+}
+
+.nav-bar ul li:last-child {
+	border-bottom: 1px solid #656565;
+}
+
+.nav-bar ul li:hover {
+	background: rgba(40, 40, 40, 1);
+	color: rgba(252, 54, 60, 1);
+}
+
+.all-about-work {
+	width: 70%;
+	height: 100%;
+	float: left;
+	background: rgba(40, 40, 40, 1);
+}
 </style>
 </head>
 <body>
@@ -215,6 +361,13 @@ body {
 					<li>Contact</li>
 				</ul>
 			</div>
+			<div class="contacts">
+				<div class="wechat">
+					<div class="qr-code"></div>
+				</div>
+				<div class="qq"></div>
+				<div class="weibo"></div>
+			</div>
 		</div>
 	</div>
 	<div class="big-box ash">
@@ -234,10 +387,28 @@ body {
 					<li>Contact</li>
 				</ul>
 			</div>
+			<div class="contacts">
+				<div class="wechat">
+					<div class="qr-code"></div>
+				</div>
+				<div class="qq"></div>
+				<div class="weibo"></div>
+			</div>
 		</div>
 	</div>
 </div>
-<div class="second-section"></div>
+<div class="second-section">
+	<div class="nav-bar">
+		<div class="avatar"></div>
+		<div class="favor"></div>
+		<ul>
+			<li>Works</li>
+			<li>About me</li>
+			<li>Contact</li>
+		</ul>
+	</div>
+	<div class="all-about-work"></div>
+</div>
 <script src=""></script>
 </body>
 </html>
