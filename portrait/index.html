@@ -5,6 +5,11 @@
 	font-family: "QuickSand_Light";
 	src: url("images/fonts/Quicksand_Light.otf");
 }
+
+@font-face {
+	font-family: "Allura";
+	src: url("images/fonts/Allura.otf");
+}
 	
 html {
 	height: 100%;
@@ -15,6 +20,13 @@ html {
 body {
 	height: 100%;
 	margin: 0;
+}
+
+ul {
+	list-style: none;
+	-webkit-margin-before: 0;
+	-webkit-margin-after: 0;
+	-webkit-padding-start: 0;
 }
 
 .first-section {
@@ -99,13 +111,6 @@ body {
 .big-box .category{
 	position: relative;
 	top: 30%;
-}
-
-.big-box .category ul {
-	list-style: none;
-	-webkit-margin-before: 0;
-	-webkit-margin-after: 0;
-	-webkit-padding-start: 0;
 }
 
 .big-box .category ul li {
@@ -439,6 +444,63 @@ body {
 	height: 100%;
 	float: left;
 	background: rgba(40, 40, 40, 1);
+	padding: 30px;
+	box-sizing: border-box;
+	color: #fff;
+}
+
+.short-desc h1 {
+	font-family: Allura, Tahoma, Helvetica, Arial,sans-serif;
+	font-size: 20px;
+}
+
+.short-desc p {
+	width: 400px;
+	line-height: 24px;
+	font-size: 14px;
+}
+
+.all-about-work ul li {
+	position: relative;
+	margin-left: 480px;
+}
+
+.all-about-work ul li .project-thumbnail {
+	width: 450px;
+	height: 300px;
+	background: #9b9b9b;
+	float: left;
+	margin-left: -480px;
+	position: relative;
+}
+
+.all-about-work ul li .project-title {
+	position: absolute;
+	top: 140px;
+	left: 380px;
+	width: 250px;
+}
+
+.all-about-work ul li .project-title .project-bottom {
+	width: 100px;
+	height: 3px;
+	background: #fe3333;	
+}
+
+.all-about-work ul li .project-desc {
+	margin-left: -10px;
+	opacity: 0;
+	-webkit-transition-duration: 1s;
+}
+
+.all-about-work ul li .project-desc p {
+	line-height: 18px;
+	font-size: 14px;
+}
+
+.all-about-work ul li:hover .project-desc {
+	margin-left: 0;
+	opacity: 1;
 }
 
 </style>
@@ -522,12 +584,33 @@ body {
 		<div class="avatar"></div>
 		<div class="favor"></div>
 		<ul>
+			<li>Home</li>
 			<li>Works</li>
 			<li>About me</li>
 			<li>Contact</li>
 		</ul>
 	</div>
-	<div class="all-about-work"></div>
+	<div class="all-about-work">
+		<div class="short-desc">
+			<h1>Works</h1>
+			<p>Here is a little selection of projects I've been working on during 2013, 2014 and 2015.</p>
+		</div>
+		<ul>
+			<li>
+				<div class="project-thumbnail">
+					<div class="project-title">
+						<h2>Lorem.me</h2>
+						<p>Lorem ipsum dolor sit amet</p>
+						<div class="project-bottom"></div>
+					</div>
+				</div>
+				<div class="project-desc">
+					<h3>Lorem.me</h3>
+					<p>Lorem ipsum dolor sit amet ipsum dolor sit amet ipsum dolor sit amet ipsum dolor sit ametipsum dolor sit amet</p>
+				</div>
+			</li>
+		</ul>
+	</div>
 </div>
 <script src=""></script>
 </body>
