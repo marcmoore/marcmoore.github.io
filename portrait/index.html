@@ -7,6 +7,11 @@
 }
 
 @font-face {
+	font-family: "Quicksand_Bold";
+	src: url("images/fonts/Quicksand_Bold.otf");
+}
+
+@font-face {
 	font-family: "Allura";
 	src: url("images/fonts/Allura.otf");
 }
@@ -27,6 +32,14 @@ ul {
 	-webkit-margin-before: 0;
 	-webkit-margin-after: 0;
 	-webkit-padding-start: 0;
+}
+
+.red {
+	color: rgba(252, 54, 60, 1);
+}
+
+strong {
+	font-family: Quicksand_Bold;
 }
 
 .first-section {
@@ -397,6 +410,7 @@ ul {
 	width: 30%;
 	height: 100%;
 	float: left;
+	position: relative;
 }
 
 .avatar {
@@ -434,8 +448,35 @@ ul {
 	border-bottom: 1px solid #656565;
 }
 
-.nav-bar ul li:hover {
+.nav-bar ul li:hover, .nav-bar ul li.activited {
 	background: rgba(40, 40, 40, 1);
+	color: rgba(252, 54, 60, 1);
+}
+
+.nav-bar .blank {
+	width: 100%;
+	height: 100%;
+	border-right: 1px solid #656565;
+	box-sizing: border-box;
+	position: absolute;
+	top: 0;
+	z-index: 0;
+}
+
+.nav-bar.style2 ul {
+	z-index: 1;
+	position: relative;
+} 
+
+.nav-bar.style2 ul li {
+	border-right: 1px solid #656565;
+	border-collapse: collapse;
+	box-sizing: border-box;
+}
+
+.nav-bar.style2 ul li:hover, .nav-bar.style2 ul li.activited {
+	border-right: 1px solid #fff;
+	background: none;
 	color: rgba(252, 54, 60, 1);
 }
 
@@ -501,6 +542,51 @@ ul {
 .all-about-work ul li:hover .project-desc {
 	margin-left: 0;
 	opacity: 1;
+}
+
+.all-about-me {
+	width: 70%;
+	height: 100%;
+	float: left;
+}
+
+.all-about-me h1 {
+	font-family: Allura, Tahoma, Helvetica, Arial,sans-serif;
+	font-size: 20px;
+	margin: 0;
+}
+
+.all-about-me p {
+	line-height: 18px;
+	font-size: 14px;
+}
+
+.all-about-me .about-me {
+	position: relative;
+	margin-right: 250px;
+	padding: 30px;
+}
+
+.all-about-me .about-me .mark {
+	position: absolute;
+	top: 0;
+	right: -250px;
+	width: 250px;
+	height: 350px;
+	background: #9b9b9b;
+}
+
+.all-about-me .about-me table {
+	width: 100%;
+}
+
+.all-about-me .about-me table td {
+	padding-bottom: 30px;
+	line-height: 22px;
+}
+
+.all-about-me .skills {
+	padding: 30px;
 }
 
 </style>
@@ -585,7 +671,7 @@ ul {
 		<div class="favor"></div>
 		<ul>
 			<li>Home</li>
-			<li>Works</li>
+			<li class="activited">Works</li>
 			<li>About me</li>
 			<li>Contact</li>
 		</ul>
@@ -610,6 +696,80 @@ ul {
 				</div>
 			</li>
 		</ul>
+	</div>
+</div>
+<div class="third-section mark">
+	<div class="nav-bar style2">
+		<div class="avatar"></div>
+		<div class="favor"></div>
+		<ul>
+			<li>Home</li>
+			<li>Works</li>
+			<li class="activited">About me</li>
+			<li>Contact</li>
+		</ul>
+		<div class="blank"></div>
+	</div>
+	<div class="all-about-me">
+		<div class="about-me">
+			<h1>About me</h1>
+			<p>Lorem ipsum dolor sit amet ipsum dolor sit amet ipsum dolor sit amet ipsum dolor sit ametipsum dolor sit amet</p>
+			<p>Lorem ipsum dolor sit amet ipsum dolor sit amet ipsum dolor sit amet ipsum dolor sit ametipsum dolor sit amet Lorem ipsum dolor sit amet ipsum dolor sit amet ipsum dolor sit amet ipsum dolor sit ametipsum dolor sit amet Lorem ipsum dolor sit amet ipsum dolor sit amet ipsum dolor sit amet ipsum dolor sit ametipsum dolor sit amet</p>
+			<table>
+				<tr>
+					<td><strong>Eduction<br>&nbsp;</strong></td>
+					<td>
+						<span class="red">Certificate of Marketing & Advertising</span><br>
+						<i>University of California, Extension</i>
+					</td>
+					<td>
+						2010-2013<br>
+						Tianjin, China
+					</td>
+				</tr>
+				<tr>
+					<td></td>
+					<td>
+						<span class="red">Certificate of Marketing & Advertising</span><br>
+						<i>University of California, Extension</i>
+					</td>
+					<td>
+						2010-2013<br>
+						Tianjin, China
+					</td>
+				</tr>
+				<tr>
+					<td>
+						<strong>Work<br>
+						Experience</strong>
+					</td>
+					<td>
+						<span class="red">Certificate of Marketing & Advertising</span><br>
+						<i>University of California, Extension</i>
+					</td>
+					<td>
+						2010-2013<br>
+						Tianjin, China
+					</td>
+				</tr>
+				<tr>
+					<td></td>
+					<td>
+						<span class="red">Certificate of Marketing & Advertising</span><br>
+						<i>University of California, Extension</i>
+					</td>
+					<td>
+						2010-2013<br>
+						Tianjin, China
+					</td>
+				</tr>
+			</table>
+			<div class="mark"></div>
+		</div>
+		<div class="skills">
+			<h1>Skills</h1>
+			<p>Lorem ipsum dolor sit amet ipsum dolor sit amet ipsum dolor sit amet ipsum dolor sit ametipsum dolor sit amet Lorem ipsum dolor sit amet ipsum dolor sit amet ipsum dolor sit amet ipsum dolor sit ametipsum dolor sit amet Lorem ipsum dolor sit amet ipsum dolor sit amet ipsum dolor sit amet ipsum dolor sit ametipsum dolor sit amet</p>
+		</div>
 	</div>
 </div>
 <script src=""></script>
