@@ -589,6 +589,28 @@ strong {
 	padding: 30px;
 }
 
+.all-about-me .skills .canvas-holder {
+	position: relative;
+	width: 120px;
+}
+
+.all-about-me .skills .canvas-holder .icon {
+	position: absolute;
+	width: 10px;
+	height: 10px;
+	background: #000;
+	top: 50%;
+	left: 50%;
+	margin-top: -5px;
+	margin-left: -5px;
+}
+
+.all-about-me .skills .canvas-holder .legend {
+	text-align: center;
+	font-size: 14px;
+	line-height: 30px;
+}
+
 </style>
 </head>
 <body>
@@ -769,9 +791,67 @@ strong {
 		<div class="skills">
 			<h1>Skills</h1>
 			<p>Lorem ipsum dolor sit amet ipsum dolor sit amet ipsum dolor sit amet ipsum dolor sit ametipsum dolor sit amet Lorem ipsum dolor sit amet ipsum dolor sit amet ipsum dolor sit amet ipsum dolor sit ametipsum dolor sit amet Lorem ipsum dolor sit amet ipsum dolor sit amet ipsum dolor sit amet ipsum dolor sit ametipsum dolor sit amet</p>
+			<div class="canvas-holder">
+				<canvas id="chart-area" width="120" height="120"></canvas>
+				<div class="icon"></div>
+				<div class="legend">Sketch <span class="red">80%</span></div>
+			</div>
+			<div class="canvas-holder">
+				<canvas id="chart-area2" width="420" height="420"></canvas>
+			</div>
 		</div>
 	</div>
 </div>
-<script src=""></script>
+<script src="js/chart.js"></script>
+<script>
+var doughnutData = [
+	{
+		value: 80,
+		color:"#fe3333"
+	},
+	{
+		value: 20,
+		color: "#9b9b9b"
+	}
+];
+
+var radarChartData = {
+	labels: ["Communication", "Organization", "Creation", "Mutual", "Responsibility", "Language", "Confidence"],
+	datasets: [
+		{
+			label: "My First dataset",
+			fillColor: "rgba(254,54,51,0.2)",
+			strokeColor: "rgba(254,54,51,1)",
+			data: [90,81,72,93,84,76,96]
+		},
+		{
+			label: "My First dataset",
+			fillColor: "rgba(254,54,51,0)",
+			strokeColor: "rgba(0,0,0,1)",
+			data: [100,100,100,100,100,100,100]
+		},
+		{
+			label: "My First dataset",
+			fillColor: "rgba(254,54,51,1)",
+			strokeColor: "rgba(0,0,0,1)",
+			data: [0,0,0,0,0,0,0]
+		},
+	]
+};
+
+window.onload = function(){
+	var ctx = document.getElementById("chart-area").getContext("2d");
+	var ctx2 = document.getElementById("chart-area2").getContext("2d");
+	window.myDoughnut = new Chart(ctx).Doughnut(doughnutData, {
+		responsive : true, 
+		percentageInnerCutout: 93, 
+		animateRotate: true
+	});
+	window.myRadar = new Chart(ctx2).Radar(radarChartData, {
+		responsive: true,
+		pointDot: false
+	});
+};
+</script>
 </body>
 </html>
