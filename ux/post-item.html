@@ -161,6 +161,57 @@ ripple {
 		opacity: 0;
 	}
 }
+
+.btn3 {
+	position: relative;	
+	width: 170px;
+	height: 50px;
+	margin-top: 30px;
+	line-height: 50px;
+	border: 1px solid #ccc;
+	text-align: center;
+	font-size: 30px;
+	background: #000;
+	display: block;
+	overflow: hidden;
+	cursor: pointer;
+	float: left;
+	-webkit-user-select: none;
+	-moz-user-select: none;
+	-ms-user-select: none;
+	user-select: none;
+	-webkit-transition-duration: 300ms;
+}
+
+.btn3 p {
+	margin: 0;
+	font-size: 14px;
+	line-height: 16px;
+	color: #000;
+	-webkit-transition-duration: 300ms;
+}
+
+.btn3 p.arrow {
+	font-size: 30px;
+	line-height: 50px;
+	color: #fff;
+}
+
+.btn3:hover {
+	background: #fff;
+}
+
+.btn3:hover p {
+	margin-top: -10px;
+}
+
+.btn3:hover p.arrow {
+	font-size: 14px;
+	line-height: 35px;
+	margin-top: -10px;
+	color: #000;
+}
+
 </style>
 </head>
 <body>
@@ -180,11 +231,12 @@ ripple {
 
 <div class="btn2">DISCOVER</div>
 	
-	
+<div class="btn2 btn3"><p class="arrow"><</p><p>2015·全新凯美瑞不能不说的秘密</p></div>
+<div class="btn2 btn3"><p class="arrow">></p><p>2015·全新凯美瑞不能不说的秘密</p></div>
 <script>
 var addRippleEffect = function (e) {
     var target = e.target;
-    if (target.className.toLowerCase() !== 'btn2') return false;
+    if (target.className.toLowerCase() !== 'btn2' && target.className.toLowerCase() !== 'btn2 btn3') return false;
     var rect = target.getBoundingClientRect();
     var ripple = target.querySelector('.ripple');
     if (!ripple) {
