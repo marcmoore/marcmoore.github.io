@@ -45,7 +45,7 @@ ul {
 }
 
 .red {
-	color: #fe3333;
+	color: #DC143C;
 }
 
 strong {
@@ -117,13 +117,13 @@ strong {
 }
 
 .big-box .nav .name {
-	width: 92px;
+	width: 95px;
 	height: 12px;
 	margin-top: 32px;
 	position: absolute;
 	left: 50%;
 	margin-left: -46px;
-	background: url(images/Mark-Moore.png);
+	color: #fff;
 	-webkit-transition-duration: 500ms;
 }
 
@@ -133,17 +133,17 @@ strong {
 
 .big-box .position {
 	height: 216px;
-	color: #fe3333;
+	color: #DC143C;
 	text-align: center;
 	font-size: 60px;
 	position: relative;
 	top: 14%;
 }
 
-.big-box .position-connect {
+.position-connect {
 	height: 80px;
 	width: 1px;
-	background: #fe3333;
+	background: #DC143C;
 	margin: 0.2em auto;
 }
 
@@ -153,11 +153,11 @@ strong {
 }
 
 .big-box .category ul li {
-	border-top: 1px solid #fe3333;
+	border-top: 1px solid #DC143C;
 	height: 50px;
 	text-align: center;
 	line-height: 50px;
-	color: #fe3333;
+	color: #DC143C;
 	font-size: 14px;
 	font-weight: lighter;
 	-webkit-transition-duration: 200ms;
@@ -165,11 +165,11 @@ strong {
 }
 
 .big-box .category ul li:last-child {
-	border-bottom: 1px solid #fe3333;
+	border-bottom: 1px solid #DC143C;
 }
 
 .big-box .category ul li:hover {
-	background: #fe3333;
+	background: #DC143C;
 	color: rgba(40, 40, 40, 1);
 }
 
@@ -210,7 +210,7 @@ strong {
 
 .mark .contacts .wechat {
 	position: relative;
-	background: url(images/mark_wechat_bl.png) 80% 0 no-repeat;
+	background: url(images/mark_wechat_bl.png) 100% 0 no-repeat;
 }
 
 .mark .contacts .wechat .qr-code {
@@ -218,7 +218,7 @@ strong {
 }
 
 .mark .contacts .wechat:hover {
-	background: url(images/mark_wechat_re.png) 80% 0 no-repeat;
+	background: url(images/mark_wechat_re.png) 100% 0 no-repeat;
 }
 
 .mark .contacts .wechat:hover .qr-code {
@@ -234,15 +234,15 @@ strong {
 }
 
 .mark .contacts .weibo {
-	background: url(images/mark_weibo_bl.png) 20% 0 no-repeat;
+	background: url(images/mark_weibo_bl.png) 0 0 no-repeat;
 }
 
 .mark .contacts .weibo:hover {
-	background: url(images/mark_weibo_re.png) 20% 0 no-repeat;
+	background: url(images/mark_weibo_re.png) 0 0 no-repeat;
 }
 
 .big-box.ash {
-	background: #fe3333;
+	background: #DC143C;
 }
 
 .ash .icon {
@@ -257,7 +257,7 @@ strong {
 }
 
 .ash .nav {
-	background: #fe3333;
+	background: #DC143C;
 }
 
 .ash .nav .name-style {
@@ -268,10 +268,10 @@ strong {
 }
 
 .ash .nav .name {
-	width: 61px;
+	width: 64px;
 	height: 12px;
 	margin-left: -30px;
-	background: url(images/Ash-Zou.png);
+	color: #fff;
 }
 
 .ash .position {
@@ -282,7 +282,6 @@ strong {
 	height: 80px;
 	width: 1px;
 	background: rgba(40, 40, 40, 1);
-	margin: 0.1em auto;
 }
 
 .ash .category ul li {
@@ -296,7 +295,7 @@ strong {
 
 .ash .category ul li:hover {
 	background: rgba(40, 40, 40, 1);
-	color: #fe3333;
+	color: #DC143C;
 }
 
 .ash .contacts .wechat {
@@ -348,22 +347,25 @@ strong {
 		-webkit-transform: scale(1);
 	}
 	50% {
-		-webkit-transform: scale(1.02);
+		-webkit-transform: scale(1.05);
 	}
 	100% {
 		-webkit-transform: scale(1);
 	}
 }
 
-.second-section.mark .self-portrait {
+.second-section .self-portrait {
 	width: 100%;
 	height: 100%;
-	background: url(images/mark_portrait.jpg) no-repeat;
-	background-size: cover;
 	-webkit-animation-name: "portrait";
 	-webkit-animation-duration: 30s;
 	-webkit-animation-timing-function: ease-in-out;
 	-webkit-animation-iteration-count: infinite;
+}
+
+.section-container.mark .second-section .self-portrait {
+	background: url(images/mark_portrait_1.jpg) no-repeat;
+	background-size: cover;
 }
 
 .second-section .mask {
@@ -374,6 +376,10 @@ strong {
 	background: rgba(40, 40, 40, 0.8);
 }
 
+.section-container.ash .second-section .mask {
+	background: rgba(220, 20, 60, 0.3);
+}
+
 .second-section .name-style {
 	width: 139px;
 	height: 22px;
@@ -381,26 +387,56 @@ strong {
 	background: url(images/Mark-Moore-style.png);
 }
 
+.section-container.ash .second-section .name-style {
+	background: url(images/Ash-Zou-style.png);
+}
+
 .second-section .name {
-	width: 92px;
+	width: 95px;
 	height: 12px;
 	margin: 1em auto;
-	background: url(images/Mark-Moore.png);
+	text-align: center;
+	color: #fff;
 }
 
 .second-section .position {
-	color: #fe3333;
+	color: #DC143C;
 	text-align: center;
 	font-size: 60px;
 	position: relative;
 	top: 10%;
 }
 
-.second-section .position-connect {
-	height: 80px;
-	width: 1px;
-	background: #fe3333;
-	margin: 0.1em auto;
+.section-container.ash .second-section .position {
+	color: #fff;
+}
+
+.second-section .position-icon {
+	width: 80px;
+	height: 55px;
+	margin: 0 auto;
+	background: url(images/mark_icon.png) no-repeat;
+}
+
+.section-container.ash .second-section .position-icon {
+	width: 60px;
+	height: 67px;
+	background: url(images/ash_icon.png) no-repeat;
+}
+
+.second-section .position-img {
+	width: 534px;
+	height: 286px;
+	margin: 30px auto;
+	background: url(images/mark_pm.png) no-repeat;
+}
+
+.second-section .position-major {
+	margin-top: 0.6em;
+}
+
+.second-section .position-minor {
+	margin-top: 0.6em;
 }
 
 .second-section .contacts {
@@ -430,6 +466,24 @@ strong {
 	margin-right: -35px;
 	opacity: 0;
 	-webkit-transition-duration: 200ms;
+}
+
+.second-section .see-more {
+	width: 68px;
+	height: 57px;
+	left: 50%;
+	margin-left: -34px;
+	position: absolute;
+	bottom: 100px;
+	background: url(images/mark_arrow.png) no-repeat;
+	background-position: 9px 30px;
+	color: #DC143C;
+	font-size: 20px;
+}
+
+.section-container.ash .second-section .see-more {
+	background-image: url(images/ash_arrow.png);
+	color: #fff;
 }
 
 .third-section {
@@ -468,7 +522,7 @@ strong {
 .avatar {
 	width: 100%;
 	height: 100%;
-	background: url(images/mark_portrait.jpg) no-repeat;
+	background: url(images/mark_portrait_1.jpg) no-repeat;
 	background-size: cover;
 	-webkit-transition-duration: 1000ms;
 	cursor: pointer;
@@ -509,7 +563,7 @@ strong {
 
 .nav-bar ul li:hover, .nav-bar ul li.activited {
 	background: rgba(40, 40, 40, 1);
-	color: #fe3333;
+	color: #DC143C;
 }
 
 .nav-bar .blank {
@@ -535,7 +589,7 @@ strong {
 
 .nav-bar.style2 ul li:hover, .nav-bar.style2 ul li.activited {
 	background: rgba(40, 40, 40, 1);
-	color: #fe3333;
+	color: #DC143C;
 }
 
 .all-about-work {
@@ -585,7 +639,7 @@ strong {
 .all-about-work ul li .project-title .project-bottom {
 	width: 100px;
 	height: 3px;
-	background: #fe3333;	
+	background: #DC143C;	
 }
 
 .all-about-work ul li .project-desc {
@@ -594,14 +648,14 @@ strong {
 	-webkit-transition-duration: 1s;
 }
 
-.all-about-work ul li .project-desc p {
-	line-height: 18px;
-	font-size: 14px;
-}
-
 .all-about-work ul li:hover .project-desc {
 	margin-left: 0;
 	opacity: 1;
+}
+
+.all-about-work ul li .project-desc p {
+	line-height: 18px;
+	font-size: 14px;
 }
 
 .all-about-me {
@@ -653,24 +707,87 @@ strong {
 	display: block;
 }
 
+.all-about-me .skills .personal-skills {
+	position: relative;
+}
+
+.all-about-me .skills .personal-skills::after {
+	clear: both;
+	content: "";
+	display: block;
+}
+
 .all-about-me .skills h2 {
 	margin-top: 30px;
 }
 
 .all-about-me .skills .canvas-personal-skills {
 	position: relative;
-	width: 120px;
+	width: 16.667%;
+	float: left;
+}
+
+.all-about-me .skills .canvas-personal-skills canvas {
+	display: block;
+	margin: 0 auto;
 }
 
 .all-about-me .skills .canvas-personal-skills .icon {
 	position: absolute;
 	width: 10px;
 	height: 10px;
-	background: #000;
 	top: 50%;
 	left: 50%;
 	margin-top: -5px;
 	margin-left: -5px;
+}
+
+.all-about-me .skills .canvas-personal-skills.skill1 .icon {
+	width: 40px;
+	height: 27px;
+	margin-top: -28px;
+	margin-left: -20px;
+	background: url(images/skills/ax.png) no-repeat;
+}
+
+.all-about-me .skills .canvas-personal-skills.skill2 .icon {
+	width: 38px;
+	height: 27px;
+	margin-top: -28px;
+	margin-left: -19px;
+	background: url(images/skills/En.png) no-repeat;
+}
+
+.all-about-me .skills .canvas-personal-skills.skill3 .icon {
+	width: 81px;
+	height: 27px;
+	margin-top: -28px;
+	margin-left: -40px;
+	background: url(images/skills/Html.png) no-repeat;
+}
+
+.all-about-me .skills .canvas-personal-skills.skill4 .icon {
+	width: 62px;
+	height: 27px;
+	margin-top: -28px;
+	margin-left: -31px;
+	background: url(images/skills/Css.png) no-repeat;
+}
+
+.all-about-me .skills .canvas-personal-skills.skill5 .icon {
+	width: 37px;
+	height: 27px;
+	margin-top: -28px;
+	margin-left: -19px;
+	background: url(images/skills/js.png) no-repeat;
+}
+
+.all-about-me .skills .canvas-personal-skills.skill6 .icon {
+	width: 50px;
+	height: 27px;
+	margin-top: -28px;
+	margin-left: -25px;
+	background: url(images/skills/Git.png) no-repeat;
 }
 
 .all-about-me .skills .canvas-personal-skills .legend {
@@ -731,12 +848,12 @@ strong {
 }
 
 .fifth-section .all-about-me .sns h3 span {
-	border-bottom: 2px solid rgba(40, 40, 40, 1);
+	border-bottom: 1px solid rgba(40, 40, 40, 1);
 	-webkit-transition-duration: 300ms;
 }
 
 .fifth-section .all-about-me .sns h3 span:hover {
-	background: #fe3333;
+	background: #DC143C;
 }
 
 .fifth-section .all-about-me .footer {
@@ -750,15 +867,32 @@ strong {
 	box-sizing: border-box;
 }
 
+.section-container.mark .mark {
+	display: block;
+}
+
+.section-container.mark .ash {
+	display: none;
+}
+
+.section-container.ash .ash {
+	display: block;
+}
+
+.section-container.ash .mark {
+	display: none;
+}
+
+
 </style>
 </head>
 <body>
 <div class="first-section">
-	<div class="big-box mark">
+	<div class="big-box mark" name="mark">
 		<div class="icon"></div>
 		<div class="nav">
 			<div class="name-style"></div>
-			<div class="name"></div>
+			<div class="name">Mark Moore</div>
 			<div class="position">
 				<div class="position-major">Product Manager</div>
 				<div class="position-connect"></div>
@@ -780,11 +914,11 @@ strong {
 			</div>
 		</div>
 	</div>
-	<div class="big-box ash">
+	<div class="big-box ash" name="ash">
 		<div class="icon"></div>
 		<div class="nav">
 			<div class="name-style"></div>
-			<div class="name"></div>
+			<div class="name">Ash Zou</div>
 			<div class="position">
 				<div class="position-major">UI Designer</div>
 				<div class="position-connect"></div>
@@ -807,214 +941,266 @@ strong {
 		</div>
 	</div>
 </div>
-<div class="second-section mark">
-	<div class="self-portrait"></div>
-	<div class="mask">
-		<div class="name-style"></div>
-		<div class="name"></div>
-		<div class="position">
-			<div class="position-major">Product Manager</div>
-			<div class="position-connect"></div>
-			<div class="position-minor">Front-End Engineer</div>
-		</div>
-		<div class="contacts">
-			<div class="wechat">
-				<div class="qr-code"></div>
+<div class="section-container mark">
+	<div class="second-section">
+		<div class="self-portrait"></div>
+		<div class="mask">
+			<div class="name-style"></div>
+			<div class="name mark">Mark Moore</div>
+			<div class="name ash">Ash Zou</div>
+			<div class="position mark">
+				<div class="position-icon"></div>
+				<div class="position-img"></div>
+<!--				<div class="position-major">Product Manager</div>
+				<div class="position-minor">Front-End Engineer</div>-->
 			</div>
-			<div class="qq"></div>
-			<div class="weibo"></div>
+			<div class="position ash">
+				<div class="position-icon"></div>
+				<div class="position-major">UI Designer</div>
+				<div class="position-minor">Art Direction</div>
+			</div>
+			<div class="see-more">Details</div>
 		</div>
 	</div>
-</div>
-<div class="third-section mark">
-
-	<div class="all-about-work">
-		<div class="short-desc">
-			<h1>Projects</h1>
-			<p>Here is a little selection of projects I've been working on during 2013, 2014 and 2015.</p>
-		</div>
-		<ul>
-			<li>
-				<div class="project-thumbnail">
-					<div class="project-title">
-						<h2>Lorem.me</h2>
-						<p>Lorem ipsum dolor sit amet</p>
-						<div class="project-bottom"></div>
-					</div>
-				</div>
-				<div class="project-desc">
-					<h3>Lorem.me</h3>
-					<p>Lorem ipsum dolor sit amet ipsum dolor sit amet ipsum dolor sit amet ipsum dolor sit ametipsum dolor sit amet</p>
-				</div>
-			</li>
-		</ul>
-	</div>
-</div>
-<div class="forth-section mark">
-<!--	<div class="nav-bar style2">
-		<div class="avatar"></div>
-		<div class="favor"></div>
-		<ul>
-			<li>Home</li>
-			<li>Projects</li>
-			<li class="activited">About me</li>
-			<li>Contact</li>
-		</ul>
-		<div class="blank"></div>
-	</div>-->
-	<div class="all-about-me">
-		<div class="about-me">
-			<h1>About me</h1>
-			<p>Lorem ipsum dolor sit amet ipsum dolor sit amet ipsum dolor sit amet ipsum dolor sit ametipsum dolor sit amet</p>
-			<p>Lorem ipsum dolor sit amet ipsum dolor sit amet ipsum dolor sit amet ipsum dolor sit ametipsum dolor sit amet Lorem ipsum dolor sit amet ipsum dolor sit amet ipsum dolor sit amet ipsum dolor sit ametipsum dolor sit amet Lorem ipsum dolor sit amet ipsum dolor sit amet ipsum dolor sit amet ipsum dolor sit ametipsum dolor sit amet</p>
-			<table>
-				<tr>
-					<td><strong>Eduction<br>&nbsp;</strong></td>
-					<td>
-						<span class="red">Certificate of Marketing & Advertising</span><br>
-						<i>University of California, Extension</i>
-					</td>
-					<td>
-						2010-2013<br>
-						Tianjin, China
-					</td>
-				</tr>
-				<tr>
-					<td></td>
-					<td>
-						<span class="red">Certificate of Marketing & Advertising</span><br>
-						<i>University of California, Extension</i>
-					</td>
-					<td>
-						2010-2013<br>
-						Tianjin, China
-					</td>
-				</tr>
-				<tr>
-					<td>
-						<strong>Work<br>
-						Experience</strong>
-					</td>
-					<td>
-						<span class="red">Certificate of Marketing & Advertising</span><br>
-						<i>University of California, Extension</i>
-					</td>
-					<td>
-						2010-2013<br>
-						Tianjin, China
-					</td>
-				</tr>
-				<tr>
-					<td></td>
-					<td>
-						<span class="red">Certificate of Marketing & Advertising</span><br>
-						<i>University of California, Extension</i>
-					</td>
-					<td>
-						2010-2013<br>
-						Tianjin, China
-					</td>
-				</tr>
-			</table>
-			<div class="mark"></div>
-		</div>
-		<div class="skills">
-			<h1>Skills</h1>
-			<p>Lorem ipsum dolor sit amet ipsum dolor sit amet ipsum dolor sit amet ipsum dolor sit ametipsum dolor sit amet Lorem ipsum dolor sit amet ipsum dolor sit amet ipsum dolor sit amet ipsum dolor sit ametipsum dolor sit amet Lorem ipsum dolor sit amet ipsum dolor sit amet ipsum dolor sit amet ipsum dolor sit ametipsum dolor sit amet</p>
-			<h2>Personal Skills</h2>
-			<div class="canvas canvas-personal-skills">
-				<canvas id="chart-area" width="120" height="120"></canvas>
-				<div class="icon"></div>
-				<div class="legend">Sketch <span class="red">80%</span></div>
+	<div class="third-section">
+		<div class="all-about-work">
+			<div class="short-desc">
+				<h1>Projects</h1>
+				<p>Here is a little selection of projects I've been working on during 2013, 2014 and 2015.</p>
 			</div>
-			<h2>Professional Skills</h2>
-			<div class="canvas canvas-professional-skills">
-				<canvas id="chart-area2" width="400" height="400"></canvas>
-			</div>
-			<h2>About me</h2>
-			<p>Lorem ipsum dolor sit amet ipsum dolor sit amet ipsum dolor sit amet ipsum dolor sit ametipsum dolor sit amet</p>
-			<p>Lorem ipsum dolor sit amet ipsum dolor sit amet ipsum dolor sit amet ipsum dolor sit ametipsum dolor sit amet Lorem ipsum dolor sit amet ipsum dolor sit amet ipsum dolor sit amet ipsum dolor sit ametipsum dolor sit amet Lorem ipsum dolor sit amet ipsum dolor sit amet ipsum dolor sit amet ipsum dolor sit ametipsum dolor sit amet</p>
-		</div>
-		<div class="hire-me">
-			<h1>Hire me!</h1>
 			<ul>
 				<li>
-					<h2>About me</h2>
-					<p>Lorem ipsum dolor sit amet ipsum dolor sit amet ipsum dolor sit amet ipsum dolor sit ametipsum dolor sit amet</p>
-				</li>
-				<li>
-					<h2>About me</h2>
-					<p>Lorem ipsum dolor sit amet ipsum dolor sit amet ipsum dolor sit amet ipsum dolor sit ametipsum dolor sit amet</p>
-				</li>
-				<li>
-					<h2>About me</h2>
-					<p>Lorem ipsum dolor sit amet ipsum dolor sit amet ipsum dolor sit amet ipsum dolor sit ametipsum dolor sit amet</p>
-				</li>
-				<li>
-					<h2>About me</h2>
-					<p>Lorem ipsum dolor sit amet ipsum dolor sit amet ipsum dolor sit amet ipsum dolor sit ametipsum dolor sit amet</p>
+					<div class="project-thumbnail">
+						<div class="project-title">
+							<h2>WorldCruise.cn</h2>
+							<p>PM and FE developer</p>
+							<div class="project-bottom"></div>
+						</div>
+					</div>
+					<div class="project-desc">
+						<h3>WorldCruise.cn</h3>
+						<p>I'm in charge of the product design of mobile app. And also developing some part of the website.</p>
+					</div>
 				</li>
 			</ul>
 		</div>
-		<div class="interest">
-			<h1>Interest</h1>
+	</div>
+	<div class="forth-section">
+		<div class="all-about-me">
+			<div class="about-me">
+				<h1>About me</h1>
+				<p>Hi, my name is Mark Moore.</p>
+				<p>It's been a while since last time I update my resume. So I decided to create a better one.</p>
+				<p>As a man who was living in the ocean of internet, should be familiar with a lot of skills. Internet has been changing people's life so much. I was trying to change the internet as much as I can by using those skills.</p>
+				<p></p>
+				<table>
+					<tr>
+						<td><strong>Eduction<br>&nbsp;</strong></td>
+						<td>
+							<span class="red">Computer Science and Technology</span><br>
+							<i>Beijing Institute of Petrochemical Technology</i>
+						</td>
+						<td>
+							2005-2009<br>
+							Beijing, China
+						</td>
+					</tr>
+					<tr>
+						<td>
+							<strong>Work<br>
+							Experience</strong>
+						</td>
+						<td>
+							<span class="red">Project Manager, Front End Developer</span><br>
+							<i>Beijing Xuning information technology Co., Ltd.</i>
+						</td>
+						<td>
+							2010-2014<br>
+							Beijing, China
+						</td>
+					</tr>
+					<tr>
+						<td></td>
+						<td>
+							<span class="red">Product Manager, Front End Developer</span><br>
+							<i>Bestours Software</i>
+						</td>
+						<td>
+							2014-Now<br>
+							Beijing, China
+						</td>
+					</tr>
+				</table>
+				<div class="mark"></div>
+			</div>
+			<div class="skills">
+				<h1>Skills</h1>
+				<p>Since I was working for a outsourcing company for a while. I tried to learn as much as I can. These is pretty much what I can do now.</p>
+				<div class="personal-skills">
+					<h2>Personal Skills</h2>
+					<div class="canvas canvas-personal-skills skill1">
+						<canvas id="chart-area" width="120" height="120"></canvas>
+						<div class="icon"></div>
+						<div class="legend">Axure <span class="red">70%</span></div>
+					</div>
+					<div class="canvas canvas-personal-skills skill2">
+						<canvas id="chart-area1" width="120" height="120"></canvas>
+						<div class="icon"></div>
+						<div class="legend">English <span class="red">70%</span></div>
+					</div>
+					<div class="canvas canvas-personal-skills skill3">
+						<canvas id="chart-area2" width="120" height="120"></canvas>
+						<div class="icon"></div>
+						<div class="legend">HTML <span class="red">90%</span></div>
+					</div>
+					<div class="canvas canvas-personal-skills skill4">
+						<canvas id="chart-area3" width="120" height="120"></canvas>
+						<div class="icon"></div>
+						<div class="legend">CSS <span class="red">90%</span></div>
+					</div>
+					<div class="canvas canvas-personal-skills skill5">
+						<canvas id="chart-area4" width="120" height="120"></canvas>
+						<div class="icon"></div>
+						<div class="legend">JS <span class="red">80%</span></div>
+					</div>
+					<div class="canvas canvas-personal-skills skill6">
+						<canvas id="chart-area5" width="120" height="120"></canvas>
+						<div class="icon"></div>
+						<div class="legend">Git <span class="red">75%</span></div>
+					</div>
+				</div>
+				<div class="professional-skills ash">
+					<h2>Professional Skills</h2>
+					<div class="canvas canvas-professional-skills">
+						<canvas id="chart-area-radar" width="400" height="400"></canvas>
+					</div>
+					<h2>About me</h2>
+					<p>Lorem ipsum dolor sit amet ipsum dolor sit amet ipsum dolor sit amet ipsum dolor sit ametipsum dolor sit amet</p>
+					<p>Lorem ipsum dolor sit amet ipsum dolor sit amet ipsum dolor sit amet ipsum dolor sit ametipsum dolor sit amet Lorem ipsum dolor sit amet ipsum dolor sit amet ipsum dolor sit amet ipsum dolor sit ametipsum dolor sit amet Lorem ipsum dolor sit amet ipsum dolor sit amet ipsum dolor sit amet ipsum dolor sit ametipsum dolor sit amet</p>
+				</div>
+			</div>
+			<div class="hire-me ash">
+				<h1>Hire me!</h1>
+				<ul>
+					<li>
+						<h2>About me</h2>
+						<p>Lorem ipsum dolor sit amet ipsum dolor sit amet ipsum dolor sit amet ipsum dolor sit ametipsum dolor sit amet</p>
+					</li>
+					<li>
+						<h2>About me</h2>
+						<p>Lorem ipsum dolor sit amet ipsum dolor sit amet ipsum dolor sit amet ipsum dolor sit ametipsum dolor sit amet</p>
+					</li>
+					<li>
+						<h2>About me</h2>
+						<p>Lorem ipsum dolor sit amet ipsum dolor sit amet ipsum dolor sit amet ipsum dolor sit ametipsum dolor sit amet</p>
+					</li>
+					<li>
+						<h2>About me</h2>
+						<p>Lorem ipsum dolor sit amet ipsum dolor sit amet ipsum dolor sit amet ipsum dolor sit ametipsum dolor sit amet</p>
+					</li>
+				</ul>
+			</div>
+			<div class="interest ash">
+				<h1>Interest</h1>
+			</div>
 		</div>
 	</div>
-</div>
-<div class="fifth-section mark">
-<!--	<div class="nav-bar style2">
-		<div class="avatar"></div>
+	<div class="fifth-section">
+		<div class="all-about-me">
+			<div class="thanks ash">
+				<h1>Thanks for visiting!</h1>
+				<p>Lorem ipsum dolor sit amet ipsum dolor sit amet ipsum dolor sit amet ipsum dolor sit ametipsum dolor sit amet</p>
+				<p>Lorem ipsum dolor sit amet ipsum dolor sit amet ipsum dolor sit amet ipsum dolor sit ametipsum dolor sit amet Lorem ipsum dolor sit amet ipsum dolor sit amet ipsum dolor sit amet ipsum dolor sit ametipsum dolor sit amet Lorem ipsum dolor sit amet ipsum dolor sit amet ipsum dolor sit amet ipsum dolor sit ametipsum dolor sit amet</p>
+			</div>
+			<div class="sns">
+				<h3>Say hello to <span>mahaoxun@gmail.com</span></h3>
+			</div>
+			<div class="footer">
+				<p>Mark Moore & Ash Zou</p>
+				<p>With passion from Beijing. 2015&copy;</p>
+			</div>
+		</div>
+	</div>
+	<div class="nav-bar style2">
+		<div class="avatar-container">
+			<div class="avatar"></div>
+		</div>
 		<div class="favor"></div>
 		<ul>
-			<li>Home</li>
-			<li>Projects</li>
-			<li>About me</li>
-			<li class="activited">Contact</li>
+			<li data-ar="first-section" class="home">Home</li>
+			<li data-ar="third-section" class="work activited">Projects</li>
+			<li data-ar="forth-section" class="about-me">About me</li>
+			<li data-ar="fifth-section" class="contact ash">Contact</li>
 		</ul>
 		<div class="blank"></div>
-	</div>-->
-	<div class="all-about-me">
-		<div class="thanks">
-			<h1>Thanks for visiting!</h1>
-			<p>Lorem ipsum dolor sit amet ipsum dolor sit amet ipsum dolor sit amet ipsum dolor sit ametipsum dolor sit amet</p>
-			<p>Lorem ipsum dolor sit amet ipsum dolor sit amet ipsum dolor sit amet ipsum dolor sit ametipsum dolor sit amet Lorem ipsum dolor sit amet ipsum dolor sit amet ipsum dolor sit amet ipsum dolor sit ametipsum dolor sit amet Lorem ipsum dolor sit amet ipsum dolor sit amet ipsum dolor sit amet ipsum dolor sit ametipsum dolor sit amet</p>
-		</div>
-		<div class="sns">
-			<h3>Say hello to <span>mahaoxun@gmail.com</span></h3>
-		</div>
-		<div class="footer">
-			<p>Mark Moore & Ash Zou</p>
-			<p>With passion from Beijing. 2015&copy;</p>
-		</div>
 	</div>
-</div>
-<div class="nav-bar style2">
-	<div class="avatar-container">
-		<div class="avatar"></div>
-	</div>
-	<div class="favor"></div>
-	<ul>
-		<li data-ar="first-section" class="home">Home</li>
-		<li data-ar="third-section" class="work activited">Projects</li>
-		<li data-ar="forth-section" class="about-me">About me</li>
-		<li data-ar="fifth-section" class="contact">Contact</li>
-	</ul>
-	<div class="blank"></div>
 </div>
 <script src="js/jquery-1.9.1.min.js"></script>
 <script src="js/chart.js"></script>
 <script src="js/jquery.easing.1.3.js"></script>
 <script>
-var doughnutData = [
-	{
-		value: 80,
-		color:"#fe3333"
-	},
-	{
-		value: 20,
-		color: "#9b9b9b"
-	}
-];
+var doughnutData = {
+	"markSkill1" : [
+		{
+			value: 70,
+			color:"#DC143C"
+		},
+		{
+			value: 30,
+			color: "#9b9b9b"
+		}
+	],
+	"markSkill2" : [
+		{
+			value: 70,
+			color:"#DC143C"
+		},
+		{
+			value: 30,
+			color: "#9b9b9b"
+		}
+	],
+	"markSkill3" : [
+		{
+			value: 90,
+			color:"#DC143C"
+		},
+		{
+			value: 10,
+			color: "#9b9b9b"
+		}
+	],
+	"markSkill4" : [
+		{
+			value: 90,
+			color:"#DC143C"
+		},
+		{
+			value: 10,
+			color: "#9b9b9b"
+		}
+	],
+	"markSkill5" : [
+		{
+			value: 80,
+			color:"#DC143C"
+		},
+		{
+			value: 20,
+			color: "#9b9b9b"
+		}
+	],
+	"markSkill6" : [
+		{
+			value: 75,
+			color:"#DC143C"
+		},
+		{
+			value: 25,
+			color: "#9b9b9b"
+		}
+	]
+};
 
 var radarChartData = {
 	labels: ["Communication", "Organization", "Creation", "Mutual", "Responsibility", "Language", "Confidence"],
@@ -1042,15 +1228,50 @@ var radarChartData = {
 
 $(document).ready(function(){
 	var ctx = document.getElementById("chart-area").getContext("2d");
+	var ctx1 = document.getElementById("chart-area1").getContext("2d");
 	var ctx2 = document.getElementById("chart-area2").getContext("2d");
-	window.myDoughnut = new Chart(ctx).Doughnut(doughnutData, {
+	var ctx3 = document.getElementById("chart-area3").getContext("2d");
+	var ctx4 = document.getElementById("chart-area4").getContext("2d");
+	var ctx5 = document.getElementById("chart-area5").getContext("2d");
+	var ctxRadar = document.getElementById("chart-area-radar").getContext("2d");
+	window.myDoughnut = new Chart(ctx).Doughnut(doughnutData.markSkill1, {
 		responsive : true, 
 		percentageInnerCutout: 93, 
 		animateRotate: true
 	});
-	window.myRadar = new Chart(ctx2).Radar(radarChartData, {
+	window.myDoughnut = new Chart(ctx1).Doughnut(doughnutData.markSkill2, {
+		responsive : true, 
+		percentageInnerCutout: 93, 
+		animateRotate: true
+	});
+	window.myDoughnut = new Chart(ctx2).Doughnut(doughnutData.markSkill3, {
+		responsive : true, 
+		percentageInnerCutout: 93, 
+		animateRotate: true
+	});
+	window.myDoughnut = new Chart(ctx3).Doughnut(doughnutData.markSkill4, {
+		responsive : true, 
+		percentageInnerCutout: 93, 
+		animateRotate: true
+	});
+	window.myDoughnut = new Chart(ctx4).Doughnut(doughnutData.markSkill5, {
+		responsive : true, 
+		percentageInnerCutout: 93, 
+		animateRotate: true
+	});
+	window.myDoughnut = new Chart(ctx5).Doughnut(doughnutData.markSkill6, {
+		responsive : true, 
+		percentageInnerCutout: 93, 
+		animateRotate: true
+	});
+	window.myRadar = new Chart(ctxRadar).Radar(radarChartData, {
 		responsive: true,
 		pointDot: false
+	});
+	
+	$(".big-box").on("mouseover", function () {
+		$(".section-container").attr("class", "section-container");
+		$(".section-container").addClass($(this).attr("name"));
 	});
 	
 	var increment = 50;
