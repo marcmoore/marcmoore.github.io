@@ -368,12 +368,16 @@ strong {
 	background-size: cover;
 }
 
+.section-container.ash .second-section .self-portrait {
+	background: url(images/ash_personal_img.jpg) no-repeat;
+	background-size: cover;
+}
+
 .second-section .mask {
 	width: 100%;
 	height: 100%;
 	position: absolute;
 	top: 0;
-	background: rgba(40, 40, 40, 0.8);
 }
 
 .section-container.ash .second-section .mask {
@@ -429,6 +433,12 @@ strong {
 	height: 286px;
 	margin: 30px auto;
 	background: url(images/mark_pm.png) no-repeat;
+}
+
+.section-container.ash .second-section .position-img {
+	width: 454px;
+	height: 307px;
+	background: url(images/ash.png) no-repeat;
 }
 
 .second-section .position-major {
@@ -528,6 +538,10 @@ strong {
 	cursor: pointer;
 }
 
+.section-container.ash .avatar {
+	background-image: url(images/ash_personal_img.jpg);
+}
+
 .avatar:hover {
 	-webkit-transform: scale(1.01);
 }
@@ -538,6 +552,10 @@ strong {
 	background: url(images/mark_icon_wh.png) 50% no-repeat;
 }
 
+.section-container.ash .favor {
+	background-image: url(images/ash_icon_wh.png);
+}
+
 .nav-bar ul {
 	list-style: none;
 	-webkit-margin-before: 0;
@@ -546,7 +564,7 @@ strong {
 }
 
 .nav-bar ul li {
-	border-top: 1px solid #656565;
+	border-bottom: 1px solid #656565;
 	height: 50px;
 	text-align: center;
 	line-height: 50px;
@@ -557,8 +575,8 @@ strong {
 	cursor: pointer;
 }
 
-.nav-bar ul li:last-child {
-	border-bottom: 1px solid #656565;
+.nav-bar ul li:first-child {
+	border-top: 1px solid #656565;
 }
 
 .nav-bar ul li:hover, .nav-bar ul li.activited {
@@ -611,7 +629,12 @@ strong {
 .all-about-work ul li {
 	position: relative;
 	margin-left: 480px;
+	margin-bottom: 20px;
 	height: 300px;
+}
+
+.all-about-work ul li.style2 {
+	margin-left: 0;
 }
 
 .all-about-work ul li .project-thumbnail {
@@ -624,11 +647,22 @@ strong {
 	box-shadow: 0 0 12px rgba(40, 40, 40, 0.7);
 }
 
+.all-about-work ul li.style2 .project-thumbnail {
+	clear: both;
+	position: absolute;
+	right: 0;
+	margin-left: 0;
+}
+
 .all-about-work ul li .project-title {
 	position: absolute;
 	top: 140px;
 	left: 380px;
 	width: 250px;
+}
+
+.all-about-work ul li.style2 .project-title {
+	left: -80px;
 }
 
 .all-about-work ul li .project-title .project-bottom {
@@ -638,14 +672,24 @@ strong {
 }
 
 .all-about-work ul li .project-desc {
-	margin-left: -10px;
+	margin-left: -5px;
 	opacity: 0;
 	-webkit-transition-duration: 1s;
+}
+
+.all-about-work ul li.style2 .project-desc {
+	margin-left: 5px;
+	float: left;
+	margin-right: 480px;
 }
 
 .all-about-work ul li:hover .project-desc {
 	margin-left: 0;
 	opacity: 1;
+}
+
+.all-about-work ul li.style2:hover .project-desc {
+	margin-left: 0;
 }
 
 .all-about-work ul li .project-desc p {
@@ -943,28 +987,28 @@ strong {
 			<div class="name-style"></div>
 			<div class="name mark">Mark Moore</div>
 			<div class="name ash">Ash Zou</div>
-			<div class="position mark">
+			<div class="position">
 				<div class="position-icon"></div>
 				<div class="position-img"></div>
 <!--				<div class="position-major">Product Manager</div>
 				<div class="position-minor">Front-End Engineer</div>-->
 			</div>
-			<div class="position ash">
+			<!--<div class="position">
 				<div class="position-icon"></div>
 				<div class="position-major">UI Designer</div>
 				<div class="position-minor">Art Direction</div>
-			</div>
+			</div>-->
 			<div class="see-more">Details</div>
 		</div>
 	</div>
 	<div class="third-section">
-		<div class="all-about-work">
+		<div class="all-about-work mark">
 			<div class="short-desc">
 				<h1>Projects</h1>
-				<p>Here is a little selection of projects I've been working on during 2013, 2014 and 2015.</p>
+				<p>There are plenty of works I have done during these few years.</p>
 			</div>
 			<ul>
-				<li>
+				<li class="style1">
 					<div class="project-thumbnail">
 						<div class="project-title">
 							<h2>WorldCruise.cn</h2>
@@ -974,7 +1018,44 @@ strong {
 					</div>
 					<div class="project-desc">
 						<h3>WorldCruise.cn</h3>
-						<p>I'm in charge of the product design of mobile app. And also developing some part of the website.</p>
+						<p>I'm one of product managers here. In charge of the mobile app. Participate in parts of the website.</p>
+						<p>FE developer of the website. UX designer of the mobile app.</p>
+					</div>
+				</li>
+				<li class="style2">
+					<div class="project-desc">
+						<h3>WorldCruise.cn</h3>
+						<p>I'm one of product managers here. In charge of the mobile app. Participate in parts of the website.</p>
+						<p>FE developer of the website. UX designer of the mobile app.</p>
+					</div>
+					<div class="project-thumbnail">
+						<div class="project-title">
+							<h2>WorldCruise.cn</h2>
+							<p>PM and FE developer</p>
+							<div class="project-bottom"></div>
+						</div>
+					</div>
+				</li>
+			</ul>
+		</div>
+		<div class="all-about-work ash">
+			<div class="short-desc">
+				<h1>Projects</h1>
+				<p>There are plenty of works I have done during these few years.</p>
+			</div>
+			<ul>
+				<li>
+					<div class="project-thumbnail">
+						<div class="project-title">
+							<h2>WorldCruise.cn</h2>
+							<p>UI & UX designer </p>
+							<div class="project-bottom"></div>
+						</div>
+					</div>
+					<div class="project-desc">
+						<h3>WorldCruise.cn</h3>
+						<p>I'm one of product managers here. In charge of the mobile app. Participate in parts of the website.</p>
+						<p>FE developer of the website. UX designer of the mobile app.</p>
 					</div>
 				</li>
 			</ul>
@@ -982,12 +1063,61 @@ strong {
 	</div>
 	<div class="forth-section">
 		<div class="all-about-me">
-			<div class="about-me">
+			<div class="about-me mark">
 				<h1>About me</h1>
 				<p>Hi, my name is Mark Moore.</p>
 				<p>It's been a while since last time I update my resume. So I decided to create a better one.</p>
 				<p>As a man who was living in the ocean of internet, should be familiar with a lot of skills. Internet has been changing people's life so much. I was trying to change the internet as much as I can by using those skills.</p>
 				<p></p>
+				<table>
+					<tr>
+						<td><strong>Eduction<br>&nbsp;</strong></td>
+						<td>
+							<span class="red">Computer Science and Technology</span><br>
+							<i>Beijing Institute of Petrochemical Technology</i>
+						</td>
+						<td>
+							2005-2009<br>
+							Beijing, China
+						</td>
+					</tr>
+					<tr>
+						<td>
+							<strong>Work<br>
+							Experience</strong>
+						</td>
+						<td>
+							<span class="red">Project Manager, Front End Developer</span><br>
+							<i>Beijing Xuning information technology Co., Ltd.</i>
+						</td>
+						<td>
+							2010-2014<br>
+							Beijing, China
+						</td>
+					</tr>
+					<tr>
+						<td></td>
+						<td>
+							<span class="red">Product Manager, Front End Developer</span><br>
+							<i>Bestours Software</i>
+						</td>
+						<td>
+							2014-Now<br>
+							Beijing, China
+						</td>
+					</tr>
+				</table>
+				<div class="mark"></div>
+			</div>
+			<div class="about-me ash">
+				<h1>About me</h1>
+				<p>Hi ! I’m Ash. a twenty seven years old UI designer based in Beijing, China.</p>
+				<p>Since I was a kid I wanted to be a designer. So during the four years I’ve spent full 4 years studying, I finished the Digital Graphics & Design courses and made my dream come true.</p>
+				<p>I have more than 5 years of experience in design and worked with different companies from Beijing, being responsible for tasks ranging from Web UI design, Mob App UI design and Brand design. After almost 5 years of professional working experience, I have overcome many challenges, in the meantime, I have done some incredible things.</p>
+				<p>Concentrate on design is the main principle of my career. As a designer, I do understand the importance and real value of putting my mind into design. That’s why I am able to assure you that find lots of details in my projects. Nevertheless, the outcome always has finished on time. </p>
+				<p>For me, true success comes from giving 200% on all projects I accept to work on. That means keeping an eye on all the small details within the design and creating something that makes sense for both the users and clients.</p>
+				<p>I don't think that there are small or big clients, instead I choose to work only on opportunities that excite me, because that excitement translates into passion which allows me to create something unique - something that creates a memorable effect on anyone who sees it.</p>
+				<p>If you just want to say “hi”, or you have a project that you would like to get me involved in, please don't hesitate to contact me :)</p>
 				<table>
 					<tr>
 						<td><strong>Eduction<br>&nbsp;</strong></td>
