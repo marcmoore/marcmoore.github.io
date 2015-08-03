@@ -486,15 +486,11 @@ strong {
 	margin-left: -34px;
 	position: absolute;
 	bottom: 100px;
-	background: url(images/mark_arrow.png) no-repeat;
+	background: url(images/ash_arrow.png) no-repeat;
 	background-position: 9px 30px;
-	color: #DC143C;
-	font-size: 20px;
-}
-
-.section-container.ash .second-section .see-more {
-	background-image: url(images/ash_arrow.png);
 	color: #fff;
+	font-size: 20px;
+	opacity: 0.4;
 }
 
 .third-section {
@@ -645,6 +641,16 @@ strong {
 	box-shadow: 0 0 12px rgba(40, 40, 40, 0.7);
 }
 
+.all-about-work ul li .project-thumbnail img.gray {
+	-webkit-filter: grayscale(100%);
+	-moz-filter: grayscale(100%);
+	-ms-filter: grayscale(100%);
+	-o-filter: grayscale(100%);
+	filter: grayscale(100%);
+	filter: gray;
+	-webkit-transition-duration: 1s;
+}
+
 .all-about-work ul li.style2 .project-thumbnail {
 	clear: both;
 	position: absolute;
@@ -657,6 +663,7 @@ strong {
 	top: 140px;
 	left: 380px;
 	width: 250px;
+	z-index: 1;
 }
 
 .all-about-work ul li.style2 .project-title {
@@ -686,6 +693,15 @@ strong {
 	opacity: 1;
 }
 
+.all-about-work ul li:hover img.gray {
+	-webkit-filter: grayscale(0%);
+	-moz-filter: grayscale(0%);
+	-ms-filter: grayscale(0%);
+	-o-filter: grayscale(0%);
+	filter: grayscale(0%);
+	filter: gray;
+}
+
 .all-about-work ul li.style2:hover .project-desc {
 	margin-left: 0;
 }
@@ -712,17 +728,26 @@ strong {
 
 .all-about-me .about-me {
 	position: relative;
-	margin-right: 250px;
+	margin-right: 385px;
 	padding: 35px;
 }
 
 .all-about-me .about-me .mark {
 	position: absolute;
 	top: 0;
-	right: -250px;
-	width: 250px;
-	height: 350px;
-	background: #9b9b9b;
+	right: -385px;
+	width: 385px;
+	height: 905px;
+	background: url(images/bigM.png) no-repeat;
+}
+
+.all-about-me .about-me .ash {
+	position: absolute;
+	top: 0;
+	right: -385px;
+	width: 358px;
+	height: 885px;
+	background: url(images/bigA.png) no-repeat;
 }
 
 .all-about-me .about-me table {
@@ -954,18 +979,23 @@ strong {
 
 .section-container.mark .mark {
 	display: block;
+	opacity: 1;
+	-webkit-transition-duration: 200ms;
 }
 
 .section-container.mark .ash {
 	display: none;
+	opacity: 0;
 }
 
 .section-container.ash .ash {
 	display: block;
+	opacity: 1;
 }
 
 .section-container.ash .mark {
 	display: none;
+	opacity: 0:
 }
 
 
@@ -1074,6 +1104,7 @@ strong {
 							<p>PM and FE developer</p>
 							<div class="project-bottom"></div>
 						</div>
+						<img src="images/projects/pic_1.jpg" width="450" height="300" class="gray" alt="worldcruie.cn">
 					</div>
 					<div class="project-desc">
 						<h3>WorldCruise.cn</h3>
@@ -1110,6 +1141,7 @@ strong {
 							<p>UI & UX designer </p>
 							<div class="project-bottom"></div>
 						</div>
+						<img src="images/projects/pic_1.jpg" width="450" height="300" class="gray" alt="worldcruie.cn">
 					</div>
 					<div class="project-desc">
 						<h3>WorldCruise.cn</h3>
@@ -1215,7 +1247,7 @@ strong {
 						</td>
 					</tr>
 				</table>
-				<div class="mark"></div>
+				<div class="ash"></div>
 			</div>
 			<div class="skills">
 				<h1>Skills</h1>
