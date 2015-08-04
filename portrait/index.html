@@ -570,6 +570,18 @@ strong {
 	cursor: pointer;
 }
 
+.nav-bar ul li span {
+	width: 1px;
+	height: 100%;
+	display: block;
+	float: right;
+	background: #282828;
+}
+
+.nav-bar ul li span.show {
+	background: #fff;
+}
+
 .nav-bar ul li:first-child {
 	border-top: 1px solid #656565;
 }
@@ -606,7 +618,6 @@ strong {
 
 .all-about-work {
 	width: 70%;
-	height: 100%;
 	float: right;
 	background: rgba(40, 40, 40, 1);
 	padding: 35px;
@@ -1084,9 +1095,9 @@ strong {
 		<div class="favor"></div>
 		<ul>
 			<li data-ar="first-section" class="home">Home</li>
-			<li data-ar="third-section" class="work activited">Projects</li>
-			<li data-ar="forth-section" class="about-me">About me</li>
-			<li data-ar="fifth-section" class="contact ash">Contact</li>
+			<li data-ar="third-section" class="work activited">Projects<span></span></li>
+			<li data-ar="forth-section" class="about-me">About me<span></span></li>
+			<!--<li data-ar="fifth-section" class="contact ash">Contact</li>-->
 		</ul>
 		<div class="blank"></div>
 	</div>
@@ -1114,16 +1125,60 @@ strong {
 				</li>
 				<li class="style2">
 					<div class="project-desc">
-						<h3>WorldCruise.cn</h3>
-						<p>I'm one of product managers here. In charge of the mobile app. Participate in parts of the website.</p>
-						<p>FE developer of the website. UX designer of the mobile app.</p>
+						<h3>Pento.cn</h3>
+						<p>I'm FE developer here. In charge of the website and Chrome extension.</p>
 					</div>
 					<div class="project-thumbnail">
 						<div class="project-title">
-							<h2>WorldCruise.cn</h2>
+							<h2>Pento.cn</h2>
 							<p>PM and FE developer</p>
 							<div class="project-bottom"></div>
 						</div>
+						<img src="images/projects/pento_web.jpg" width="450" height="300" class="gray" alt="pento.cn">
+					</div>
+				</li>
+				<li class="style1">
+					<div class="project-thumbnail">
+						<div class="project-title">
+							<h2>Lakala</h2>
+							<p>Project Manager</p>
+							<div class="project-bottom"></div>
+						</div>
+						<img src="images/projects/pic_1.jpg" width="450" height="300" class="gray" alt="lakala">
+					</div>
+					<div class="project-desc">
+						<h3>Lakala</h3>
+						<p>I'm the project manager in this project. In charge of the mobile app. Participate in parts of the website.</p>
+						<p>FE developer of the website. UX designer of the mobile app.</p>
+					</div>
+				</li>
+				<li class="style2">
+					<div class="project-desc">
+						<h3>民生养老</h3>
+						<p>I'm FE developer here. In charge of the website.</p>
+					</div>
+					<div class="project-thumbnail">
+						<div class="project-title">
+							<h2>民生养老</h2>
+							<p>FE developer</p>
+							<div class="project-bottom"></div>
+						</div>
+						<img src="images/projects/minsheng.jpg" width="450" height="300" class="gray" alt="minsheng">
+					</div>
+				</li>
+				<li class="style1">
+					<div class="project-thumbnail">
+						<div class="project-title">
+							<h2>Bing news</h2>
+							<p>FE developer</p>
+							<div class="project-bottom"></div>
+						</div>
+						<img src="images/projects/bing.jpg" width="450" height="300" class="gray" alt="Bing news">
+					</div>
+					<div class="project-desc">
+						<h3>Bing news</h3>
+						<p>I'm FE developer in this project. In charge of the mobile app. Participate in parts of the website.</p>
+						<p>FE developer of the website. UX designer of the mobile app.</p>
 					</div>
 				</li>
 			</ul>
@@ -1251,7 +1306,8 @@ strong {
 			</div>
 			<div class="skills">
 				<h1>Skills</h1>
-				<p>Since I was working for a outsourcing company for a while. I tried to learn as much as I can. These is pretty much what I can do now.</p>
+				<p class="mark">Since I was working for a outsourcing company for a while. I tried to learn as much as I can. These is pretty much what I can do now.</p>
+				<p class="ash">I’m a Chinese designer focused on user interface and art direction. I’m passionate about imagining fresh and clean interfaces, and help making those be real.</p>
 				<div class="personal-skills mark">
 					<h2>Personal Skills</h2>
 					<div class="canvas canvas-personal-skills skill1">
@@ -1313,7 +1369,7 @@ strong {
 						<div class="legend">Lightroom <span class="red">50%</span></div>
 					</div>
 				</div>
-				<div class="professional-skills ash">
+				<!--<div class="professional-skills ash">
 					<h2>Professional Skills</h2>
 					<div class="canvas canvas-professional-skills">
 						<canvas id="chart-area-radar" width="400" height="400"></canvas>
@@ -1321,9 +1377,9 @@ strong {
 					<h2>About me</h2>
 					<p>Lorem ipsum dolor sit amet ipsum dolor sit amet ipsum dolor sit amet ipsum dolor sit ametipsum dolor sit amet</p>
 					<p>Lorem ipsum dolor sit amet ipsum dolor sit amet ipsum dolor sit amet ipsum dolor sit ametipsum dolor sit amet Lorem ipsum dolor sit amet ipsum dolor sit amet ipsum dolor sit amet ipsum dolor sit ametipsum dolor sit amet Lorem ipsum dolor sit amet ipsum dolor sit amet ipsum dolor sit amet ipsum dolor sit ametipsum dolor sit amet</p>
-				</div>
+				</div>-->
 			</div>
-			<div class="hire-me ash">
+			<!--<div class="hire-me ash">
 				<h1>Hire me!</h1>
 				<ul>
 					<li>
@@ -1343,7 +1399,7 @@ strong {
 						<p>Lorem ipsum dolor sit amet ipsum dolor sit amet ipsum dolor sit amet ipsum dolor sit ametipsum dolor sit amet</p>
 					</li>
 				</ul>
-			</div>
+			</div>-->
 			<div class="interest ash">
 				<h1>Interest</h1>
 			</div>
@@ -1351,11 +1407,11 @@ strong {
 	</div>
 	<div class="fifth-section">
 		<div class="all-about-me">
-			<div class="thanks ash">
+			<!--<div class="thanks ash">
 				<h1>Thanks for visiting!</h1>
 				<p>Lorem ipsum dolor sit amet ipsum dolor sit amet ipsum dolor sit amet ipsum dolor sit ametipsum dolor sit amet</p>
 				<p>Lorem ipsum dolor sit amet ipsum dolor sit amet ipsum dolor sit amet ipsum dolor sit ametipsum dolor sit amet Lorem ipsum dolor sit amet ipsum dolor sit amet ipsum dolor sit amet ipsum dolor sit ametipsum dolor sit amet Lorem ipsum dolor sit amet ipsum dolor sit amet ipsum dolor sit amet ipsum dolor sit ametipsum dolor sit amet</p>
-			</div>
+			</div>-->
 			<div class="sns mark">
 				<h3>Say hello to <span>mahaoxun@gmail.com</span></h3>
 			</div>
@@ -1522,7 +1578,7 @@ $(document).ready(function(){
 	var ctx8 = document.getElementById("chart-area8").getContext("2d");
 	var ctx9 = document.getElementById("chart-area9").getContext("2d");
 	var ctx10 = document.getElementById("chart-area10").getContext("2d");
-	var ctxRadar = document.getElementById("chart-area-radar").getContext("2d");
+	//var ctxRadar = document.getElementById("chart-area-radar").getContext("2d");
 	window.myDoughnut = new Chart(ctx).Doughnut(doughnutData.markSkill1, {
 		responsive : true, 
 		percentageInnerCutout: 93, 
@@ -1578,10 +1634,10 @@ $(document).ready(function(){
 		percentageInnerCutout: 93, 
 		animateRotate: true
 	});
-	window.myRadar = new Chart(ctxRadar).Radar(radarChartData, {
-		responsive: true,
-		pointDot: false
-	});
+	// window.myRadar = new Chart(ctxRadar).Radar(radarChartData, {
+	// 	responsive: true,
+	// 	pointDot: false
+	// });
 	
 	$(".big-box").on("mouseover", function () {
 		$(".section-container").attr("class", "section-container");
@@ -1611,6 +1667,15 @@ $(document).ready(function(){
 		if ((window.scrollY + increment) > $(".fifth-section").offset().top) {
 			$(".activited").removeClass("activited");
 			$(".nav-bar .contact").addClass("activited");
+		}
+
+		if ($(".forth-section").offset().top < $(".nav-bar ul li.activited").offset().top) {
+			$(".nav-bar .show").removeClass("show");
+			$(".nav-bar ul li.activited span").addClass("show");
+			$(".nav-bar ul li.activited").css("background", "#fff");
+		} else {
+			$(".nav-bar .show").removeClass("show");
+			$(".nav-bar ul li.activited").css("background", "#282828");
 		}
 	});
 	
