@@ -1016,6 +1016,22 @@ strong {
 	opacity: 0:
 }
 
+.pre-loading {
+	width: 100%;
+	height: 100%;
+	background: black;
+	position: fixed;
+	top: 0;
+	z-index: 100;
+}
+
+.pre-loading img {
+	position: absolute;
+	top: 50%;
+	left: 50%;
+	margin-top: -74px;
+	margin-left: -64px;
+}
 
 </style>
 </head>
@@ -1432,6 +1448,9 @@ strong {
 		</div>
 	</div>
 </div>
+<div class="pre-loading">
+	<img src="images/loading.gif" alt="Loading">
+</div>
 <script src="js/jquery-1.9.1.min.js"></script>
 <script src="js/chart.js"></script>
 <script src="js/jquery.easing.1.3.js"></script>
@@ -1575,9 +1594,12 @@ var radarChartData = {
 };
 
 $(document).ready(function(){
-	$(document).ready(function() {
-        $('body').jpreLoader();
-    });
+	$('body').jpreLoader({
+		autoClose: true,
+		showPercentage: false
+	}, function() {	//callback function
+		$(".pre-loading").fadeOut(300);
+	});
 	
 	var ctx = document.getElementById("chart-area").getContext("2d");
 	var ctx1 = document.getElementById("chart-area1").getContext("2d");
