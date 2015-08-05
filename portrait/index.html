@@ -1019,18 +1019,141 @@ strong {
 .pre-loading {
 	width: 100%;
 	height: 100%;
-	background: black;
+	background: #282828;
 	position: fixed;
 	top: 0;
 	z-index: 100;
 }
 
-.pre-loading img {
+.pre-loading .loader {
 	position: absolute;
 	top: 50%;
 	left: 50%;
-	margin-top: -74px;
-	margin-left: -64px;
+	overflow: hidden;
+	width: 200px;
+	height: 200px;
+	margin-top: -100px;
+	margin-left: -100px;
+	perspective: 600px;
+	transform-style: perserve-3d;
+}
+
+/* The dot */
+.dot {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  
+  width: 20px;
+  height: 20px;
+  
+  margin-left: -10px;
+  margin-top: -10px;
+  
+  border-radius: 100px;
+  
+  background-color: #DC143C;
+  
+  transform-style: perserve-3d;
+  transform: rotateZ(0) translateY(0) scaleX(1);
+  
+  animation: dot 2200ms cubic-bezier(.39,.24,.63,.74) infinite;
+}
+
+.dot:nth-child(2) { animation-name: dot2; }
+.dot:nth-child(3) { animation-name: dot3; }
+.dot:nth-child(4) { animation-name: dot4; }
+
+@keyframes dot {
+  0% {
+    transform: rotateZ(0) translateY(0) scaleX(1);
+    background-color: #DC143C;
+  }
+  30% {
+    transform: rotateZ(180deg) translateY(-20px) scaleX(1);
+    background-color: #e94969;
+  }
+  50% {
+    transform: rotateZ(360deg) translateY(-20px) scaleX(1.1);
+    background-color: #ec6b85;
+  }
+  70% {
+    transform: rotateZ(540deg) translateY(-20px) scaleX(1);
+    background-color: #e94969;
+  }
+  100% {
+    transform: rotateZ(720deg) translateY(0) scaleX(1);
+    background-color: #DC143C;
+  }
+}
+
+@keyframes dot2 {
+  0% {
+    transform: rotateZ(0deg) translateY(0) scaleX(1);
+    background-color: #DC143C;
+  }
+  30% {
+    transform: rotateZ(180deg) translateY(-20px) scaleX(1);
+    background-color: #e94969;
+  }
+  50% {
+    transform: rotateZ(270deg) translateY(-20px) scaleX(1.1);
+    background-color: #ec6b85;
+  }
+  70% {
+    transform: rotateZ(360deg) translateY(-20px) scaleX(1);
+    background-color: #e94969;
+  }
+  100% {
+    transform: rotateZ(540deg) translateY(0) scaleX(1);
+    background-color: #DC143C;
+  }
+}
+
+@keyframes dot3 {
+  0% {
+    transform: rotateZ(-180deg) translateY(0) scaleX(1);
+    background-color: #DC143C;
+  }
+  30% {
+    transform: rotateZ(0deg) translateY(-20px) scaleX(1);
+    background-color: #e94969;
+  }
+  50% {
+    transform: rotateZ(180deg) translateY(-20px) scaleX(1.1);
+    background-color: #ec6b85;
+  }
+  70% {
+    transform: rotateZ(360deg) translateY(-20px) scaleX(1);
+    background-color: #e94969;
+  }
+  100% {
+    transform: rotateZ(540deg) translateY(0) scaleX(1);
+    background-color: #DC143C;
+  }
+}
+
+@keyframes dot4 {
+  0% {
+    transform: rotateZ(-180deg) translateY(0) scaleX(1);
+    background-color: #DC143C;
+  }
+  30% {
+    transform: rotateZ(0deg) translateY(-20px) scaleX(1);
+    background-color: #e94969;
+  }
+  50% {
+    transform: rotateZ(90deg) translateY(-20px) scaleX(1.1);
+    background-color: #ec6b85;
+  }
+  70% {
+    transform: rotateZ(180deg) translateY(-20px) scaleX(1);
+    background-color: #e94969;
+  }
+  100% {
+    transform: rotateZ(360deg) translateY(0) scaleX(1);
+    background-color: #DC143C;
+  }
 }
 
 </style>
@@ -1449,7 +1572,12 @@ strong {
 	</div>
 </div>
 <div class="pre-loading">
-	<img src="images/loading.gif" alt="Loading">
+	<div class="loader">
+		<div class="dot"></div>
+		<div class="dot"></div>
+		<div class="dot"></div>
+		<div class="dot"></div>
+	</div>
 </div>
 <script src="js/jquery-1.9.1.min.js"></script>
 <script src="js/chart.js"></script>
