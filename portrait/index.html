@@ -498,9 +498,9 @@ strong {
 }
 
 .third-section::after {
-	clear: both;
-	content: "";
-	display: block;
+    content: "";
+    display: block;
+    clear: both;
 }
 
 .nav-bar {
@@ -508,6 +508,8 @@ strong {
 	height: 100%;
 	top: 0;
 	float: left;
+	border-right: 1px solid #282828;
+	box-sizing: border-box;
 	-webkit-transition-duration: 200ms;
 }
 
@@ -575,6 +577,7 @@ strong {
 	height: 100%;
 	display: block;
 	float: right;
+	margin-right: -1px;
 	background: #282828;
 }
 
@@ -1099,7 +1102,7 @@ strong {
 			<li data-ar="forth-section" class="about-me">About me<span></span></li>
 			<!--<li data-ar="fifth-section" class="contact ash">Contact</li>-->
 		</ul>
-		<div class="blank"></div>
+		<!--<div class="blank"></div>-->
 	</div>
 	<div class="third-section">
 		<div class="all-about-work mark">
@@ -1428,6 +1431,7 @@ strong {
 <script src="js/jquery-1.9.1.min.js"></script>
 <script src="js/chart.js"></script>
 <script src="js/jquery.easing.1.3.js"></script>
+<script src="js/plugins/jpreloader-v2/js/jpreloader.min.js"></script>
 <script>
 var doughnutData = {
 	"markSkill1" : [
@@ -1567,6 +1571,10 @@ var radarChartData = {
 };
 
 $(document).ready(function(){
+	$(document).ready(function() {
+        $('body').jpreLoader();
+    });
+	
 	var ctx = document.getElementById("chart-area").getContext("2d");
 	var ctx1 = document.getElementById("chart-area1").getContext("2d");
 	var ctx2 = document.getElementById("chart-area2").getContext("2d");
