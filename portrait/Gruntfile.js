@@ -15,6 +15,9 @@ module.exports = function(grunt) {
   	},
     
     githooks: {
+      options: {
+        "dest": "../.git/hooks"
+      },
       all: {
         "pre-commit": "less:development"
       }
