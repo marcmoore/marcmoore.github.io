@@ -1,3 +1,9 @@
 body div {
   background: red;
 }
+body span {
+  background: blue;
+}
+body p {
+  background: green;
+}
