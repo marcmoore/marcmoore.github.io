@@ -12,13 +12,24 @@ module.exports = function(grunt) {
   	      "css/test.css": "css/test.less"
   	    }
   	  }
-  	}
+  	},
+    
+    githooks: {
+      options: {
+        "dest": "../.git/hooks"
+      },
+      all: {
+        "pre-commit": "less:development"
+      }
+    }
   });
 
   // Load the plugin that provides the "less" task.
   grunt.loadNpmTasks('grunt-contrib-less');
   
+  grunt.loadNpmTasks('grunt-githooks');
+
   // Default task(s).
-  grunt.registerTask('default', ['less']);
+  grunt.registerTask('default', ['githooks']);
 
 };
