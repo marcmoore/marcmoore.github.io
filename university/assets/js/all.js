@@ -106,4 +106,17 @@ $(document).ready(function(){
 			easing: "easeInOutBack"
 		});
 	});
+	
+	var speed = 10;
+	var schoolBg = $(".schoolBg");
+	var building = $(".building");
+
+	function schoolRoll(){
+		if(schoolBg.scrollLeft() >= building.width()/2)
+			schoolBg.scrollLeft(0);
+		else{
+			schoolBg.scrollLeft(schoolBg.scrollLeft()+1);
+		}
+	}
+	var sliding = setInterval(schoolRoll,speed);
 });

@@ -126,13 +126,25 @@ body {
     left: 530px;
 }
 
-.building {
-	width: 603px;
+.schoolBg {
 	height: 572px;
+	width: 100%;
 	position: absolute;
 	bottom: 150px;
-	left: 50%;
-	margin-left: -301px;
+	overflow: hidden;
+}
+
+.schoolBg::after {
+	content: "";
+	display: block;
+	clear: both;
+}
+
+.building {
+	width: 200%;
+	height: 572px;
+	background-repeat: repeat-x;
+	float: left;
 	background: url(../images/building.png);
 }
 
