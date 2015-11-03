@@ -93,7 +93,7 @@ $(document).ready(function(){
 			step: function(now, mx) {
 				var opacity = 1 - now;
 				var scale = 1 - (1 - now) * 0.2;
-				var bottom = now * -120 + "px";
+				var bottom = now * -60 + "px";
 				
 				popup.css({"transform": "scale("+scale+")"});
 				popup.css({"opacity": opacity});
@@ -112,7 +112,7 @@ $(document).ready(function(){
 	var building = $(".building");
 
 	function schoolRoll(){
-		if(schoolBg.scrollLeft() >= building.width()/2)
+		if(schoolBg.scrollLeft() >= 302)
 			schoolBg.scrollLeft(0);
 		else{
 			schoolBg.scrollLeft(schoolBg.scrollLeft()+1);

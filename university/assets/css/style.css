@@ -82,19 +82,21 @@ body {
 }
 
 .cloudBig {
-	width: 224px;
-	height: 112px;
+	width: 112px;
+	height: 56px;
 	position: absolute;
 	left: 10%;
 	background: url(../images/cloud-big.png);
+	background-size: contain;
 }
 
 .cloudSmall {
-	width: 122px;
-	height: 60px;
+	width: 61px;
+	height: 30px;
 	position: absolute;
 	right: 10%;
 	background: url(../images/cloud-small.png);
+	background-size: contain;
 }
 
 .map {
@@ -103,34 +105,34 @@ body {
 	position: absolute;
 	bottom: 100px;
 	left: 50%;
-	margin-left: -240px;
+	margin-left: -120px;
 	opacity: 0;
 	background: url(../images/map.png);
 	background-size: contain;
 }
 
 .schools {
-	width: 180px;
-	height: 100px;
+	width: 62px;
+	height: 32px;
 	position: absolute;
 	display: block;
 }
 
 .schoolHuawei {
-	top: 516px;
-    left: 140px;
+	top: 172px;
+    left: 47px;
 }
 
 .schoolLSE {
-	top: 786px;
-    left: 530px;
+	top: 206px;
+    left: 180px;
 }
 
 .schoolBg {
-	height: 572px;
+	height: 286px;
 	width: 100%;
 	position: absolute;
-	bottom: 150px;
+	bottom: 75px;
 	overflow: hidden;
 }
 
@@ -142,30 +144,32 @@ body {
 
 .building {
 	width: 200%;
-	height: 572px;
+	height: 286px;
 	background-repeat: repeat-x;
 	float: left;
 	background: url(../images/building.png);
+	background-size: contain;
 }
 
 .startContainer {
 	position: absolute;
 	bottom: 0;
 	width: 100%;
-	height: 150px;
+	height: 75px;
 	background: url(../images/bg.png) repeat;
 }
 
 .start {
-	width: 190px;
-	height: 90px;
+	width: 95px;
+	height: 45px;
 	position: absolute;
 	left: 50%;
 	top: 50%;
-	margin-left: -95px;
-	margin-top: -45px;
+	margin-left: -48px;
+	margin-top: -23px;
 	cursor: pointer;
 	background: url(../images/start.png);
+	background-size: contain;
 }
 
 .schoolIntro {
@@ -178,36 +182,39 @@ body {
 }
 
 .schoolIntro img {
-	margin-top: 100px;
+	margin-top: 30px;
 }
 
 .qanda {
 	list-style: none;
-	font-size: 24px;
+	font-size: 12px;
 }
 
 .qanda li {
-	padding-left: 40px;
-	margin: 20px;
-	line-height: 30px;
+	padding-left: 20px;
+	margin: 10px;
+	line-height: 15px;
 }
 
 .qanda li:nth-child(odd) {
 	color: #00a0e9;
 	background: url(../images/q.png) no-repeat;
+	background-size: 15px 15px;
 }
 
 .qanda li:nth-child(even) {
 	color: #fff;
 	background: url(../images/a.png) no-repeat;
+	background-size: 15px 15px;
 }
 
 .closeBtn {
 	position: absolute;
 	top: 20px;
 	left: 20px;
-	width: 44px;
-	height: 44px;
+	width: 22px;
+	height: 22px;
 	background: url(../images/close.png);
+	background-size: contain;
 	z-index: 300000;
 }
