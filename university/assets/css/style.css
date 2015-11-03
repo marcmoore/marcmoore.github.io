@@ -98,12 +98,12 @@ body {
 }
 
 .map {
-	width: 720px;
-	height: 978px;
+	width: 240px;
+	height: 326px;
 	position: absolute;
-	bottom: 150px;
+	bottom: 100px;
 	left: 50%;
-	margin-left: -360px;
+	margin-left: -240px;
 	opacity: 0;
 	background: url(../images/map.png);
 	background-size: contain;
