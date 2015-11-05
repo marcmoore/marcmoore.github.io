@@ -64,14 +64,15 @@ body {
 }
 
 .logo {
-	width: 282px;
-	height: 223;
+	width: 140px;
+	height: 111;
 	position: absolute;
 	top: 50%;
 	left: 50%;
-	margin-left: -141px;
-	margin-top: -111px;
+	margin-left: -70px;
+	margin-top: -56px;
 	background: url(../images/logo.png);
+	background-size: contain;
 	cursor: pointer;
 }
 
@@ -81,29 +82,85 @@ body {
 	z-index: 98;
 }
 
+@keyframes bigCloud {
+	0% {left: 3%;}
+	50% {left: 60%;}
+	100% {left: 3%;}
+}
+
+@-moz-keyframes bigCloud {
+	0% {left: 3%;}
+	50% {left: 60%;}
+	100% {left: 3%;}
+}
+
+@-webkit-keyframes bigCloud {
+	0% {left: 3%;}
+	50% {left: 60%;}
+	100% {left: 3%;}
+}
+
+@-o-keyframes bigCloud {
+	0% {left: 3%;}
+	50% {left: 60%;}
+	100% {left: 3%;}
+}
+
 .cloudBig {
 	width: 112px;
 	height: 56px;
 	position: absolute;
-	left: 10%;
+	top: 30px;
 	background: url(../images/cloud-big.png);
 	background-size: contain;
+	animation: bigCloud 30s infinite;
+	-moz-animation: bigCloud 30s infinite;
+	-webkit-animation: bigCloud 30s infinite;
+	-o-animation: bigCloud 30s infinite;
+}
+
+@keyframes smallCloud {
+	0% {right: 3%;}
+	50% {right: 60%;}
+	100% {right: 3%;}
+}
+
+@-moz-keyframes smallCloud {
+	0% {right: 3%;}
+	50% {right: 60%;}
+	100% {right: 3%;}
+}
+
+@-webkit-keyframes smallCloud {
+	0% {right: 3%;}
+	50% {right: 60%;}
+	100% {right: 3%;}
+}
+
+@-o-keyframes smallCloud {
+	0% {right: 3%;}
+	50% {right: 60%;}
+	100% {right: 3%;}
 }
 
 .cloudSmall {
 	width: 61px;
 	height: 30px;
 	position: absolute;
-	right: 10%;
+	top: 10px;
 	background: url(../images/cloud-small.png);
 	background-size: contain;
+	animation: smallCloud 30s infinite;
+	-moz-animation: smallCloud 30s infinite;
+	-webkit-animation: smallCloud 30s infinite;
+	-o-animation: smallCloud 30s infinite;
 }
 
 .map {
 	width: 240px;
 	height: 326px;
 	position: absolute;
-	bottom: 100px;
+	bottom: 150px;
 	left: 50%;
 	margin-left: -120px;
 	opacity: 0;
@@ -124,8 +181,8 @@ body {
 }
 
 .schoolLSE {
-	top: 206px;
-    left: 180px;
+	top: 262px;
+    left: 176px;
 }
 
 .schoolBg {
@@ -218,3 +275,5 @@ body {
 	background-size: contain;
 	z-index: 300000;
 }
+
+
