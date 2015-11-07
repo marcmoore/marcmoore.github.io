@@ -214,8 +214,12 @@ $(document).ready(function(){
 		sectionShow(".schoolIntro");
 	});
 	
+	$(".logoTiny").on("click", function(){		
+		sectionShow(".ufIntro");
+	});
+	
 	$(".closeBtn").on("click", function(){
-		sectionHide(".schoolIntro");
+		sectionHide(".panel");
 	});
 	
 	$(".start").on("click", function(){
