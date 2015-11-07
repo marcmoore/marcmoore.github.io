@@ -225,7 +225,7 @@ $(document).ready(function(){
 	$(".start").on("click", function(){
 		if(animating) return false;
 		animating = true;
-	
+		$(".helicopter").addClass("move");
 		var popup = $(".map");
 		var start = $(".startContainer");
 		popup.animate({opacity: 1}, {

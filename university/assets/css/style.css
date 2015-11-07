@@ -195,6 +195,14 @@ body {
     top: 150px;
     left: 50%;
     margin-left: -65px;
+	transition-duration: 1s;
+}
+
+.helicopter.move {
+	top: 40px;
+	left: auto;
+	right: 20px;
+    margin-left: 0;
 }
 
 .map {
