@@ -84,25 +84,25 @@ body {
 
 @keyframes bigCloud {
 	0% {left: 3%;}
-	50% {left: 60%;}
+	50% {left: 13%;}
 	100% {left: 3%;}
 }
 
 @-moz-keyframes bigCloud {
 	0% {left: 3%;}
-	50% {left: 60%;}
+	50% {left: 13%;}
 	100% {left: 3%;}
 }
 
 @-webkit-keyframes bigCloud {
 	0% {left: 3%;}
-	50% {left: 60%;}
+	50% {left: 13%;}
 	100% {left: 3%;}
 }
 
 @-o-keyframes bigCloud {
 	0% {left: 3%;}
-	50% {left: 60%;}
+	50% {left: 13%;}
 	100% {left: 3%;}
 }
 
@@ -121,25 +121,25 @@ body {
 
 @keyframes smallCloud {
 	0% {right: 3%;}
-	50% {right: 60%;}
+	50% {right: 13%;}
 	100% {right: 3%;}
 }
 
 @-moz-keyframes smallCloud {
 	0% {right: 3%;}
-	50% {right: 60%;}
+	50% {right: 13%;}
 	100% {right: 3%;}
 }
 
 @-webkit-keyframes smallCloud {
 	0% {right: 3%;}
-	50% {right: 60%;}
+	50% {right: 13%;}
 	100% {right: 3%;}
 }
 
 @-o-keyframes smallCloud {
 	0% {right: 3%;}
-	50% {right: 60%;}
+	50% {right: 13%;}
 	100% {right: 3%;}
 }
 
@@ -183,6 +183,51 @@ body {
 .schoolLSE {
 	top: 262px;
     left: 176px;
+}
+
+.schoolShengan {
+	top: 59px;
+    left: 128px;
+}
+
+.schoolBasi {
+	top: 254px;
+    left: 3px;
+}
+
+.schoolYueke {
+	top: 154px;
+    left: 159px;
+}
+
+.schoolAikesaite {
+	top: 296px;
+    left: 22px;
+}
+
+.schoolAikesaite {
+	top: 296px;
+    left: 22px;
+}
+
+.schoolUAL {
+	top: 288px;
+    left: 112px;
+}
+
+.schoolDulun {
+	top: 105px;
+    left: 149px;
+}
+
+.schoolBulisituo {
+	top: 213px;
+    left: -2px;
+}
+
+.schoolUCL {
+	top: 207px;
+    right: -2px;
 }
 
 .schoolBg {
