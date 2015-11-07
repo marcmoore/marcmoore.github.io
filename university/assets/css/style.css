@@ -156,6 +156,47 @@ body {
 	-o-animation: smallCloud 30s infinite;
 }
 
+@keyframes helicopter {
+	0% {background: url(../images/heli1.png); background-size: contain;}
+	25% {background: url(../images/heli2.png); background-size: contain;}
+	50% {background: url(../images/heli3.png); background-size: contain;}
+	100% {background: url(../images/heli4.png); background-size: contain;}
+}
+
+@-moz-keyframes helicopter {
+	0% {background: url(../images/heli1.png); background-size: contain;}
+	25% {background: url(../images/heli2.png); background-size: contain;}
+	50% {background: url(../images/heli3.png); background-size: contain;}
+	100% {background: url(../images/heli4.png); background-size: contain;}
+}
+
+@-webkit-keyframes helicopter {
+	0% {background: url(../images/heli1.png); background-size: contain;}
+	25% {background: url(../images/heli2.png); background-size: contain;}
+	50% {background: url(../images/heli3.png); background-size: contain;}
+	100% {background: url(../images/heli4.png); background-size: contain;}
+}
+
+@-o-keyframes helicopter {
+	0% {background: url(../images/heli1.png); background-size: contain;}
+	25% {background: url(../images/heli2.png); background-size: contain;}
+	50% {background: url(../images/heli3.png); background-size: contain;}
+	100% {background: url(../images/heli4.png); background-size: contain;}
+}
+
+.helicopter {
+	width: 130px;
+	height: 78px;
+	animation: helicopter 200ms infinite;
+	-moz-animation: helicopter 200ms infinite;
+	-webkit-animation: helicopter 200ms infinite;
+	-o-animation: helicopter 200ms infinite;
+	position: absolute;
+    top: 150px;
+    left: 50%;
+    margin-left: -65px;
+}
+
 .map {
 	width: 240px;
 	height: 326px;
