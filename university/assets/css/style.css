@@ -157,31 +157,31 @@ body {
 }
 
 @keyframes helicopter {
-	0% {background: url(../images/heli1.png); background-size: contain;}
-	25% {background: url(../images/heli2.png); background-size: contain;}
-	50% {background: url(../images/heli3.png); background-size: contain;}
-	100% {background: url(../images/heli4.png); background-size: contain;}
+	0% {background-image: url(../images/heli1.png);}
+	25% {background-image: url(../images/heli2.png);}
+	50% {background-image: url(../images/heli3.png);}
+	100% {background-image: url(../images/heli4.png);}
 }
 
 @-moz-keyframes helicopter {
-	0% {background: url(../images/heli1.png); background-size: contain;}
-	25% {background: url(../images/heli2.png); background-size: contain;}
-	50% {background: url(../images/heli3.png); background-size: contain;}
-	100% {background: url(../images/heli4.png); background-size: contain;}
+	0% {background-image: url(../images/heli1.png);}
+	25% {background-image: url(../images/heli2.png);}
+	50% {background-image: url(../images/heli3.png);}
+	100% {background-image: url(../images/heli4.png);}
 }
 
 @-webkit-keyframes helicopter {
-	0% {background: url(../images/heli1.png); background-size: contain;}
-	25% {background: url(../images/heli2.png); background-size: contain;}
-	50% {background: url(../images/heli3.png); background-size: contain;}
-	100% {background: url(../images/heli4.png); background-size: contain;}
+	0% {background-image: url(../images/heli1.png);}
+	25% {background-image: url(../images/heli2.png);}
+	50% {background-image: url(../images/heli3.png);}
+	100% {background-image: url(../images/heli4.png);}
 }
 
 @-o-keyframes helicopter {
-	0% {background: url(../images/heli1.png); background-size: contain;}
-	25% {background: url(../images/heli2.png); background-size: contain;}
-	50% {background: url(../images/heli3.png); background-size: contain;}
-	100% {background: url(../images/heli4.png); background-size: contain;}
+	0% {background-image: url(../images/heli1.png);}
+	25% {background-image: url(../images/heli2.png);}
+	50% {background-image: url(../images/heli3.png);}
+	100% {background-image: url(../images/heli4.png);}
 }
 
 .helicopter {
@@ -192,17 +192,35 @@ body {
 	-webkit-animation: helicopter 200ms infinite;
 	-o-animation: helicopter 200ms infinite;
 	position: absolute;
+	background-size: contain;
     top: 150px;
-    left: 50%;
-    margin-left: -65px;
+    right: 50%;
+    margin-right: -65px;
 	transition-duration: 1s;
+	-webkit-transition-duration: 1s;
+	-moz-transition-duration: 1s;
+	-o-transition-duration: 1s;
 }
 
 .helicopter.move {
 	top: 40px;
 	left: auto;
 	right: 20px;
-    margin-left: 0;
+    margin-right: 0;
+}
+
+.helicopter span {
+	color: #fff;
+	font-size: 12px;
+	position: absolute;
+	bottom: -12px;
+    left: 30px;
+	opacity: 0;
+	transition-duration: 1s;
+	-webkit-transition-duration: 1s;
+	-moz-transition-duration: 1s;
+	-o-transition-duration: 1s;
+	
 }
 
 .map {
@@ -406,6 +424,20 @@ body {
 
 .earlyBird img {
 	width: 95%;
+	margin: 10px auto;
+	display: block;
+}
+
+.share {
+	width: 100%;
+	height: 100%;
+	background: url(../images/bg2.png);
+	position: absolute;
+	top: 0;
+	opacity: 0;
+}
+
+.share img {
 	margin: 10px auto;
 	display: block;
 }

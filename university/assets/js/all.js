@@ -226,6 +226,7 @@ $(document).ready(function(){
 		if(animating) return false;
 		animating = true;
 		$(".helicopter").addClass("move");
+		$(".helicopter span").css("opacity", "1");
 		var popup = $(".map");
 		var start = $(".startContainer");
 		popup.animate({opacity: 1}, {
@@ -243,6 +244,10 @@ $(document).ready(function(){
 				animating = false;
 			},
 			easing: "easeInOutBack"
+		});
+		
+		$(".helicopter").on("click", function(){
+			sectionShow(".share");
 		});
 	});
 	
