@@ -163,7 +163,18 @@ $(document).ready(function(){
 	var animating = false;
 	
 	var drop = function(){		
-		$(".ladder").css({height: "600px"});
+		$(".ladder").animate({height: "300px"}, {
+			duration: 4000,
+			complete: function(){
+				animating = false;
+				jump();
+			},
+			easing: 'easeInOutBack'
+		});
+	};
+	
+	var jump = function(){
+		
 	};
 	
 	var sectionHide = function (hideThis){
@@ -235,7 +246,7 @@ $(document).ready(function(){
 		if(animating) return false;
 		animating = true;
 		$(".helicopter").addClass("move");
-		$(".helicopter .ladder").css("opacity", "0");
+		$(".helicopter .ladder").css("opacity", "1");
 		$(".helicopter span").css("opacity", "1");
 		var popup = $(".map");
 		var start = $(".startContainer");
