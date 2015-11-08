@@ -253,7 +253,6 @@ $(document).ready(function(){
 	
 	var speed = 10;
 	var schoolBg = $(".schoolBg");
-	var building = $(".building");
 
 	function schoolRoll(){
 		if(schoolBg.scrollLeft() >= 302)
