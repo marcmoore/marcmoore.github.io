@@ -218,6 +218,10 @@ $(document).ready(function(){
 		sectionShow(".ufIntro");
 	});
 	
+	$(".aboutme").on("click", function(){
+		sectionShow(".earlyBird");
+	});
+	
 	$(".closeBtn").on("click", function(){
 		sectionHide(".panel");
 	});
