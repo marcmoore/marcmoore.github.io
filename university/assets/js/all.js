@@ -157,10 +157,20 @@ $(document).ready(function(){
 		autoClose: true,
 		showPercentage: true,
 		closeBtnText: ""
-	}, function() {	//callback function
+	}, function() {
 		$(".pageLoading").fadeOut(300);
 	});
 	var animating = false;
+	
+	var drop = function(){		
+		$(".ladder").animate({height: "600px"}, {
+			duration: 3000,
+			complete: function(){
+				animating = false;
+			},
+			easing: 'easeInOutBack'
+		});
+	};
 	
 	var sectionHide = function (hideThis){
 		if(animating) return false;
@@ -198,6 +208,7 @@ $(document).ready(function(){
 	
 	$(".logo").on("click", function(){
 		sectionHide(".splashScreen");
+		drop();
 	});
 	
 	$(".schools").on("click", function(){
