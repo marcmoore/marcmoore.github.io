@@ -163,13 +163,7 @@ $(document).ready(function(){
 	var animating = false;
 	
 	var drop = function(){		
-		$(".ladder").animate({height: "600px"}, {
-			duration: 3000,
-			complete: function(){
-				animating = false;
-			},
-			easing: 'easeInOutBack'
-		});
+		$(".ladder").css({height: "600px"});
 	};
 	
 	var sectionHide = function (hideThis){
@@ -241,6 +235,7 @@ $(document).ready(function(){
 		if(animating) return false;
 		animating = true;
 		$(".helicopter").addClass("move");
+		$(".helicopter .ladder").css("opacity", "0");
 		$(".helicopter span").css("opacity", "1");
 		var popup = $(".map");
 		var start = $(".startContainer");

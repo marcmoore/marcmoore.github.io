@@ -233,10 +233,15 @@ body {
 
 .helicopter .ladder {
 	width: 2px;
+	height: 0;
 	background: #c41c2f;
 	left: 94px;
     top: 70px;
     position: absolute;
+	transition-duration: 4s;
+	-webkit-transition-duration: 4s;
+	-moz-transition-duration: 4s;
+	-o-transition-duration: 4s;
 }
 
 .map {
