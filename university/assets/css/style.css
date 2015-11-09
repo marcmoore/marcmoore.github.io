@@ -202,42 +202,11 @@ body {
 	-o-animation: smallCloud 30s infinite;
 }
 
-@keyframes helicopter {
-	0% {background-image: url(../images/heli1.png);}
-	25% {background-image: url(../images/heli2.png);}
-	50% {background-image: url(../images/heli3.png);}
-	100% {background-image: url(../images/heli4.png);}
-}
-
-@-moz-keyframes helicopter {
-	0% {background-image: url(../images/heli1.png);}
-	25% {background-image: url(../images/heli2.png);}
-	50% {background-image: url(../images/heli3.png);}
-	100% {background-image: url(../images/heli4.png);}
-}
-
-@-webkit-keyframes helicopter {
-	0% {background-image: url(../images/heli1.png);}
-	25% {background-image: url(../images/heli2.png);}
-	50% {background-image: url(../images/heli3.png);}
-	100% {background-image: url(../images/heli4.png);}
-}
-
-@-o-keyframes helicopter {
-	0% {background-image: url(../images/heli1.png);}
-	25% {background-image: url(../images/heli2.png);}
-	50% {background-image: url(../images/heli3.png);}
-	100% {background-image: url(../images/heli4.png);}
-}
-
 .helicopter {
 	width: 130px;
 	height: 78px;
-	animation: helicopter 200ms infinite;
-	-moz-animation: helicopter 200ms infinite;
-	-webkit-animation: helicopter 200ms infinite;
-	-o-animation: helicopter 200ms infinite;
 	position: absolute;
+	background-image: url(../images/heli5.png);
 	background-size: contain;
     top: 150px;
     right: 50%;
@@ -246,6 +215,20 @@ body {
 	-webkit-transition-duration: 1s;
 	-moz-transition-duration: 1s;
 	-o-transition-duration: 1s;
+}
+
+.helicopter .fan {
+	width: 10px;
+	height: 36px;
+	background: url(../images/fan.png);
+	background-size: contain;
+	position: absolute;
+    top: 6px;
+    left: 18px;
+	animation: rotate 1000ms linear infinite;
+	-moz-animation: rotate 1000ms linear infinite;
+	-webkit-animation: rotate 1000ms linear infinite;
+	-o-animation: rotate 1000ms linear infinite;
 }
 
 .helicopter.move {
@@ -419,28 +402,72 @@ body {
 	background-size: contain;
 }
 
-@keyframes car {
-	0% {background-image: url(../images/car1.png);}
-	50% {background-image: url(../images/car2.png);}
-	100% {background-image: url(../images/car3.png);}
+@keyframes rotate {
+	0% {
+		transform: rotate(0deg);
+		-webkit-transform: rotate(0deg);
+		-moz-transform: rotate(0deg);
+		-o-transform: rotate(0deg);
+		-ms-transform: rotate(0deg);
+	}
+	100% {
+		transform: rotate(360deg);
+		-webkit-transform: rotate(360deg);
+		-moz-transform: rotate(360deg);
+		-o-transform: rotate(360deg);
+		-ms-transform: rotate(360deg);
+	}
 }
 
-@-moz-keyframes car {
-	0% {background-image: url(../images/car1.png);}
-	50% {background-image: url(../images/car2.png);}
-	100% {background-image: url(../images/car3.png);}
+@-moz-keyframes rotate {
+	0% {
+		transform: rotate(0deg);
+		-webkit-transform: rotate(0deg);
+		-moz-transform: rotate(0deg);
+		-o-transform: rotate(0deg);
+		-ms-transform: rotate(0deg);
+	}
+	100% {
+		transform: rotate(360deg);
+		-webkit-transform: rotate(360deg);
+		-moz-transform: rotate(360deg);
+		-o-transform: rotate(360deg);
+		-ms-transform: rotate(360deg);
+	}
 }
 
-@-webkit-keyframes car {
-	0% {background-image: url(../images/car1.png);}
-	50% {background-image: url(../images/car2.png);}
-	100% {background-image: url(../images/car3.png);}
+@-webkit-keyframes rotate {
+	0% {
+		transform: rotate(0deg);
+		-webkit-transform: rotate(0deg);
+		-moz-transform: rotate(0deg);
+		-o-transform: rotate(0deg);
+		-ms-transform: rotate(0deg);
+	}
+	100% {
+		transform: rotate(360deg);
+		-webkit-transform: rotate(360deg);
+		-moz-transform: rotate(360deg);
+		-o-transform: rotate(360deg);
+		-ms-transform: rotate(360deg);
+	}
 }
 
-@-o-keyframes car {
-	0% {background-image: url(../images/car1.png);}
-	50% {background-image: url(../images/car2.png);}
-	100% {background-image: url(../images/car3.png);}
+@-o-keyframes rotate {
+	0% {
+		transform: rotate(0deg);
+		-webkit-transform: rotate(0deg);
+		-moz-transform: rotate(0deg);
+		-o-transform: rotate(0deg);
+		-ms-transform: rotate(0deg);
+	}
+	100% {
+		transform: rotate(360deg);
+		-webkit-transform: rotate(360deg);
+		-moz-transform: rotate(360deg);
+		-o-transform: rotate(360deg);
+		-ms-transform: rotate(360deg);
+	}
 }
 
 .startContainer .car {
@@ -449,11 +476,8 @@ body {
 	position: absolute;
 	top: -110px;
 	left: 50%;
+	background-image: url(../images/car5.png);
 	margin-left: -100px;
-	animation: car 200ms infinite;
-	-moz-animation: car 200ms infinite;
-	-webkit-animation: car 200ms infinite;
-	-o-animation: car 200ms infinite;
 	background-size: contain;
 	transition-duration: 1s;
 	-webkit-transition-duration: 1s;
@@ -461,11 +485,40 @@ body {
 	-o-transition-duration: 1s;
 }
 
+.startContainer .car .wheel1 {
+	width: 30px;
+	height: 30px;
+	background: url(../images/wheel.png);
+	background-size: contain;
+	position: absolute;
+    bottom: 0;
+    left: 59px;
+	animation: rotate 1000ms linear infinite;
+	-moz-animation: rotate 1000ms linear infinite;
+	-webkit-animation: rotate 1000ms linear infinite;
+	-o-animation: rotate 1000ms linear infinite;
+}
+
+.startContainer .car .wheel2 {
+	width: 30px;
+	height: 30px;
+	background: url(../images/wheel.png);
+	background-size: contain;
+	position: absolute;
+    bottom: 0;
+    left: 155px;
+	animation: rotate 1000ms linear infinite;
+	-moz-animation: rotate 1000ms linear infinite;
+	-webkit-animation: rotate 1000ms linear infinite;
+	-o-animation: rotate 1000ms linear infinite;
+}
+
 .startContainer .car.move {
-	width: 150px;
-	height: 83px;
-	top: -83px;
-	margin-left: -75px;
+	transform: scale(0.8);
+	-moz-transformn: scale(0.8);
+	-webkit-transform: scale(0.8);
+	-o-transform: scale(0.8);
+	top: -100px;
 }
 
 .panel {
