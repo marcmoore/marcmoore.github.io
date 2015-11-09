@@ -262,12 +262,14 @@ body {
 }
 
 .helicopter.move {
-	width: 100px;
-	height: 60px;
 	top: 10px;
 	left: auto;
 	right: 10px;
     margin-right: 0;
+	transform: scale(0.8);
+	-moz-transformn: scale(0.8);
+	-webkit-transform: scale(0.8);
+	-o-transform: scale(0.8);
 }
 
 .helicopter span {
