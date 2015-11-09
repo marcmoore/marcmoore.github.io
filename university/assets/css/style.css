@@ -574,6 +574,12 @@ body {
 	display: block;
 }
 
+.share .qr {
+	width: 250px;
+	margin: 0 auto 10px;
+	display: block;
+}
+
 .share ul {
 	list-style: none;
 	display: -webkit-flex;
