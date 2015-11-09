@@ -177,12 +177,13 @@ $(document).ready(function(){
 	var jump = function(i, m){
 		if (i>m-1){
 			$(".start").css("opacity", 1);
+			$(".startContainer .car .allpeople").css("opacity", 1);
 			registerEvent();
 			return false;
 		}
 		$($(".people").get(i)).css("opacity", "1");
 		$($(".people").get(i)).animate({top: "190px"}, {
-			duration: 1000,
+			duration: 500,
 			complete: function(){
 				animating = false;
 				$($(".people").get(i)).css("opacity", "0");
