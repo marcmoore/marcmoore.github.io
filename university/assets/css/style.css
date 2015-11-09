@@ -30,12 +30,42 @@ body {
 }
 
 .pageLoading .car {
-	top: 55%;
-	display: block;
 	width: 150px;
+	height: 82px;
 	position: absolute;
-    left: 50%;
-    margin-left: -75px;
+	top: 55%;
+	left: 50%;
+	background-image: url(../images/car5.png);
+	margin-left: -75px;
+	background-size: contain;
+}
+
+.pageLoading .car .wheel1 {
+	width: 23px;
+	height: 23px;
+	background: url(../images/wheel.png);
+	background-size: contain;
+	position: absolute;
+    bottom: 0;
+    left: 43px;
+	animation: rotate 1000ms linear infinite;
+	-moz-animation: rotate 1000ms linear infinite;
+	-webkit-animation: rotate 1000ms linear infinite;
+	-o-animation: rotate 1000ms linear infinite;
+}
+
+.pageLoading .car .wheel2 {
+	width: 23px;
+	height: 23px;
+	background: url(../images/wheel.png);
+	background-size: contain;
+	position: absolute;
+    bottom: 0;
+    left: 115px;
+	animation: rotate 1000ms linear infinite;
+	-moz-animation: rotate 1000ms linear infinite;
+	-webkit-animation: rotate 1000ms linear infinite;
+	-o-animation: rotate 1000ms linear infinite;
 }
 
 #jpreLoader{
