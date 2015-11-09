@@ -194,14 +194,14 @@ $(document).ready(function(){
 	var sectionShow = function (showThis){
 		if(animating) return false;
 		animating = true;
-		
+
 		$(showThis).css({"z-index": 1000});
 		$(showThis).animate({opacity: 1}, {
 			step: function(now, mx) {
 				var opacity = 1 - now;
 				var scale = 1 - (1 - now) * 0.2;
 				$(showThis).css({"opacity": opacity});
-				$(showThis).css({"transform": "scale("+scale+")"});
+				//$(showThis).css({"transform": "scale("+scale+")"});
 			},
 			duration: 800,
 			complete: function(){
@@ -216,38 +216,13 @@ $(document).ready(function(){
 		drop();
 	});
 	
-	$(".schools").on("click", function(){
-		var whichSchool = $(this).attr("name");
-		$(".schoolIntro img").attr("src", schools[whichSchool].img);
-		
-		var qandaContent = "";
-		$(schools[whichSchool].qanda).each(function(){
-			qandaContent = qandaContent + "<li>" + this.q + "</li>" + "<li>" + this.a + "</li>";
-		});
-		
-		$(".qanda").html(qandaContent);
-		
-		sectionShow(".schoolIntro");
-	});
-	
-	$(".logoTiny").on("click", function(){		
-		sectionShow(".ufIntro");
-	});
-	
-	$(".aboutme").on("click", function(){
-		sectionShow(".earlyBird");
-	});
-	
-	$(".closeBtn").on("click", function(){
-		sectionHide(".panel");
-	});
-	
 	$(".start").on("click", function(){
 		if(animating) return false;
 		animating = true;
 		$(".helicopter").addClass("move");
-		$(".helicopter .ladder").css("opacity", "1");
+		$(".helicopter .ladder").css("opacity", "0");
 		$(".helicopter span").css("opacity", "1");
+		$(".startContainer .car").addClass("move");
 		var popup = $(".map");
 		var start = $(".startContainer");
 		popup.animate({opacity: 1}, {
@@ -266,6 +241,40 @@ $(document).ready(function(){
 			},
 			easing: "easeInOutBack"
 		});
+		
+		$(".schools").on("click", function(){
+			var whichSchool = $(this).attr("name");
+			$(".schoolIntro img").attr("src", schools[whichSchool].img);
+			
+			var qandaContent = "";
+			$(schools[whichSchool].qanda).each(function(){
+				qandaContent = qandaContent + "<li>" + this.q + "</li>" + "<li>" + this.a + "</li>";
+			});
+			
+			$(".qanda").html(qandaContent);
+			
+			sectionShow(".schoolIntro");
+		});
+		
+		$(".logoTiny").on("click", function(){		
+			sectionShow(".ufIntro");
+		});
+		
+		$(".aboutme").on("click", function(){
+			sectionShow(".earlyBird");
+		});
+		
+		$(".closeBtn").on("click", function(){
+			sectionHide(".panel");
+		});
+		
+		$(".closeBtn").on("touchstart", function(){
+			$(".closeBtn").css("opacity", "0.5");
+		})
+		
+		$(".closeBtn").on("touchend", function(){
+			$(".closeBtn").css("opacity", "1");
+		})
 		
 		$(".helicopter").on("click", function(){
 			sectionShow(".share");

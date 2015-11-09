@@ -19,18 +19,18 @@ body {
 }
 
 .logoSmall {
-	width: 118px;
-	height: 93px;
+	width: 40px;
+	height: 31px;
 	background: url(../images/logo-small.png);
 	position: absolute;
 	top: 100px;
 	left: 50%;
-	margin-left: -60px;
+	margin-left: -20px;
 	background-size: contain;
 }
 
 .pageLoading .car {
-	top: 60%;
+	top: 55%;
 	display: block;
 	width: 150px;
 	position: absolute;
@@ -40,17 +40,17 @@ body {
 
 #jpreLoader{
 	width: 150px;
-	height: 10px;
-	border-radius: 10px;
-	-moz-border-radius: 10px;
-	-webkit-border-radius: 10px;
+	height: 4px;
+	border-radius: 4px;
+	-moz-border-radius: 4px;
+	-webkit-border-radius: 4px;
 	babackground: #fff;
 }
 
 #jpreBar {
-	border-radius: 10px;
-	-moz-border-radius: 10px;
-	-webkit-border-radius: 10px;
+	border-radius: 4px;
+	-moz-border-radius: 4px;
+	-webkit-border-radius: 4px;
 	background-color:#c41c2f;
 	animation: progress 2s linear infinite;
 	-moz-animation: progress 2s linear infinite;
@@ -60,10 +60,11 @@ body {
 }
 
 #jprePercentage {
-	color:#c41c2f;
-	font-family:"Trebuchet MS",Arial,Helvetica,sans-serif;
-	font-weight:bold;
-	text-align:center;
+	color: #c41c2f;
+	font-family: "Trebuchet MS",Arial,Helvetica,sans-serif;
+	font-weight: bold;
+	font-size: 12px;
+	text-align: center;
 	top: 10px;
 }
 
@@ -73,16 +74,52 @@ body {
 }
 
 .logo {
-	width: 140px;
-	height: 111;
+	width: 159px;
+	height: 137;
 	position: absolute;
 	top: 50%;
 	left: 50%;
-	margin-left: -70px;
-	margin-top: -56px;
+	margin-left: -80px;
+	margin-top: -134px;
 	background: url(../images/logo.png);
 	background-size: contain;
 	cursor: pointer;
+}
+
+@keyframes logoWhite {
+	0% {opacity: 0;}
+	50% {opacity: 1;}
+	100% {opacity: 0;}
+}
+
+@-moz-keyframes logoWhite {
+	0% {opacity: 0;}
+	50% {opacity: 1;}
+	100% {opacity: 0;}
+}
+
+@-webkit-keyframes logoWhite {
+	0% {opacity: 0;}
+	50% {opacity: 1;}
+	100% {opacity: 0;}
+}
+
+@-o-keyframes logoWhite {
+	0% {opacity: 0;}
+	50% {opacity: 1;}
+	100% {opacity: 0;}
+}
+
+.logoWhite {
+	width: 141px;
+	height: 112px;
+	background: url(../images/logo-white.png);
+	background-size: contain;
+	margin-left: 9px;
+	animation: logoWhite 3s infinite;
+	-moz-animation: logoWhite 3s infinite;
+	-webkit-animation: logoWhite 3s infinite;
+	-o-animation: logoWhite 3s infinite;
 }
 
 .schoolMap {
@@ -212,9 +249,11 @@ body {
 }
 
 .helicopter.move {
-	top: 40px;
+	width: 100px;
+	height: 60px;
+	top: 25px;
 	left: auto;
-	right: 20px;
+	right: 10px;
     margin-right: 0;
 }
 
@@ -223,7 +262,8 @@ body {
 	font-size: 12px;
 	position: absolute;
 	bottom: -12px;
-    left: 30px;
+    width: 100%;
+	text-align: right;
 	opacity: 0;
 	transition-duration: 1s;
 	-webkit-transition-duration: 1s;
@@ -255,7 +295,7 @@ body {
 	width: 240px;
 	height: 326px;
 	position: absolute;
-	bottom: 150px;
+	bottom: 130px;
 	left: 50%;
 	margin-left: -120px;
 	opacity: 0;
@@ -404,17 +444,32 @@ body {
 }
 
 .startContainer .car {
-	width: 284px;
-	height: 156px;
+	width: 200px;
+	height: 110px;
 	position: absolute;
-	top: -156px;
+	top: -110px;
 	left: 50%;
-	margin-left: -142px;
+	margin-left: -100px;
 	animation: car 200ms infinite;
 	-moz-animation: car 200ms infinite;
 	-webkit-animation: car 200ms infinite;
 	-o-animation: car 200ms infinite;
 	background-size: contain;
+	transition-duration: 1s;
+	-webkit-transition-duration: 1s;
+	-moz-transition-duration: 1s;
+	-o-transition-duration: 1s;
+}
+
+.startContainer .car.move {
+	width: 150px;
+	height: 83px;
+	top: -83px;
+	margin-left: -75px;
+}
+
+.panel {
+	overflow: scroll;
 }
 
 .schoolIntro {
@@ -454,7 +509,7 @@ body {
 }
 
 .closeBtn {
-	position: absolute;
+	position: fixed;
 	top: 20px;
 	left: 20px;
 	width: 22px;
@@ -462,6 +517,10 @@ body {
 	background: url(../images/close.png);
 	background-size: contain;
 	z-index: 300000;
+	transition-duration: 1s;
+	-webkit-transition-duration: 1s;
+	-moz-transition-duration: 1s;
+	-o-transition-duration: 1s;
 }
 
 .ufIntro {
@@ -504,7 +563,7 @@ body {
 }
 
 .share .car {
-	margin: 40px auto 0;
+	margin: 70px auto 0;
 	display: block;
 	width: 220px;
 }
@@ -547,4 +606,21 @@ body {
 	height: 90px;
 	background: url(../images/aboutme.png);
 	background-size: contain;
+}
+
+.shareTip {
+	width: 60px;
+	height: 48px;
+	background: url(../images/share-tip.png);
+	background-size: contain;
+	position: absolute;
+    right: 20px;
+    top: 20px;
+}
+
+.hideBlock {
+	width: 0;
+	height: 0;
+	overflow: hidden;
+	display: block;
 }
