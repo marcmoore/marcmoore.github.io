@@ -294,6 +294,10 @@ body {
     position: absolute;
 }
 
+.people {
+	opacity: 0;
+}
+
 .helicopter .people1 {
 	width: 54px;
     position: absolute;
@@ -432,6 +436,11 @@ body {
 	cursor: pointer;
 	background: url(../images/start.png);
 	background-size: contain;
+	opacity: 0;
+	transition-duration: 1s;
+	-webkit-transition-duration: 1s;
+	-moz-transition-duration: 1s;
+	-o-transition-duration: 1s;
 }
 
 @keyframes rotate {

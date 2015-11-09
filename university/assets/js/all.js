@@ -164,17 +164,32 @@ $(document).ready(function(){
 	
 	var drop = function(){		
 		$(".ladder").animate({height: "300px"}, {
-			duration: 4000,
+			duration: 2000,
 			complete: function(){
 				animating = false;
-				jump();
+				var i = 0;
+				jump(i, $(".people").length);
 			},
-			easing: 'easeInOutBack'
+			easing: 'linear'
 		});
 	};
 	
-	var jump = function(){
-		
+	var jump = function(i, m){
+		if (i>m-1){
+			$(".start").css("opacity", 1);
+			registerEvent();
+			return false;
+		}
+		$($(".people").get(i)).css("opacity", "1");
+		$($(".people").get(i)).animate({top: "190px"}, {
+			duration: 1000,
+			complete: function(){
+				animating = false;
+				$($(".people").get(i)).css("opacity", "0");
+				jump(i+1, m)
+			},
+			easing: 'linear'
+		});
 	};
 	
 	var sectionHide = function (hideThis){
@@ -216,70 +231,72 @@ $(document).ready(function(){
 		drop();
 	});
 	
-	$(".start").on("click", function(){
-		if(animating) return false;
-		animating = true;
-		$(".helicopter").addClass("move");
-		$(".helicopter .ladder").css("opacity", "0");
-		$(".helicopter span").css("opacity", "1");
-		$(".startContainer .car").addClass("move");
-		var popup = $(".map");
-		var start = $(".startContainer");
-		popup.animate({opacity: 1}, {
-			step: function(now, mx) {
-				var opacity = 1 - now;
-				var scale = 1 - (1 - now) * 0.2;
-				var bottom = now * -60 + "px";
-				
-				popup.css({"transform": "scale("+scale+")"});
-				popup.css({"opacity": opacity});
-				start.css({"bottom": bottom});
-			},
-			duration: 800,
-			complete: function(){
-				animating = false;
-			},
-			easing: "easeInOutBack"
-		});
-		
-		$(".schools").on("click", function(){
-			var whichSchool = $(this).attr("name");
-			$(".schoolIntro img").attr("src", schools[whichSchool].img);
-			
-			var qandaContent = "";
-			$(schools[whichSchool].qanda).each(function(){
-				qandaContent = qandaContent + "<li>" + this.q + "</li>" + "<li>" + this.a + "</li>";
+	var registerEvent = function(){
+		$(".start").on("click", function(){
+			if(animating) return false;
+			animating = true;
+			$(".helicopter").addClass("move");
+			$(".helicopter .ladder").css("opacity", "0");
+			$(".helicopter span").css("opacity", "1");
+			$(".startContainer .car").addClass("move");
+			var popup = $(".map");
+			var start = $(".startContainer");
+			popup.animate({opacity: 1}, {
+				step: function(now, mx) {
+					var opacity = 1 - now;
+					var scale = 1 - (1 - now) * 0.2;
+					var bottom = now * -60 + "px";
+					
+					popup.css({"transform": "scale("+scale+")"});
+					popup.css({"opacity": opacity});
+					start.css({"bottom": bottom});
+				},
+				duration: 800,
+				complete: function(){
+					animating = false;
+				},
+				easing: "easeInOutBack"
 			});
 			
-			$(".qanda").html(qandaContent);
+			$(".schools").on("click", function(){
+				var whichSchool = $(this).attr("name");
+				$(".schoolIntro img").attr("src", schools[whichSchool].img);
+				
+				var qandaContent = "";
+				$(schools[whichSchool].qanda).each(function(){
+					qandaContent = qandaContent + "<li>" + this.q + "</li>" + "<li>" + this.a + "</li>";
+				});
+				
+				$(".qanda").html(qandaContent);
+				
+				sectionShow(".schoolIntro");
+			});
 			
-			sectionShow(".schoolIntro");
+			$(".logoTiny").on("click", function(){		
+				sectionShow(".ufIntro");
+			});
+			
+			$(".aboutme").on("click", function(){
+				sectionShow(".earlyBird");
+			});
+			
+			$(".closeBtn").on("click", function(){
+				sectionHide(".panel");
+			});
+			
+			$(".closeBtn").on("touchstart", function(){
+				$(".closeBtn").css("opacity", "0.5");
+			})
+			
+			$(".closeBtn").on("touchend", function(){
+				$(".closeBtn").css("opacity", "1");
+			})
+			
+			$(".helicopter").on("click", function(){
+				sectionShow(".share");
+			});
 		});
-		
-		$(".logoTiny").on("click", function(){		
-			sectionShow(".ufIntro");
-		});
-		
-		$(".aboutme").on("click", function(){
-			sectionShow(".earlyBird");
-		});
-		
-		$(".closeBtn").on("click", function(){
-			sectionHide(".panel");
-		});
-		
-		$(".closeBtn").on("touchstart", function(){
-			$(".closeBtn").css("opacity", "0.5");
-		})
-		
-		$(".closeBtn").on("touchend", function(){
-			$(".closeBtn").css("opacity", "1");
-		})
-		
-		$(".helicopter").on("click", function(){
-			sectionShow(".share");
-		});
-	});
+	};
 	
 	var speed = 10;
 	var schoolBg = $(".schoolBg");
