@@ -14,14 +14,14 @@ body {
 }
 
 .pageLoading {
-	background: url(../images/bg1.png) repeat;
+	background: url(../images/bg1.png?v=1) repeat;
 	z-index: 100;
 }
 
 .logoSmall {
 	width: 40px;
 	height: 31px;
-	background: url(../images/logo-small.png);
+	background: url(../images/logo-small.png?v=1);
 	position: absolute;
 	top: 100px;
 	left: 50%;
@@ -69,7 +69,7 @@ body {
 }
 
 .splashScreen {
-	background: url(../images/bg.png) repeat;
+	background: url(../images/bg.png?v=1) repeat;
 	z-index: 99;
 }
 
@@ -81,7 +81,7 @@ body {
 	left: 50%;
 	margin-left: -80px;
 	margin-top: -134px;
-	background: url(../images/logo.png);
+	background: url(../images/logo.png?v=1);
 	background-size: contain;
 	cursor: pointer;
 }
@@ -251,7 +251,7 @@ body {
 .helicopter.move {
 	width: 100px;
 	height: 60px;
-	top: 25px;
+	top: 10px;
 	left: auto;
 	right: 10px;
     margin-right: 0;
@@ -295,11 +295,11 @@ body {
 	width: 240px;
 	height: 326px;
 	position: absolute;
-	bottom: 130px;
+	bottom: 110px;
 	left: 50%;
 	margin-left: -120px;
 	opacity: 0;
-	background: url(../images/map.png);
+	background: url(../images/map.png?v=1);
 	background-size: contain;
 }
 
@@ -475,7 +475,7 @@ body {
 .schoolIntro {
 	width: 100%;
 	height: 100%;
-	background: url(../images/bg2.png);
+	background: url(../images/bg2.png?v=1);
 	position: absolute;
 	top: 0;
 	opacity: 0;
@@ -526,7 +526,7 @@ body {
 .ufIntro {
 	width: 100%;
 	height: 100%;
-	background: url(../images/bg2.png);
+	background: url(../images/bg2.png?v=1);
 	position: absolute;
 	top: 0;
 	opacity: 0;
@@ -541,7 +541,7 @@ body {
 .earlyBird {
 	width: 100%;
 	height: 100%;
-	background: url(../images/bg3.png);
+	background: url(../images/bg3.png?v=1);
 	position: absolute;
 	top: 0;
 	opacity: 0;
@@ -556,7 +556,7 @@ body {
 .share {
 	width: 100%;
 	height: 100%;
-	background: url(../images/bg2.png);
+	background: url(../images/bg2.png?v=1);
 	position: absolute;
 	top: 0;
 	opacity: 0;
