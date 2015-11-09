@@ -48,10 +48,10 @@ body {
 	position: absolute;
     bottom: 0;
     left: 43px;
-	animation: rotate 1000ms linear infinite;
-	-moz-animation: rotate 1000ms linear infinite;
-	-webkit-animation: rotate 1000ms linear infinite;
-	-o-animation: rotate 1000ms linear infinite;
+	animation: rotate 500ms linear infinite;
+	-moz-animation: rotate 500ms linear infinite;
+	-webkit-animation: rotate 500ms linear infinite;
+	-o-animation: rotate 500ms linear infinite;
 }
 
 .pageLoading .car .wheel2 {
@@ -62,10 +62,10 @@ body {
 	position: absolute;
     bottom: 0;
     left: 115px;
-	animation: rotate 1000ms linear infinite;
-	-moz-animation: rotate 1000ms linear infinite;
-	-webkit-animation: rotate 1000ms linear infinite;
-	-o-animation: rotate 1000ms linear infinite;
+	animation: rotate 500ms linear infinite;
+	-moz-animation: rotate 500ms linear infinite;
+	-webkit-animation: rotate 500ms linear infinite;
+	-o-animation: rotate 500ms linear infinite;
 }
 
 #jpreLoader{
@@ -255,10 +255,10 @@ body {
 	position: absolute;
     top: 6px;
     left: 18px;
-	animation: rotate 1000ms linear infinite;
-	-moz-animation: rotate 1000ms linear infinite;
-	-webkit-animation: rotate 1000ms linear infinite;
-	-o-animation: rotate 1000ms linear infinite;
+	animation: rotate 500ms linear infinite;
+	-moz-animation: rotate 500ms linear infinite;
+	-webkit-animation: rotate 500ms linear infinite;
+	-o-animation: rotate 500ms linear infinite;
 }
 
 .helicopter.move {
@@ -310,7 +310,7 @@ body {
 	width: 240px;
 	height: 326px;
 	position: absolute;
-	bottom: 110px;
+	bottom: 100px;
 	left: 50%;
 	margin-left: -120px;
 	opacity: 0;
@@ -525,10 +525,10 @@ body {
 	position: absolute;
     bottom: 0;
     left: 59px;
-	animation: rotate 1000ms linear infinite;
-	-moz-animation: rotate 1000ms linear infinite;
-	-webkit-animation: rotate 1000ms linear infinite;
-	-o-animation: rotate 1000ms linear infinite;
+	animation: rotate 500ms linear infinite;
+	-moz-animation: rotate 500ms linear infinite;
+	-webkit-animation: rotate 500ms linear infinite;
+	-o-animation: rotate 500ms linear infinite;
 }
 
 .startContainer .car .wheel2 {
@@ -539,10 +539,10 @@ body {
 	position: absolute;
     bottom: 0;
     left: 155px;
-	animation: rotate 1000ms linear infinite;
-	-moz-animation: rotate 1000ms linear infinite;
-	-webkit-animation: rotate 1000ms linear infinite;
-	-o-animation: rotate 1000ms linear infinite;
+	animation: rotate 500ms linear infinite;
+	-moz-animation: rotate 500ms linear infinite;
+	-webkit-animation: rotate 500ms linear infinite;
+	-o-animation: rotate 500ms linear infinite;
 }
 
 .startContainer .car.move {
