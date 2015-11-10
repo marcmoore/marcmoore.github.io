@@ -241,7 +241,6 @@ body {
     top: 70px;
     right: 50%;
     margin-right: -65px;
-	z-index: 1000;
 	transition-duration: 1s;
 	-webkit-transition-duration: 1s;
 	-moz-transition-duration: 1s;
@@ -263,9 +262,9 @@ body {
 }
 
 .helicopter.move {
-	top: 10px;
+	top: -10px;
 	left: auto;
-	right: 10px;
+	right: -10px;
     margin-right: 0;
 	transform: scale(0.8);
 	-moz-transformn: scale(0.8);
