@@ -166,11 +166,14 @@ $(document).ready(function(){
 		moveTop = "";
 	
 	if ($("body").height() < 481) {
-		ladderHeight = "200px";
+		ladderHeight = "180px";
 		moveTop = "110px"
+	} else if ($("body").height() < 569) {
+		ladderHeight = "260px";
+		moveTop = "170px"
 	} else if ($("body").height() < 628) {
 		ladderHeight = "340px";
-		moveTop = "200px"
+		moveTop = "220px"
 	} else if ($("body").height() < 737) {
 		ladderHeight = "440px";
 		moveTop = "300px"
