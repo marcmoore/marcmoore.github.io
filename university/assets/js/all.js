@@ -162,8 +162,22 @@ $(document).ready(function(){
 	});
 	var animating = false;
 	
+	var ladderHeight = "",
+		moveTop = "";
+	
+	if ($("body").height() < 481) {
+		ladderHeight = "240px";
+		moveTop = "110px"
+	} else if ($("body").height() < 628) {
+		ladderHeight = "340px";
+		moveTop = "200px"
+	} else if ($("body").height() < 737) {
+		ladderHeight = "440px";
+		moveTop = "300px"
+	} 
+	
 	var drop = function(){		
-		$(".ladder").animate({height: "300px"}, {
+		$(".ladder").animate({height: ladderHeight}, {
 			duration: 2000,
 			complete: function(){
 				animating = false;
@@ -178,18 +192,13 @@ $(document).ready(function(){
 		if (i>m-1){
 			$(".start").css("opacity", 1);
 			$(".startContainer .car .allpeople").css("opacity", 1);
+			$(".ladder").animate({height: "0"}, {duration: 1000, easing: 'linear'});
 			registerEvent();
 			return false;
 		}
 		
-		if ($("body").height() < 481){
-			var moveTop = 100;
-		} else {
-			var moveTop = 190;
-		}
-		
 		$($(".helicopter .ladder div").get(i)).css("opacity", "1");
-		$($(".helicopter .ladder div").get(i)).animate({top: moveTop + "px"}, {
+		$($(".helicopter .ladder div").get(i)).animate({top: moveTop}, {
 			duration: 1000,
 			complete: function(){
 				animating = false;

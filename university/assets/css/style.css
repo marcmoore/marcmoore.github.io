@@ -300,16 +300,16 @@ body {
 }
 
 .helicopter .people1 {
-	width: 54px;
+	width: 40px;
     position: absolute;
-    left: -16px;
+    left: -10px;
 }
 
 .helicopter .people2 {
-	width: 54px;
+	width: 40px;
     position: absolute;
 	top: 62px;
-    left: -36px;
+    left: -26px;
 }
 
 .map {
