@@ -183,9 +183,9 @@ $(document).ready(function(){
 		}
 		
 		if ($("body").height() < 481){
-			var moveTop = 70;
+			var moveTop = 100;
 		} else {
-			var moveTop = 130;
+			var moveTop = 190;
 		}
 		
 		$($(".helicopter .ladder div").get(i)).css("opacity", "1");

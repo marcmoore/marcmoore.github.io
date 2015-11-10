@@ -48,10 +48,10 @@ body {
 	position: absolute;
     bottom: 0;
     left: 43px;
-	animation: rotate 500ms linear infinite;
-	-moz-animation: rotate 500ms linear infinite;
-	-webkit-animation: rotate 500ms linear infinite;
-	-o-animation: rotate 500ms linear infinite;
+	animation: rotate 300ms linear infinite;
+	-moz-animation: rotate 300ms linear infinite;
+	-webkit-animation: rotate 300ms linear infinite;
+	-o-animation: rotate 300ms linear infinite;
 }
 
 .pageLoading .car .wheel2 {
@@ -62,10 +62,10 @@ body {
 	position: absolute;
     bottom: 0;
     left: 115px;
-	animation: rotate 500ms linear infinite;
-	-moz-animation: rotate 500ms linear infinite;
-	-webkit-animation: rotate 500ms linear infinite;
-	-o-animation: rotate 500ms linear infinite;
+	animation: rotate 300ms linear infinite;
+	-moz-animation: rotate 300ms linear infinite;
+	-webkit-animation: rotate 300ms linear infinite;
+	-o-animation: rotate 300ms linear infinite;
 }
 
 #jpreLoader{
@@ -146,10 +146,10 @@ body {
 	background: url(../images/logo-white.png);
 	background-size: contain;
 	margin-left: 9px;
-	animation: logoWhite 3s infinite;
-	-moz-animation: logoWhite 3s infinite;
-	-webkit-animation: logoWhite 3s infinite;
-	-o-animation: logoWhite 3s infinite;
+	animation: logoWhite 1s infinite;
+	-moz-animation: logoWhite 1s infinite;
+	-webkit-animation: logoWhite 1s infinite;
+	-o-animation: logoWhite 1s infinite;
 }
 
 .schoolMap {
@@ -238,7 +238,7 @@ body {
 	position: absolute;
 	background-image: url(../images/heli5.png);
 	background-size: contain;
-    top: 150px;
+    top: 70px;
     right: 50%;
     margin-right: -65px;
 	transition-duration: 1s;
@@ -255,10 +255,10 @@ body {
 	position: absolute;
     top: 6px;
     left: 18px;
-	animation: rotate 500ms linear infinite;
-	-moz-animation: rotate 500ms linear infinite;
-	-webkit-animation: rotate 500ms linear infinite;
-	-o-animation: rotate 500ms linear infinite;
+	animation: rotate 300ms linear infinite;
+	-moz-animation: rotate 300ms linear infinite;
+	-webkit-animation: rotate 300ms linear infinite;
+	-o-animation: rotate 300ms linear infinite;
 }
 
 .helicopter.move {
@@ -274,7 +274,7 @@ body {
 
 .helicopter span {
 	color: #fff;
-	font-size: 12px;
+	font-size: 14px;
 	position: absolute;
 	bottom: -12px;
     width: 100%;
@@ -339,10 +339,10 @@ body {
 	height: 25px;
 	background: url(../images/logo-tiny1.png);
 	background-size: contain;
-	animation: logoWhite 3s infinite;
-	-moz-animation: logoWhite 3s infinite;
-	-webkit-animation: logoWhite 3s infinite;
-	-o-animation: logoWhite 3s infinite;
+	animation: logoWhite 500ms infinite;
+	-moz-animation: logoWhite 500ms infinite;
+	-webkit-animation: logoWhite 500ms infinite;
+	-o-animation: logoWhite 500ms infinite;
 }
 
 .schools {
@@ -553,10 +553,10 @@ body {
 	position: absolute;
     bottom: 0;
     left: 59px;
-	animation: rotate 500ms linear infinite;
-	-moz-animation: rotate 500ms linear infinite;
-	-webkit-animation: rotate 500ms linear infinite;
-	-o-animation: rotate 500ms linear infinite;
+	animation: rotate 300ms linear infinite;
+	-moz-animation: rotate 300ms linear infinite;
+	-webkit-animation: rotate 300ms linear infinite;
+	-o-animation: rotate 300ms linear infinite;
 }
 
 .startContainer .car .wheel2 {
@@ -567,10 +567,10 @@ body {
 	position: absolute;
     bottom: 0;
     left: 155px;
-	animation: rotate 500ms linear infinite;
-	-moz-animation: rotate 500ms linear infinite;
-	-webkit-animation: rotate 500ms linear infinite;
-	-o-animation: rotate 500ms linear infinite;
+	animation: rotate 300ms linear infinite;
+	-moz-animation: rotate 300ms linear infinite;
+	-webkit-animation: rotate 300ms linear infinite;
+	-o-animation: rotate 300ms linear infinite;
 }
 
 .startContainer .car.move {
@@ -641,9 +641,9 @@ body {
 	position: fixed;
 	top: 20px;
 	left: 20px;
-	width: 22px;
+	width: 18px;
 	height: 22px;
-	background: url(../images/close.png);
+	background: url(../images/closeBtn1.png);
 	background-size: contain;
 	z-index: 300000;
 	transition-duration: 1s;
