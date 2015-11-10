@@ -166,7 +166,7 @@ $(document).ready(function(){
 		moveTop = "";
 	
 	if ($("body").height() < 481) {
-		ladderHeight = "240px";
+		ladderHeight = "200px";
 		moveTop = "110px"
 	} else if ($("body").height() < 628) {
 		ladderHeight = "340px";
