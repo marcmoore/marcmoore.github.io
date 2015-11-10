@@ -294,8 +294,9 @@ body {
     position: absolute;
 }
 
-.people {
+.helicopter .ladder div {
 	opacity: 0;
+	position: absolute;
 }
 
 .helicopter .people1 {
@@ -307,6 +308,7 @@ body {
 .helicopter .people2 {
 	width: 54px;
     position: absolute;
+	top: 62px;
     left: -36px;
 }
 
@@ -330,6 +332,17 @@ body {
 	position: absolute;
 	top: 200px;
 	left: 124px;
+}
+
+.logoTiny1 {
+	width: 25px;
+	height: 25px;
+	background: url(../images/logo-tiny1.png);
+	background-size: contain;
+	animation: logoWhite 3s infinite;
+	-moz-animation: logoWhite 3s infinite;
+	-webkit-animation: logoWhite 3s infinite;
+	-o-animation: logoWhite 3s infinite;
 }
 
 .schools {
@@ -730,14 +743,127 @@ body {
 	background-size: contain;
 }
 
+@keyframes pointing {
+	0% {
+		transform: rotate(0deg);
+		-webkit-transform: rotate(0deg);
+		-moz-transform: rotate(0deg);
+		-o-transform: rotate(0deg);
+		-ms-transform: rotate(0deg);
+	}
+	50% {
+		transform: rotate(15deg);
+		-webkit-transform: rotate(15deg);
+		-moz-transform: rotate(15deg);
+		-o-transform: rotate(15deg);
+		-ms-transform: rotate(15deg);
+	}
+	100% {
+		transform: rotate(0deg);
+		-webkit-transform: rotate(0deg);
+		-moz-transform: rotate(0deg);
+		-o-transform: rotate(0deg);
+		-ms-transform: rotate(0deg);
+	}
+}
+
+@-moz-keyframes pointing {
+	0% {
+		transform: rotate(0deg);
+		-webkit-transform: rotate(0deg);
+		-moz-transform: rotate(0deg);
+		-o-transform: rotate(0deg);
+		-ms-transform: rotate(0deg);
+	}
+	50% {
+		transform: rotate(15deg);
+		-webkit-transform: rotate(15deg);
+		-moz-transform: rotate(15deg);
+		-o-transform: rotate(15deg);
+		-ms-transform: rotate(15deg);
+	}
+	100% {
+		transform: rotate(0deg);
+		-webkit-transform: rotate(0deg);
+		-moz-transform: rotate(0deg);
+		-o-transform: rotate(0deg);
+		-ms-transform: rotate(0deg);
+	}
+}
+
+@-webkit-keyframes pointing {
+	0% {
+		transform: rotate(0deg);
+		-webkit-transform: rotate(0deg);
+		-moz-transform: rotate(0deg);
+		-o-transform: rotate(0deg);
+		-ms-transform: rotate(0deg);
+	}
+	50% {
+		transform: rotate(15deg);
+		-webkit-transform: rotate(15deg);
+		-moz-transform: rotate(15deg);
+		-o-transform: rotate(15deg);
+		-ms-transform: rotate(15deg);
+	}
+	100% {
+		transform: rotate(0deg);
+		-webkit-transform: rotate(0deg);
+		-moz-transform: rotate(0deg);
+		-o-transform: rotate(0deg);
+		-ms-transform: rotate(0deg);
+	}
+}
+
+@-o-keyframes pointing {
+	0% {
+		transform: rotate(0deg);
+		-webkit-transform: rotate(0deg);
+		-moz-transform: rotate(0deg);
+		-o-transform: rotate(0deg);
+		-ms-transform: rotate(0deg);
+	}
+	50% {
+		transform: rotate(15deg);
+		-webkit-transform: rotate(15deg);
+		-moz-transform: rotate(15deg);
+		-o-transform: rotate(15deg);
+		-ms-transform: rotate(15deg);
+	}
+	100% {
+		transform: rotate(0deg);
+		-webkit-transform: rotate(0deg);
+		-moz-transform: rotate(0deg);
+		-o-transform: rotate(0deg);
+		-ms-transform: rotate(0deg);
+	}
+}
+
 .shareTip {
-	width: 60px;
-	height: 48px;
-	background: url(../images/share-tip.png);
-	background-size: contain;
 	position: absolute;
     right: 20px;
     top: 20px;
+	height: 50px;
+}
+
+.sharePoint {
+	width: 21px;
+	height: 33px;
+	background-image: url(../images/share-tip.png);
+	background-size: contain;
+	position: absolute;
+    right: 20px;
+	animation: pointing 1s infinite;
+	-moz-animation: pointing 1s infinite;
+	-webkit-animation: pointing 1s infinite;
+	-o-animation: pointing 1s infinite;
+}
+
+.shareTip span {
+	color: #c41c2f;
+	font-size: 12px;
+	margin-top: 35px;
+    display: block;
 }
 
 .hideBlock {

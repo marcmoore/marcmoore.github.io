@@ -168,7 +168,7 @@ $(document).ready(function(){
 			complete: function(){
 				animating = false;
 				var i = 0;
-				jump(i, $(".people").length);
+				jump(i, $(".helicopter .ladder div").length);
 			},
 			easing: 'linear'
 		});
@@ -181,12 +181,19 @@ $(document).ready(function(){
 			registerEvent();
 			return false;
 		}
-		$($(".people").get(i)).css("opacity", "1");
-		$($(".people").get(i)).animate({top: "190px"}, {
-			duration: 500,
+		
+		if ($("body").height() < 481){
+			var moveTop = 70;
+		} else {
+			var moveTop = 130;
+		}
+		
+		$($(".helicopter .ladder div").get(i)).css("opacity", "1");
+		$($(".helicopter .ladder div").get(i)).animate({top: moveTop + "px"}, {
+			duration: 1000,
 			complete: function(){
 				animating = false;
-				$($(".people").get(i)).css("opacity", "0");
+				$($(".helicopter .ladder div").get(i)).css("opacity", "0");
 				jump(i+1, m)
 			},
 			easing: 'linear'
