@@ -241,6 +241,7 @@ body {
     top: 70px;
     right: 50%;
     margin-right: -65px;
+	z-index: 1000;
 	transition-duration: 1s;
 	-webkit-transition-duration: 1s;
 	-moz-transition-duration: 1s;
@@ -725,6 +726,7 @@ body {
 .share ul li .download {
 	width: 70px;
 	height: 89px;
+	display: block;
 	background: url(../images/download.png);
 	background-size: contain;
 }
@@ -732,6 +734,7 @@ body {
 .share ul li .video {
 	width: 70px;
 	height: 89px;
+	display: block;
 	background: url(../images/video.png);
 	background-size: contain;
 }
