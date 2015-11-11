@@ -160,6 +160,46 @@ $('body').jpreLoader({
 	$(".pageLoading").fadeOut(300);
 });
 
+var shareTitle = "下一站，top10!",
+	descContent = "下一站，top10!",
+	lineLink = window.location.href,
+	imgUrl = "http://" + window.location.host + "/assets/images/logohongse.jpg";
+
+wx.onMenuShareAppMessage({
+	title: shareTitle, // 分享标题
+	desc: descContent, // 分享描述
+	link: lineLink, // 分享链接
+	imgUrl: imgUrl, // 分享图标
+	type:'',
+	dataUrl:''
+});
+
+wx.onMenuShareQZone({
+	title: shareTitle, // 分享标题
+	desc: descContent, // 分享描述
+	link: lineLink, // 分享链接
+	imgUrl: imgUrl, // 分享图标
+	success: function () {
+		// 用户确认分享后执行的回调函数
+	},
+	cancel: function () {
+		// 用户取消分享后执行的回调函数
+	}
+});
+
+wx.onMenuShareQQ({
+	title: shareTitle, // 分享标题
+	desc: descContent, // 分享描述
+	link: lineLink, // 分享链接
+	imgUrl: imgUrl, // 分享图标
+	success: function () {
+		// 用户确认分享后执行的回调函数
+	},
+	cancel: function () {
+		// 用户取消分享后执行的回调函数
+	}
+});
+
 $(document).ready(function(){
 	var animating = false;
 	
@@ -342,46 +382,6 @@ $(document).ready(function(){
 		} else {
 			$(".bgMusic").get(0).pause();
 			$(this).addClass("musicEnd")
-		}
-	});
-	
-	var shareTitle = "下一站，top10!",
-		descContent = "下一站，top10!",
-		lineLink = window.location.href,
-		imgUrl = "http://" + window.location.host + "/assets/images/logohongse.jpg";
-	
-	wx.onMenuShareAppMessage({
-		title: shareTitle, // 分享标题
-		desc: descContent, // 分享描述
-		link: lineLink, // 分享链接
-		imgUrl: imgUrl, // 分享图标
-		type:'',
-		dataUrl:''
-	});
-
-	wx.onMenuShareQZone({
-		title: shareTitle, // 分享标题
-		desc: descContent, // 分享描述
-		link: lineLink, // 分享链接
-		imgUrl: imgUrl, // 分享图标
-		success: function () {
-			// 用户确认分享后执行的回调函数
-		},
-		cancel: function () {
-			// 用户取消分享后执行的回调函数
-		}
-	});
-
-	wx.onMenuShareQQ({
-		title: shareTitle, // 分享标题
-		desc: descContent, // 分享描述
-		link: lineLink, // 分享链接
-		imgUrl: imgUrl, // 分享图标
-		success: function () {
-			// 用户确认分享后执行的回调函数
-		},
-		cancel: function () {
-			// 用户取消分享后执行的回调函数
 		}
 	});
 });
