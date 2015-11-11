@@ -20,7 +20,7 @@ body {
 
 .logoSmall {
 	width: 38px;
-	height: 31px;
+	height: 30px;
 	background: url(../images/logo-small.png?v=1);
 	position: absolute;
 	top: 100px;
@@ -711,14 +711,18 @@ body {
 
 .share ul {
 	list-style: none;
-	display: -webkit-flex;
-	display: -moz-flex;
-	display: -ms-flex;
-	display: flex;
-	justify-content: center;
+	width: 271px;
+	margin: 0 auto;
+}
+
+.share ul::after {
+	content: "";
+	display: block;
+	clear: both;
 }
 
 .share ul li {
+	float: left;
 	margin: 20px 10px;
 }
 
