@@ -336,7 +336,7 @@ $(document).ready(function(){
 	var sliding = setInterval(schoolRoll,speed);
 	
 	$(".musicBtn").on("click", function(){
-		if ($(this).hasClass("musicEnd")) {
+		if ($(".bgMusic").get(0).paused) {
 			$(".bgMusic").get(0).play();
 			$(this).removeClass("musicEnd")
 		} else {
