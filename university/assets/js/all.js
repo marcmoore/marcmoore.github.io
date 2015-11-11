@@ -248,6 +248,10 @@ $(document).ready(function(){
 	
 	$(".logo").on("click", function(){
 		sectionHide(".splashScreen");
+		// $(".carEngine").get(0).play();
+		// $(".carEngine").get(0).addEventListener('ended', function () {  
+		// 	$(".bgMusic").get(0).play();
+		// }, false);
 		drop();
 	});
 	
