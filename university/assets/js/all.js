@@ -165,6 +165,12 @@ var shareTitle = "下一站，top10!",
 	lineLink = window.location.href,
 	imgUrl = "http://" + window.location.host + "/assets/images/logohongse.jpg";
 
+wx.onMenuShareTimeline({
+	title: shareTitle, // 分享标题
+	link: lineLink, // 分享链接
+	imgUrl: imgUrl // 分享图标
+});
+
 wx.onMenuShareAppMessage({
 	title: shareTitle, // 分享标题
 	desc: descContent, // 分享描述
