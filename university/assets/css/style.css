@@ -935,6 +935,7 @@ body {
 	margin-left: 8px;
 	background: url(../images/startMusic.png);
 	background-size: contain;
+	position: absolute;
 }
 
 .musicEnd {
