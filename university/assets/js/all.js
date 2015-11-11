@@ -151,15 +151,16 @@ var schools = {
 	}
 };
 
+$('body').jpreLoader({
+	showSplash: false,
+	autoClose: true,
+	showPercentage: true,
+	closeBtnText: ""
+}, function() {
+	$(".pageLoading").fadeOut(300);
+});
+
 $(document).ready(function(){
-	$('body').jpreLoader({
-		showSplash: false,
-		autoClose: true,
-		showPercentage: true,
-		closeBtnText: ""
-	}, function() {
-		$(".pageLoading").fadeOut(300);
-	});
 	var animating = false;
 	
 	var ladderHeight = "",
@@ -248,10 +249,10 @@ $(document).ready(function(){
 	
 	$(".logo").on("click", function(){
 		sectionHide(".splashScreen");
-		// $(".carEngine").get(0).play();
-		// $(".carEngine").get(0).addEventListener('ended', function () {  
-		// 	$(".bgMusic").get(0).play();
-		// }, false);
+		$(".carEngine").get(0).play();
+		$(".carEngine").get(0).addEventListener('ended', function () {  
+			$(".bgMusic").get(0).play();
+		}, false);
 		drop();
 	});
 	
@@ -333,4 +334,14 @@ $(document).ready(function(){
 		}
 	}
 	var sliding = setInterval(schoolRoll,speed);
+	
+	$(".musicBtn").on("click", function(){
+		if ($(this).hasClass("musicEnd")) {
+			$(".bgMusic").get(0).play();
+			$(this).removeClass("musicEnd")
+		} else {
+			$(".bgMusic").get(0).pause();
+			$(this).addClass("musicEnd")
+		}
+	});
 });
