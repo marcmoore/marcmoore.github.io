@@ -153,7 +153,7 @@ var schools = {
 
 $(document).ready(function(){
 	$('body').jpreLoader({
-		showSplas: false,
+		showSplash: false,
 		autoClose: true,
 		showPercentage: true,
 		closeBtnText: ""
