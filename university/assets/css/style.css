@@ -894,6 +894,7 @@ body {
 	background-image: url(../images/arrow1.png);
 	background-size: contain;
 	position: absolute;
+	right: 0;
 	animation: logoWhite 1s infinite;
 	-moz-animation: logoWhite 1s infinite;
 	-webkit-animation: logoWhite 1s infinite;
@@ -906,6 +907,7 @@ body {
 	background-image: url(../images/arrow2.png);
 	background-size: contain;
 	position: absolute;
+	right: 0;
 	animation: logoWhite1 1s infinite;
 	-moz-animation: logoWhite1 1s infinite;
 	-webkit-animation: logoWhite1 1s infinite;
