@@ -348,7 +348,7 @@ $(document).ready(function(){
 	var shareTitle = "下一站，top10!",
 		descContent = "下一站，top10!",
 		lineLink = window.location.href,
-		imgUrl = "http://" + window.location.host + "/assets/images/logo-white.png";
+		imgUrl = "http://" + window.location.host + "/assets/images/logohongse.jpg";
 	
 	wx.onMenuShareAppMessage({
 		title: shareTitle, // 分享标题
