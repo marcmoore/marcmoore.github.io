@@ -352,7 +352,11 @@ $(document).ready(function(){
 			});
 			
 			$(".closeBtn").on("click", function(){
-				sectionHide(".panel");
+				if ($(this).hasClass("closeCurrent")){
+					sectionHide(".earlyBird");
+				} else {
+					sectionHide(".panel");
+				}
 			});
 			
 			$(".closeBtn").on("touchstart", function(){
