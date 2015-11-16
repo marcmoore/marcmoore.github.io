@@ -945,3 +945,18 @@ body {
 .musicEnd {
 	background-image: url(../images/endMusic.png);
 }
+
+.splashPage {
+	
+}
+
+.splashBtn {
+	width: 100%;
+	display: block;
+	position: absolute;
+	top: 50%;
+	text-align: center;
+	background-size: contain;
+	text-decoration: none;
+	color: #000;
+}
