@@ -4,7 +4,7 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=0, minimum-scale=1.0, maximum-scale=1.0">
 
-<title>iScroll demo: carousel</title>
+<title>UF</title>
 
 <script type="text/javascript" src="assets/js/iscroll.js"></script>
 
@@ -99,6 +99,7 @@ body {
 .painting {
 	width: 100%;
 	height: 100%;
+	position: relative;
 }
 
 .page1 {
@@ -111,6 +112,19 @@ body {
 	background-size: 100% 100%;
 }
 
+.page2-text {
+	width: 204px;
+	height: 75px;
+	background: url(assets/images/page2-text.png) no-repeat;
+	-webkit-animation: shine 0.8s infinite ease 0.5s;
+	animation: shine 0.8s infinite ease 0.5s;
+	background-size: contain;
+    position: absolute;
+    bottom: 105px;
+    left: 50%;
+    margin-left: -101px;
+}
+
 .page3 {
 	background: url(assets/images/page3.jpg) no-repeat;
 	background-size: 100% 100%;
@@ -119,6 +133,31 @@ body {
 .page4 {
 	background: url(assets/images/page4.jpg) no-repeat;
 	background-size: 100% 100%;
+}
+
+.page5 {
+	background: url(assets/images/page5.jpg) no-repeat;
+	background-size: 100% 100%;
+}
+
+.page6 {
+	background: url(assets/images/page6.jpg) no-repeat;
+	background-size: 100% 100%;
+}
+
+.page7 {
+	background: url(assets/images/page7.jpg) no-repeat;
+	background-size: 100% 100%;
+}
+
+@-webkit-keyframes shine {
+  0%,100% {-webkit-transform: scale3d(1,1,1);opacity:0.7;}
+  50% {-webkit-transform: scale3d(1.02,1.02,1.02);opacity:1;}  
+}
+
+@keyframes shine {
+  0%,100% {transform: scale3d(1,1,1);opacity:0.7;}
+  50% {transform: scale3d(1.02,1.02,1.02);opacity:1;}  
 }
 
 </style>
@@ -131,13 +170,24 @@ body {
 				<div class="painting page1"></div>
 			</div>
 			<div class="slide">
-				<div class="painting page2"></div>
+				<div class="painting page2">
+					<div class="page2-text"></div>
+				</div>
 			</div>
 			<div class="slide">
 				<div class="painting page3"></div>
 			</div>
 			<div class="slide">
 				<div class="painting page4"></div>
+			</div>
+			<div class="slide">
+				<div class="painting page5"></div>
+			</div>
+			<div class="slide">
+				<div class="painting page6"></div>
+			</div>
+			<div class="slide">
+				<div class="painting page7"></div>
 			</div>
 		</div>
 	</div>
