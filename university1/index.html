@@ -144,12 +144,12 @@ body {
 	width: 228px;
 	height: 158px;
 	background: url(assets/images/page3-text.png) no-repeat;
-	-webkit-animation: shake 0.8s infinite ease 0.5s;
-	animation: shake 0.8s infinite ease 0.5s;
 	background-size: contain;
     position: absolute;
     bottom: 78px;
     right: 7px;
+	-webkit-animation: shake 0.8s infinite ease 0.5s;
+	animation: shake 0.8s infinite ease 0.5s;
 }
 
 .page4 {
@@ -446,25 +446,25 @@ audio {
 
 @keyframes shake {
 	0%,100% {
-		transform: translate3d(0,0em,0px) rotate(0deg);
+		transform: rotate(0deg);
 	}
 	20%,75% {
-		transform: translate3d(0.1em,0px,0.1em) rotate(1deg);
+		transform: rotate(1deg);
 	}
 	50% {
-		transform: translate3d(-0.1em,0px,-0.1em) rotate(-1deg);
+		transform: rotate(-1deg);
 	}
 }
 
 @-webkit-keyframes shake {
 	0%,100% {
-		transform: translate3d(0,0em,0px) rotate(0deg);
+		transform: rotate(0deg);
 	}
 	20%,75% {
-		transform: translate3d(0.1em,0px,0.1em) rotate(1deg);
+		transform: rotate(1deg);
 	}
 	50% {
-		transform: translate3d(-0.1em,0px,-0.1em) rotate(-1deg);
+		transform: rotate(-1deg);
 	}
 }
 
