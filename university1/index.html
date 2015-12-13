@@ -334,7 +334,7 @@ input::-webkit-input-placeholder {
 	position: absolute;
 	top: 50px;
 	left: 50%;
-	margin-left: -95px;
+	margin-left: -75px;
 }
 
 .page7-popup1 {
@@ -492,7 +492,7 @@ audio {
 	}	
 
 	.page3-text {
-		bottom: 100px;
+		bottom: 90px;
 		right: 20px;
 	}
 }
@@ -607,10 +607,11 @@ $(document).ready(function(){
 	};
 	
 	var ufname = getParameterByName(window.location.href, "ufname");
-	if (ufname!="" && ufname!=null)
+	if (ufname!="" && ufname!=null){
 		$(".page1-input input").val(decodeURIComponent(ufname));
-	else
+	} else {
 		$(".page1-input input").val("亲爱的朋友");
+	}
 		
 	var sectionShow = function (showThis){
 		if(animating) return false;
@@ -635,7 +636,10 @@ $(document).ready(function(){
 		var name = $(".page7-input input").val();
 		if (name!=""){
 			name.trim();
-			window.location = window.location.href + "#ufname=" + encodeURIComponent(name);
+			if (window.location.href.search("#ufname=") != -1)
+				window.location = window.location.href.replace(/#.*/, "") + "#ufname=" + encodeURIComponent(name);
+			else
+				window.location = window.location.href + "#ufname=" + encodeURIComponent(name);
 		}
 	};
 	$(".page7-input input").blur(function(){
