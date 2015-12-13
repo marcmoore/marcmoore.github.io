@@ -630,13 +630,19 @@ $(document).ready(function(){
 			easing: "easeInOutBack"
 		});
 	};
-	$(".page7-share").on("click", function(){
+	
+	var setUrl = function(){
 		var name = $(".page7-input input").val();
 		if (name!=""){
 			name.trim();
 			window.location = window.location.href + "#ufname=" + encodeURIComponent(name);
 		}
-		
+	};
+	$(".page7-input input").blur(function(){
+		setUrl();
+	});
+	$(".page7-share").on("click", function(){
+		setUrl();
 		sectionShow(".page7-popup-container");
 	});
 	$(".page7-popup-container").on("click", function(){
