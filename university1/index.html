@@ -361,6 +361,27 @@ input::-webkit-input-placeholder {
 	animation: next 2s infinite ease-in-out;
 }
 
+audio {
+	width: 0;
+	height: 0;
+}
+
+.musicBtn {
+    width: 33px;
+    height: 33px;
+    margin-top: 8px;
+    margin-left: 8px;
+    background: url(assets/images/startMusic.png);
+    background-size: contain;
+    position: absolute;
+	top: 0px;
+    z-index: 1;
+}
+
+.musicEnd {
+    background-image: url(assets/images/endMusic.png);
+}
+
 @-webkit-keyframes shine {
 	0%,100% {
 		-webkit-transform: scale3d(1,1,1);
@@ -545,6 +566,8 @@ input::-webkit-input-placeholder {
 		</div>
 	</div>
 </div>
+<div class="musicBtn"></div>
+<audio class="bgMusic" src="assets/images/music.mp3" loop="loop" autoplay></audio>
 <script type="text/javascript">
 
 var myScroll;
@@ -619,6 +642,16 @@ $(document).ready(function(){
 	});
 	$(".page7-popup-container").on("click", function(){
 		sectionHide(".page7-popup-container");
+	});
+	
+	$(".musicBtn").on("click", function(){
+		if ($(".bgMusic").get(0).paused) {
+			$(".bgMusic").get(0).play();
+			$(this).removeClass("musicEnd")
+		} else {
+			$(".bgMusic").get(0).pause();
+			$(this).addClass("musicEnd")
+		}
 	});
 });
 </script>
