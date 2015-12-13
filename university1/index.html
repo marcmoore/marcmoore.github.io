@@ -7,24 +7,9 @@
 <title>UF</title>
 
 <script type="text/javascript" src="assets/js/iscroll.js"></script>
-
-<script type="text/javascript">
-
-var myScroll;
-
-function loaded () {
-	myScroll = new IScroll('#wrapper', {
-		scrollX: false,
-		scrollY: true,
-		momentum: false,
-		snap: true,
-		snapSpeed: 400,
-		keyBindings: true,
-	});
-}
-
-document.addEventListener('touchmove', function (e) { e.preventDefault(); }, false);
-</script>
+<script type="text/javascript" src="assets/js/jquery-1.11.3.min.js"></script>
+<script type="text/javascript" src="assets/js/jquery.easing.1.3.min.js"></script>
+<script type="text/javascript" src="assets/js/touche.min.js"></script>
 
 <style type="text/css">
 * {
@@ -72,7 +57,7 @@ body {
 	z-index: 1;
 	-webkit-tap-highlight-color: rgba(0,0,0,0);
 	width: 100%;
-	height: 400%;
+	height: 700%;
 	-webkit-transform: translateZ(0);
 	-moz-transform: translateZ(0);
 	-ms-transform: translateZ(0);
@@ -93,7 +78,7 @@ body {
 
 .slide {
 	width: 100%;
-	height: 25%;
+	height: 14.2857%;
 }
 
 .painting {
@@ -105,6 +90,31 @@ body {
 .page1 {
 	background: url(assets/images/page1.jpg) no-repeat;
 	background-size: 100% 100%;
+}
+
+.page1-input {
+	width: 182px;
+	height: 37px;
+	background: url(assets/images/page1-name.png) no-repeat;
+	background-size: contain;
+	position: absolute;
+	top: 70px;
+	left: 50%;
+	margin-left: -91px;
+}
+
+.page1-input input {
+ 	background: transparent;
+    margin-top: 9px;
+    margin-left: 15px;
+    height: 27px;
+    line-height: 27px;
+    width: 152px;
+    padding: 0 10px;
+    border: none;
+	text-align: center;
+	font-size: 16px;
+	color: #fff;
 }
 
 .page2 {
@@ -120,7 +130,7 @@ body {
 	animation: shine 0.8s infinite ease 0.5s;
 	background-size: contain;
     position: absolute;
-    bottom: 105px;
+    bottom: 85px;
     left: 50%;
     margin-left: -101px;
 }
@@ -128,6 +138,18 @@ body {
 .page3 {
 	background: url(assets/images/page3.jpg) no-repeat;
 	background-size: 100% 100%;
+}
+
+.page3-text {
+	width: 228px;
+	height: 158px;
+	background: url(assets/images/page3-text.png) no-repeat;
+	-webkit-animation: shake 0.8s infinite ease 0.5s;
+	animation: shake 0.8s infinite ease 0.5s;
+	background-size: contain;
+    position: absolute;
+    bottom: 78px;
+    right: 7px;
 }
 
 .page4 {
@@ -140,9 +162,79 @@ body {
 	background-size: 100% 100%;
 }
 
+.page5-text1 {
+	width: 218px;
+	height: 109px;
+	background: url(assets/images/page5-text1.png) no-repeat;
+	background-size: contain;
+    position: absolute;
+    top: 78px;
+    left: 50%;
+	margin-left: -109px;
+}
+
+.page5-text2 {
+	width: 184px;
+	height: 24px;
+	background: url(assets/images/page5-text2.png) no-repeat;
+	-webkit-animation: shine 0.8s infinite ease 0.5s;
+	animation: shine 0.8s infinite ease 0.5s;
+	background-size: contain;
+	position: absolute;
+    top: 78px;
+	left: 50%;
+	margin-left: -92px;
+}
+
+.page5-money {
+	width: 139px;
+	height: 139px;
+	background: url(assets/images/page5-money.png) no-repeat;
+	background-size: contain;
+	position: absolute;
+	top: 240px;
+	left: 50%;
+	margin-left: -70px;
+	animation: circle 1000ms linear infinite;
+	-webkit-animation: circle 1000ms linear infinite;
+}
+
+.page5-man {
+	width: 40px;
+	height: 44px;
+	background: url(assets/images/page5-man.png) no-repeat;
+	background-size: contain;
+	position: absolute;
+	top: 196px;
+	left: 50%;
+	margin-left: -20px;
+}
+
 .page6 {
 	background: url(assets/images/page6.jpg) no-repeat;
 	background-size: 100% 100%;
+}
+
+.page6-text1 {
+	width: 275px;
+	height: 217px;
+	background: url(assets/images/page6-text1.png) no-repeat;
+	background-size: contain;
+	position: absolute;
+	top: 266px;
+	left: 50%;
+	margin-left: -138px;
+}
+
+.page6-text2 {
+	width: 66px;
+	height: 32px;
+	background: url(assets/images/page6-text2.png) no-repeat;
+	background-size: contain;
+	position: absolute;
+	left: 26px;
+	-webkit-animation: shine 0.8s infinite ease 0.5s;
+	animation: shine 0.8s infinite ease 0.5s;
 }
 
 .page7 {
@@ -150,14 +242,238 @@ body {
 	background-size: 100% 100%;
 }
 
+.page7-img {
+	width: 259px;
+	height: 150px;
+	background: url(assets/images/page7-img.png) no-repeat;
+	background-size: contain;
+	position: absolute;
+	top: 20px;
+	left: 50%;
+	margin-left: -130px;
+}
+
+.page7-tips {
+	width: 139px;
+	height: 48px;
+	background: url(assets/images/page7-tips.png) no-repeat;
+	background-size: contain;
+	position: absolute;
+	top: 170px;
+	left: 50%;
+	margin-left: -70px;
+	-webkit-animation: shine 0.8s infinite ease 0.5s;
+	animation: shine 0.8s infinite ease 0.5s;
+}
+
+.page7-input {
+	width: 182px;
+	height: 37px;
+	background: url(assets/images/page1-name.png) no-repeat;
+	background-size: contain;
+	position: absolute;
+	top: 220px;
+	left: 50%;
+	margin-left: -91px;
+}
+
+.page7-input input {
+ 	background: transparent;
+    margin-top: 9px;
+    margin-left: 15px;
+    height: 27px;
+    line-height: 27px;
+    width: 152px;
+    padding: 0 10px;
+    border: none;
+	text-align: center;
+	font-size: 16px;
+	color: #fff;
+}
+
+input::-webkit-input-placeholder {
+	color: #fff;
+}
+
+.page7-desc {
+	width: 295px;
+	height: 172px;
+	position: absolute;
+	top: 280px;
+	left: 50%;
+	margin-left: -148px;
+}
+
+.page7-share {
+	width: 124px;
+	height: 33px;
+	background: url(assets/images/page7-share.png) no-repeat;
+	background-size: contain;
+	position: absolute;
+	bottom: 50px;
+	left: 50%;
+	margin-left: -62px;
+	-webkit-animation: shake 0.8s infinite ease 0.5s;
+	animation: shake 0.8s infinite ease 0.5s;
+}
+
+.page7-popup-container {
+	width: 100%;
+	height: 100%;
+	background: rgba(0, 0, 0, 0.8);
+	position: absolute;
+	opacity: 0;
+	z-index: -100;
+}
+
+.page7-popup {
+	width: 190px;
+	height: 237px;
+	background: url(assets/images/page7-popup.png) no-repeat;
+	background-size: contain;
+	position: absolute;
+	top: 50px;
+	left: 50%;
+	margin-left: -95px;
+}
+
+.page7-popup1 {
+	width: 38px;
+	height: 113px;
+	background: url(assets/images/page7-popup1.png) no-repeat;
+	background-size: contain;
+	position: absolute;
+	right: 30px;
+	-webkit-animation: moveup 0.8s infinite ease 0.5s;
+	animation: moveup 0.8s infinite ease 0.5s;
+}
+
+.next {
+	width: 26px;
+	height: 21px;
+	background: url(assets/images/arrow.png) no-repeat;
+	background-size: contain;
+	position: absolute;
+	bottom: 20px;
+	left: 50%;
+	margin-left: -13px;
+	-webkit-animation: next 2s infinite ease-in-out;
+	animation: next 2s infinite ease-in-out;
+}
+
 @-webkit-keyframes shine {
-  0%,100% {-webkit-transform: scale3d(1,1,1);opacity:0.7;}
-  50% {-webkit-transform: scale3d(1.02,1.02,1.02);opacity:1;}  
+	0%,100% {
+		-webkit-transform: scale3d(1,1,1);
+		opacity: 0.7;
+	}
+	50% {
+		-webkit-transform: scale3d(1.02,1.02,1.02);
+		opacity: 1;
+	}  
 }
 
 @keyframes shine {
-  0%,100% {transform: scale3d(1,1,1);opacity:0.7;}
-  50% {transform: scale3d(1.02,1.02,1.02);opacity:1;}  
+	0%,100% {
+		transform: scale3d(1,1,1);
+		opacity: 0.7;
+	}
+	50% {
+		transform: scale3d(1.02,1.02,1.02);
+		opacity:1;
+	}  
+}
+
+@-webkit-keyframes next {
+	0%,100% {
+		-webkit-transform: translate3d(0px,0px,0px);
+		opacity:0;
+	}
+	50% {
+		-webkit-transform: translate3d(0px,0.5em,0px);
+		opacity:0.8;
+	}
+}
+
+@keyframes next {
+	0%,100% {
+		-webkit-transform: translate3d(0px,0px,0px);
+		opacity:0;
+	}
+	50% {
+		-webkit-transform: translate3d(0px,0.5em,0px);
+		opacity:0.8;
+	}
+}
+
+@-webkit-keyframes circle {
+	0% {
+		-webkit-transform: rotate(0deg);
+	}
+	100% {
+		-webkit-transform: rotate(360deg);
+	}
+}
+
+@keyframes circle {
+	0% {
+		transform: rotate(0deg);
+	}
+	100% {
+		transform: rotate(360deg);
+	}
+}
+
+@keyframes shake {
+	0%,100% {
+		transform: translate3d(0,0em,0px) rotate(0deg);
+	}
+	20%,75% {
+		transform: translate3d(0.1em,0px,0.1em) rotate(1deg);
+	}
+	50% {
+		transform: translate3d(-0.1em,0px,-0.1em) rotate(-1deg);
+	}
+}
+
+@-webkit-keyframes shake {
+	0%,100% {
+		transform: translate3d(0,0em,0px) rotate(0deg);
+	}
+	20%,75% {
+		transform: translate3d(0.1em,0px,0.1em) rotate(1deg);
+	}
+	50% {
+		transform: translate3d(-0.1em,0px,-0.1em) rotate(-1deg);
+	}
+}
+
+@-webkit-keyframes moveup {
+	0%,100% {
+		-webkit-transform: translate3d(0,0em,0px);
+	}
+	50% {
+		-webkit-transform: translate3d(0px,0.6em,0px);
+	}
+}
+
+@keyframes moveup {
+	0%,100% {
+		-webkit-transform: translate3d(0,0em,0px);
+	}
+	50% {
+		-webkit-transform: translate3d(0px,0.6em,0px);
+	}
+}
+
+@media screen and (min-width: 321px) {
+	.page2-text {
+		bottom: 105px;
+	}	
+
+	.page3-text {
+		bottom: 100px;
+		right: 20px;
+	}
 }
 
 </style>
@@ -167,30 +483,144 @@ body {
 	<div id="wrapper">
 		<div id="scroller">
 			<div class="slide">
-				<div class="painting page1"></div>
+				<div class="painting page1">
+					<div class="page1-input">
+						<input type="text" maxlength="20" readonly>
+					</div>
+					<div class="next"></div>
+				</div>
 			</div>
 			<div class="slide">
 				<div class="painting page2">
 					<div class="page2-text"></div>
+					<div class="next"></div>
 				</div>
 			</div>
 			<div class="slide">
-				<div class="painting page3"></div>
+				<div class="painting page3">
+					<div class="page3-text"></div>
+					<div class="next"></div>
+				</div>
 			</div>
 			<div class="slide">
-				<div class="painting page4"></div>
+				<div class="painting page4">
+					<div class="next"></div>
+				</div>
 			</div>
 			<div class="slide">
-				<div class="painting page5"></div>
+				<div class="painting page5">
+					<div class="page5-text1">
+						<div class="page5-text2"></div>
+					</div>
+					<div class="page5-money"></div>
+					<div class="page5-man"></div>
+					<div class="next"></div>
+				</div>
 			</div>
 			<div class="slide">
-				<div class="painting page6"></div>
+				<div class="painting page6">
+					<div class="page6-text1">
+						<div class="page6-text2"></div>
+					</div>
+					<div class="next"></div>
+				</div>
 			</div>
 			<div class="slide">
-				<div class="painting page7"></div>
+				<div class="painting page7">
+					<div class="page7-img"></div>
+					<div class="page7-tips"></div>
+					<div class="page7-input">
+						<input type="text" maxlength="20" placeholder="亲爱的朋友">
+					</div>
+					<img class="page7-desc" src="assets/images/page7-desc.png" />
+					<div class="page7-share"></div>
+					<div class="page7-popup-container">
+						<div class="page7-popup">
+							<div class="page7-popup1"></div>
+						</div>
+					</div>
+					<div class="next"></div>
+				</div>
 			</div>
 		</div>
 	</div>
 </div>
+<script type="text/javascript">
+
+var myScroll;
+
+function loaded () {
+	myScroll = new IScroll("#wrapper", {
+		scrollX: false,
+		scrollY: true,
+		momentum: false,
+		snap: true,
+		snapSpeed: 400,
+		keyBindings: true,
+	});
+}
+
+document.addEventListener("touchmove", function (e) { e.preventDefault(); }, false);
+
+$(document).ready(function(){
+	var animating = false;
+	
+	var sectionHide = function (hideThis){
+		if(animating) return false;
+		animating = true;
+		
+		$(hideThis).animate({opacity: 0}, {
+			duration: 400,
+			complete: function(){
+				animating = false;
+				$(hideThis).css({"z-index": -100});
+			},
+			easing: 'easeInOutBack'
+		});
+	};
+	
+	var getParameterByName = function(url,name){
+		var match = RegExp('#' + name + '=([^&]*)').exec(url);
+		return match && decodeURIComponent(match[1].replace(/\+/g, ' '));
+	};
+	
+	var ufname = getParameterByName(window.location.href, "ufname");
+	if (ufname!="" && ufname!=null)
+		$(".page1-input input").val(decodeURIComponent(ufname));
+	else
+		$(".page1-input input").val("亲爱的朋友");
+		
+	var sectionShow = function (showThis){
+		if(animating) return false;
+		animating = true;
+
+		$(showThis).css({"z-index": 1000});
+		$(showThis).animate({opacity: 1}, {
+			step: function(now, mx) {
+				var opacity = 1 - now;
+				var scale = 1 - (1 - now) * 0.2;
+				$(showThis).css({"opacity": opacity});
+			},
+			duration: 400,
+			complete: function(){
+				animating = false;
+			},
+			easing: "easeInOutBack"
+		});
+	};
+	$(".page7-share").on("click", function(){
+		var name = $(".page7-input input").val();
+		if (name!=""){
+			name.trim();
+			window.location = window.location.href + "#ufname=" + encodeURIComponent(name);
+		}
+		
+		sectionShow(".page7-popup-container");
+	});
+	$(".page7-popup-container").on("click", function(){
+		sectionHide(".page7-popup-container");
+	});
+});
+</script>
 </body>
 </html>
