@@ -161,7 +161,8 @@ function setwebcam()
 				if (device.kind === 'videoinput') {
 				  if(device.label.toLowerCase().search("back") >-1)
 					options={'deviceId': {'exact':device.deviceId}, 'facingMode':'environment'} ;
-				}
+                }
+                options={'deviceId': {'exact':device.deviceId}, 'facingMode':'environment'} ;
 				console.log(device.kind + ": " + device.label +" id = " + device.deviceId);
 			  });
 			  setwebcam2(options);
