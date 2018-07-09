@@ -162,7 +162,7 @@ function setwebcam()
 				  if(device.label.toLowerCase().search("back") >-1)
 					options={'deviceId': {'exact':device.deviceId}, 'facingMode':'environment'} ;
                 }
-                options={'deviceId': {'exact':device.deviceId}, 'facingMode':'environment'} ;
+                options={'deviceId': {'exact':device.deviceId}, 'facingMode': { 'exact': 'environment' }} ;
 				console.log(device.kind + ": " + device.label +" id = " + device.deviceId);
 			  });
 			  setwebcam2(options);
