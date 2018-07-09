@@ -198,7 +198,7 @@ function setwebcam2(options)
     if(n.mediaDevices.getUserMedia)
     {
         options = { facingMode: 'user' };
-        alert(1);
+        console.log(1);
         n.mediaDevices.getUserMedia({video: options, audio: false}).
             then(function(stream){
                 success(stream);
@@ -209,18 +209,17 @@ function setwebcam2(options)
     else
     if(n.getUserMedia)
 	{
+        console.log(2);
 		webkit=true;
         n.getUserMedia({video: options, audio: false}, success, error);
 	}
     else
     if(n.webkitGetUserMedia)
     {
+        console.log(3);
         webkit=true;
         n.webkitGetUserMedia({video:options, audio: false}, success, error);
     }
-
-    document.getElementById("qrimg").style.opacity=0.2;
-    document.getElementById("webcamimg").style.opacity=1.0;
 
     stype=1;
     setTimeout(captureToCanvas, 500);
