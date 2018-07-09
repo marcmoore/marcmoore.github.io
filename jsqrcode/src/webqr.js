@@ -201,7 +201,7 @@ function setwebcam2(options)
 
     if(n.mediaDevices.getUserMedia)
     {
-        options = { facingMode: 'user' };
+        options = { facingMode: 'environment' };
         console.log(1);
         n.mediaDevices.getUserMedia({video: options, audio: false}).
             then(function(stream){
