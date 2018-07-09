@@ -114,6 +114,10 @@ function isCanvasSupported(){
   var elem = document.createElement('canvas');
   return !!(elem.getContext && elem.getContext('2d'));
 }
+
+function startPlayback(){
+    v.play();
+}
 function success(stream) 
 {
 
