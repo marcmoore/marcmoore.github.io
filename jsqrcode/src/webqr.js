@@ -197,7 +197,7 @@ function setwebcam2(options)
 
     if(n.mediaDevices.getUserMedia)
     {
-        options = { facingMode: "environment"};
+        options = { facingMode: { exact: 'environment' } };
         alert(1);
         n.mediaDevices.getUserMedia({video: options, audio: false}).
             then(function(stream){
