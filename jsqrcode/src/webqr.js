@@ -86,7 +86,7 @@ function captureToCanvas() {
                 qrcode.decode();
             }
             catch(e){       
-                console.log(e);
+                // console.log(e);
                 setTimeout(captureToCanvas, 500);
             };
         }
@@ -162,9 +162,10 @@ function setwebcam()
 				  if(device.label.toLowerCase().search("back") >-1)
 					options={'deviceId': {'exact':device.deviceId}, 'facingMode':'environment'} ;
                 }
-                options={'deviceId': {'exact':device.deviceId}, 'facingMode': { 'exact': 'environment' }} ;
+                //options={'deviceId': {'exact':device.deviceId}, 'facingMode': 'environment'};
 				console.log(device.kind + ": " + device.label +" id = " + device.deviceId);
-			  });
+              });
+              
 			  setwebcam2(options);
 			});
 		}
@@ -196,6 +197,7 @@ function setwebcam2(options)
 
     if(n.mediaDevices.getUserMedia)
     {
+        options = { facingMode: { exact: "environment" } };
         n.mediaDevices.getUserMedia({video: options, audio: false}).
             then(function(stream){
                 success(stream);
