@@ -24,8 +24,8 @@
 
 <style type="text/css">
 	#v{
-		width:320px;
-		height:240px;
+		width: 100%;
+		height: 480px;
 	}
 	#qr-canvas{
 		display:none;
@@ -33,21 +33,19 @@
 	#result{
 		border: solid;
 		border-width: 1px 1px 1px 1px;
-		padding:20px;
-		width:70%;
+		padding: 20px;
+		width: 100%;
+		box-sizing: border-box;
 	}
 	
 </style>
 	
 <body>
 	<div id="main">
-		<div id="mainbody" style="display: inline;">
-			<video id="v" autoplay="" preload="none" width="100%" webkit-playsinline="true" playsinline="true" controls="true"></video>
-			<div id="result">- scanning -</div>
-		</div>
+		<video id="v" autoplay="" preload="none" width="100%" webkit-playsinline="true" playsinline="true" controls="true"></video>
+		<div id="result">- scanning -</div>
 	</div>
 	<canvas id="qr-canvas" width="800" height="600" style="width: 800px; height: 600px;"></canvas>
-	<button onclick="startPlayback()">Start Playback</button>
 	<script type="text/javascript">load();</script>
 </body>
 
