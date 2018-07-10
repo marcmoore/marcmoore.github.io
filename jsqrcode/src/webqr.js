@@ -83,6 +83,7 @@ function captureToCanvas() {
         try{
             gCtx.drawImage(v,0,0);
             try{
+                console.log("haha");
                 qrcode.decode();
             }
             catch(e){       
