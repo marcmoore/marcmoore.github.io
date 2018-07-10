@@ -1,10 +1,7 @@
 <html>
 <head>
 <title>QRCODE</title>
-
-<style type="text/css">
-</style>
-
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
 
 <script type="text/javascript" src="jsqrcode/src/grid.js"></script>
 <script type="text/javascript" src="jsqrcode/src/version.js"></script>
@@ -26,71 +23,12 @@
 <script type="text/javascript" src="jsqrcode/src/webqr.js?t=1"></script>
 
 <style type="text/css">
-	body{
-		width:100%;
-		text-align:center;
-	}
-	img{
-		border:0;
-	}
-	#main{
-		margin: 15px auto;
-		background:white;
-		overflow: auto;
-		width: 100%;
-	}
-	#header{
-		background:white;
-		margin-bottom:15px;
-	}
-	#mainbody{
-		background: white;
-		width:100%;
-		display:none;
-	}
-	#footer{
-		background:white;
-	}
 	#v{
 		width:320px;
 		height:240px;
 	}
 	#qr-canvas{
 		display:none;
-	}
-	#qrfile{
-		width:320px;
-		height:240px;
-	}
-	#mp1{
-		text-align:center;
-		font-size:35px;
-	}
-	#imghelp{
-		position:relative;
-		left:0px;
-		top:-160px;
-		z-index:100;
-		font:18px arial,sans-serif;
-		background:#f0f0f0;
-		margin-left:35px;
-		margin-right:35px;
-		padding-top:10px;
-		padding-bottom:10px;
-		border-radius:20px;
-	}
-	.selector{
-		margin:0;
-		padding:0;
-		cursor:pointer;
-		margin-bottom:-5px;
-	}
-	#outdiv
-	{
-		width:320px;
-		height:240px;
-		border: solid;
-		border-width: 3px 3px 3px 3px;
 	}
 	#result{
 		border: solid;
@@ -99,53 +37,18 @@
 		width:70%;
 	}
 	
-	ul{
-		margin-bottom:0;
-		margin-right:40px;
-	}
-	li{
-		display:inline;
-		padding-right: 0.5em;
-		padding-left: 0.5em;
-		font-weight: bold;
-		border-right: 1px solid #333333;
-	}
-	li a{
-		text-decoration: none;
-		color: black;
-	}
+</style>
 	
-	#footer a{
-		color: black;
-	}
-	.tsel{
-		padding:0;
-	}
-	
-	</style>
-	
-	
-	<body style="">
+<body>
 	<div id="main">
-	<div id="header">
-	<div style="position:relative;top:+20px;left:0px;"><div id="___plusone_0" style="text-indent: 0px; margin: 0px; padding: 0px; background: transparent; border-style: none; float: none; line-height: normal; font-size: 1px; vertical-align: baseline; display: inline-block; width: 32px; height: 20px;"><iframe ng-non-bindable="" frameborder="0" hspace="0" marginheight="0" marginwidth="0" scrolling="no" style="position: static; top: 0px; width: 32px; margin: 0px; border-style: none; left: 0px; visibility: visible; height: 20px;" tabindex="0" vspace="0" width="100%" id="I0_1531126950359" name="I0_1531126950359" src="./Web QR_files/fastbutton.html" data-gapiattached="true" title="G+"></iframe></div></div>
-	<p id="mp1">
-	QR Code scanner
-	</p>
-	</div>
-	<div id="mainbody" style="display: inline;">
-	<div id="outdiv"><video id="v" autoplay="" preload="none" width="100%" webkit-playsinline="true" playsinline="true" controls="true"></video></div>
-	<div id="result">- scanning -</div>
-	</div>&nbsp;
-	<div id="footer">
-	<img style="position:relative;top:0px;left:0px;margin:0;padding:0;" src="./Web QR_files/comodo_secure_seal_100x85_transp.png">
-	<h5 align="center">Copyright © 2011 <a target="_blank" href="http://www.lazarsoft.info/">Lazar Laszlo</a></h5>
-	</div>
+		<div id="mainbody" style="display: inline;">
+			<video id="v" autoplay="" preload="none" width="100%" webkit-playsinline="true" playsinline="true" controls="true"></video>
+			<div id="result">- scanning -</div>
+		</div>
 	</div>
 	<canvas id="qr-canvas" width="800" height="600" style="width: 800px; height: 600px;"></canvas>
+	<button onclick="startPlayback()">Start Playback</button>
 	<script type="text/javascript">load();</script>
-
-	<button onclick="startPlayback()">Start Playback</button> 
 </body>
 
 </html>

@@ -195,7 +195,7 @@ function setwebcam2(options)
         return;
     }
     var n=navigator;
-    document.getElementById("outdiv").innerHTML = vidhtml;
+    // document.getElementById("outdiv").innerHTML = vidhtml;
     v=document.getElementById("v");
 
 
