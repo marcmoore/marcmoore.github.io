@@ -85,6 +85,7 @@ function captureToCanvas() {
             try{
                 console.log("haha");
                 qrcode.decode();
+                setTimeout(captureToCanvas, 500);
             }
             catch(e){       
                 // console.log(e);
