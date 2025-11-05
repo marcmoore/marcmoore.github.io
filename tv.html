@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>快捷启动</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css" integrity="sha512-SnH5WK+bZxgPHs44uWIX+LLJAJ9/2PkPKZ5QiAj6Ta86w+fsb2TkcmfRyVX3pBnMFcV7oQPJkl9QevSCWr3W6A==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <style>
+        /* 1. 全局和背景设置 */
+        html, body {
+            height: 100%;
+            margin: 0;
+            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+            overflow: hidden; /* 防止在触摸时意外滚动 */
+        }
+
+        body {
+            display: flex;
+            justify-content: center; /* 水平居中 */
+            align-items: center;   /* 垂直居中 */
+            
+            /* 新的深色渐变背景 */
+            background: linear-gradient(135deg, #1A0A2A 0%, #0A0A1A 100%); /* 从深紫蓝到更深的蓝黑 */
+            /* 您也可以尝试其他渐变方向和颜色，例如： */
+            /* background: linear-gradient(45deg, #0f0c29, #302b63, #24243e); */ /* 另外一种深色渐变 */
+            /* background: linear-gradient(to right, #1a0a3a, #0a0a2a); */ /* 左右渐变 */
+        }
+
+        /* 2. 按钮容器（为了未来的扩展） */
+        .button-container {
+            display: flex;
+            flex-wrap: wrap; /* 如果按钮太多，允许它们换行 */
+            justify-content: center; /* 确保换行后按钮仍然居中 */
+            gap: 50px; /* 按钮之间的间距 */
+            padding: 20px; /* 边缘的内边距 */
+        }
+
+        /* 3. 单个图标按钮样式 */
+        .icon-button {
+            width: 180px;  /* 足够大的触摸区域 */
+            height: 180px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            
+            /* 科技感 "玻璃拟态" 效果 */
+            background: rgba(40, 40, 60, 0.75); /* 半透明深紫色 */
+            backdrop-filter: blur(8px); /* 关键的毛玻璃效果 */
+            border-radius: 35px; /* 圆角矩形（Squircle） */
+            border: 2px solid rgba(0, 255, 255, 0.3); /* 默认的青色辉光边框 */
+            
+            text-decoration: none; /* 移除链接下划线 */
+            color: #E0FFFF; /* 图标颜色改为亮青色 */
+            transition: all 0.2s cubic-bezier(0.25, 0.8, 0.25, 1); /* 平滑的过渡动画 */
+            
+            /* 防止触摸屏上的默认点击高亮（例如iOS上的灰色框） */
+            -webkit-tap-highlight-color: transparent;
+        }
+
+        /* 4. 按钮内的图标样式 (Font Awesome) */
+        .icon-button i {
+            font-size: 100px; /* 图标大小 */
+            line-height: 1; /* 确保垂直居中 */
+        }
+
+        /* 5. 交互效果（适用于鼠标悬停和触摸屏） */
+        
+        /* 鼠标悬停或键盘聚焦时 */
+        .icon-button:hover,
+        .icon-button:focus {
+            transform: scale(1.05) translateY(-8px); /* 轻微上浮和放大 */
+            border-color: rgba(0, 255, 255, 0.8); /* 边框变亮 */
+            box-shadow: 0 10px 30px rgba(0, 255, 255, 0.2); /* 增加辉光 */
+            outline: none; /* 移除默认的聚焦轮廓 */
+        }
+
+        /* 触摸屏点击时 (或鼠标按下时) */
+        .icon-button:active {
+            transform: scale(0.95); /* 按下时的缩小效果 */
+            background: rgba(60, 60, 80, 0.9); /* 按下时颜色加深 */
+            transition-duration: 0.1s; /* 按下反馈要快 */
+        }
+
+    </style>
+</head>
+<body>
+
+    <div class="button-container">
+
+        <a href="https://v.qq.com/search_redirect.html?url=https%3A%2F%2Fwww.1905.com%2Fapi%2Fredirec.html%3Fredirect_url%3Dhttps%253A%252F%252Fyoutube.com%253Fwww.1905.com" class="icon-button" aria-label="跳转到YouTube">
+            <i class="fab fa-youtube"></i> </a>
+
+        <a href="https://v.qq.com/search_redirect.html?url=https%3A%2F%2Fwww.1905.com%2Fapi%2Fredirec.html%3Fredirect_url%3Dhttps%253A%252F%252Fhbomax.com%253Fwww.1905.com" class="icon-button" aria-label="跳转到Max">
+            <i class="fas fa-tv"></i> </a>
+
+    </div>
+
+</body>
+</html>
