@@ -4,104 +4,161 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>快捷启动</title>
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css" integrity="sha512-SnH5WK+bZxgPHs44uWIX+LLJAJ9/2PkPKZ5QiAj6Ta86w+fsb2TkcmfRyVX3pBnMFcV7oQPJkl9QevSCWr3W6A==" crossorigin="anonymous" referrerpolicy="no-referrer" />
     <style>
-        /* 1. 全局和背景设置 */
+        /* 1. 全局和基础设置 */
         html, body {
             height: 100%;
             margin: 0;
             font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
-            overflow: hidden; /* 防止在触摸时意外滚动 */
+            overflow: hidden; 
+            -webkit-tap-highlight-color: transparent;
         }
 
         body {
             display: flex;
-            justify-content: center; /* 水平居中 */
-            align-items: center;   /* 垂直居中 */
-            
-            /* 新的深色渐变背景 */
-            background: linear-gradient(135deg, #1A0A2A 0%, #0A0A1A 100%); /* 从深紫蓝到更深的蓝黑 */
-            /* 您也可以尝试其他渐变方向和颜色，例如： */
-            /* background: linear-gradient(45deg, #0f0c29, #302b63, #24243e); */ /* 另外一种深色渐变 */
-            /* background: linear-gradient(to right, #1a0a3a, #0a0a2a); */ /* 左右渐变 */
+            justify-content: center; 
+            align-items: center;   
+            position: relative; 
+            background-color: #0d011a; 
         }
 
-        /* 2. 按钮容器（为了未来的扩展） */
+        /* 2. 大面积彩色变换背景 (保持不变) */
+        body::before {
+            content: '';
+            position: absolute;
+            width: 350%; 
+            height: 350%;
+            top: -125%; 
+            left: -125%; 
+            background: 
+                radial-gradient(circle at 10% 10%, #7d26c9 0%, transparent 40%),
+                radial-gradient(circle at 70% 20%, #ff1493 0%, transparent 40%),
+                radial-gradient(circle at 30% 80%, #00bfff 0%, transparent 40%),
+                radial-gradient(circle at 90% 90%, #32cd32 0%, transparent 40%),
+                radial-gradient(circle at 50% 50%, #ffd700 0%, transparent 40%);
+            background-size: 35% 35%; 
+            background-repeat: no-repeat;
+            opacity: 0.25; 
+            animation: flowingColors 40s infinite alternate ease-in-out; 
+            z-index: -1; 
+            mix-blend-mode: screen; 
+        }
+
+        @keyframes flowingColors {
+            0%   { transform: translate(0, 0) scale(1); opacity: 0.25; filter: blur(150px) hue-rotate(0deg); background-position: 0% 0%, 70% 20%, 30% 80%, 90% 90%, 50% 50%; }
+            20%  { transform: translate(20px, -30px) scale(1.05); opacity: 0.3; filter: blur(150px) hue-rotate(72deg); background-position: 10% 10%, 80% 30%, 40% 70%, 100% 80%, 60% 60%; }
+            40%  { transform: translate(-40px, 10px) scale(1); opacity: 0.25; filter: blur(150px) hue-rotate(144deg); background-position: -10% -10%, 60% 10%, 20% 90%, 80% 100%, 40% 40%; }
+            60%  { transform: translate(30px, 40px) scale(1.05); opacity: 0.3; filter: blur(150px) hue-rotate(216deg); background-position: 5% 5%, 75% 15%, 35% 85%, 95% 95%, 55% 55%; }
+            80%  { transform: translate(-10px, -20px) scale(1); opacity: 0.25; filter: blur(150px) hue-rotate(288deg); background-position: 15% 15%, 65% 25%, 25% 75%, 85% 85%, 45% 45%; }
+            100% { transform: translate(0, 0) scale(1); opacity: 0.25; filter: blur(150px) hue-rotate(360deg); background-position: 0% 0%, 70% 20%, 30% 80%, 90% 90%, 50% 50%; }
+        }
+
+        /* --- 2.5. 新增：顶部首页按钮 --- */
+        .home-button {
+            position: absolute;
+            top: 30px; /* 距离顶部 30px */
+            left: 50%; /* 水平居中 */
+            transform: translateX(-50%); /* 精确居中 */
+            
+            width: 48px;
+            height: 48px;
+            
+            /* 关键：羽化边缘效果 */
+            background: radial-gradient(
+                circle, 
+                rgba(10, 10, 10, 0.7) 40%,  /* 中心是 70% 透明的深黑色 */
+                transparent 70%             /* 边缘 70% 处开始完全透明 */
+            );
+            
+            border-radius: 50%; /* 确保是圆形 */
+            z-index: 10; /* 确保在其他内容之上 */
+            
+            /* 触摸反馈 */
+            transition: transform 0.15s ease, background 0.15s ease;
+        }
+
+        /* 顶部按钮的触摸效果 */
+        .home-button:active {
+            transform: translateX(-50%) scale(0.90); /* 按下时缩小 */
+            background: radial-gradient(
+                circle, 
+                rgba(0, 0, 0, 0.8) 40%,  /* 按下时颜色更深 */
+                transparent 70%
+            );
+        }
+        /* -------------------------- */
+        
+        /* 3. 按钮容器 */
         .button-container {
             display: flex;
-            flex-wrap: wrap; /* 如果按钮太多，允许它们换行 */
-            justify-content: center; /* 确保换行后按钮仍然居中 */
-            gap: 50px; /* 按钮之间的间距 */
-            padding: 20px; /* 边缘的内边距 */
+            flex-wrap: wrap; 
+            justify-content: center; 
+            gap: 50px; 
+            padding: 20px; 
+            z-index: 1; 
+            max-width: 800px; 
         }
 
-        /* 3. 单个图标按钮样式 */
+        /* 4. "黑灰玻璃" 按钮样式 */
         .icon-button {
-            width: 180px;  /* 足够大的触摸区域 */
+            width: 180px;  
             height: 180px;
             display: flex;
             justify-content: center;
             align-items: center;
-            
-            /* 科技感 "玻璃拟态" 效果 */
-            background: rgba(40, 40, 60, 0.75); /* 半透明深紫色 */
-            backdrop-filter: blur(8px); /* 关键的毛玻璃效果 */
-            border-radius: 35px; /* 圆角矩形（Squircle） */
-            border: 2px solid rgba(0, 255, 255, 0.3); /* 默认的青色辉光边框 */
-            
-            text-decoration: none; /* 移除链接下划线 */
-            color: #E0FFFF; /* 图标颜色改为亮青色 */
-            transition: all 0.2s cubic-bezier(0.25, 0.8, 0.25, 1); /* 平滑的过渡动画 */
-            
-            /* 防止触摸屏上的默认点击高亮（例如iOS上的灰色框） */
-            -webkit-tap-highlight-color: transparent;
+            background: rgba(20, 20, 20, 0.4); 
+            backdrop-filter: blur(12px); 
+            border-radius: 35px; 
+            border: 1px solid rgba(100, 100, 100, 0.3); 
+            box-shadow: 0 8px 20px 0 rgba(0, 0, 0, 0.4);
+            text-decoration: none; 
+            color: #FFFFFF;
+            transition: all 0.2s cubic-bezier(0.25, 0.8, 0.25, 1); 
         }
 
-        /* 4. 按钮内的图标样式 (Font Awesome) */
-        .icon-button i {
-            font-size: 100px; /* 图标大小 */
-            line-height: 1; /* 确保垂直居中 */
-        }
-
-        /* 5. 交互效果（适用于鼠标悬停和触摸屏） */
-        
-        /* 鼠标悬停或键盘聚焦时 */
-        .icon-button:hover,
-        .icon-button:focus {
-            transform: scale(1.05) translateY(-8px); /* 轻微上浮和放大 */
-            border-color: rgba(0, 255, 255, 0.8); /* 边框变亮 */
-            box-shadow: 0 10px 30px rgba(0, 255, 255, 0.2); /* 增加辉光 */
-            outline: none; /* 移除默认的聚焦轮廓 */
-        }
-
-        /* 触摸屏点击时 (或鼠标按下时) */
-        .icon-button:active {
-            transform: scale(0.95); /* 按下时的缩小效果 */
-            background: rgba(60, 60, 80, 0.9); /* 按下时颜色加深 */
-            transition-duration: 0.1s; /* 按下反馈要快 */
-        }
-
+        /* 5. IMG 标签的样式 */
         .icon-button img {
-            display: block;
-            width: 100px; /* 图标大小 */
+            width: 100px;  
+            height: 100px; 
+            object-fit: contain; 
+            padding: 10px; 
+            box-sizing: border-box; 
+            -webkit-user-drag: none;
+            user-select: none;
         }
 
+        /* 6. 触摸效果 */
+        .icon-button:active {
+            transform: scale(0.95); 
+            background: rgba(40, 40, 40, 0.5); 
+            border-color: rgba(150, 150, 150, 0.4); 
+            box-shadow: 0 4px 15px 0 rgba(0, 0, 0, 0.3); 
+            transition-duration: 0.1s; 
+        }
     </style>
 </head>
 <body>
 
-    <div class="button-container">
+    <a href="https://v.qq.com/search_redirect.html?url=https%3A%2F%2Fwww.1905.com%2Fapi%2Fredirec.html%3Fredirect_url%3Dhttps%253A%252F%252Fmarcmoore.github.io%253Fwww.1905.com" class="home-button" aria-label="返回首页"></a>
 
+
+    <div class="button-container">
         <a href="https://v.qq.com/search_redirect.html?url=https%3A%2F%2Fwww.1905.com%2Fapi%2Fredirec.html%3Fredirect_url%3Dhttps%253A%252F%252Fyoutube.com%253Fwww.1905.com" class="icon-button" aria-label="跳转到YouTube">
-            <img src="tv-assets/youtube.png" alt="" /> </a>
+            <img src="tv-assets/youtube.svg" alt="" /> </a>
 
         <a href="https://v.qq.com/search_redirect.html?url=https%3A%2F%2Fwww.1905.com%2Fapi%2Fredirec.html%3Fredirect_url%3Dhttps%253A%252F%252Fhbomax.com%253Fwww.1905.com" class="icon-button" aria-label="跳转到Max">
-            <img src="tv-assets/hbomax.svg" alt="" /> </a>
+            <img src="tv-assets/hbo.svg" alt="" /> </a>
 
-        <a href="https://v.qq.com/search_redirect.html?url=https%3A%2F%2Fwww.1905.com%2Fapi%2Fredirec.html%3Fredirect_url%3Dhttp%253A%252F%252F47.237.5.17%3A3000%253Fwww.1905.com" class="icon-button" aria-label="跳转到Max">
+        <a href="https://v.qq.com/search_redirect.html?url=https%3A%2F%2Fwww.1905.com%2Fapi%2Fredirec.html%3Fredirect_url%3Dhttps%253A%252F%252Fnetflix.com%253Fwww.1905.com" class="icon-button" aria-label="跳转到netflix">
+            <img src="tv-assets/netflix.svg" alt="" /> </a>
+
+        <a href="https://v.qq.com/search_redirect.html?url=https%3A%2F%2Fwww.1905.com%2Fapi%2Fredirec.html%3Fredirect_url%3Dhttps%253A%252F%252Fdisneyplus.com%253Fwww.1905.com" class="icon-button" aria-label="跳转到disney">
+            <img src="tv-assets/disney.svg" alt="" /> </a>
+
+        <a href="https://v.qq.com/search_redirect.html?url=https%3A%2F%2Fwww.1905.com%2Fapi%2Fredirec.html%3Fredirect_url%3Dhttps%253A%252F%252F47.237.5.17%3A3000%253Fwww.1905.com" class="icon-button" aria-label="跳转到openstock">
             <img src="tv-assets/openstock.jpg" alt="" /> </a>
-
     </div>
 
 </body>
 </html>
+
