@@ -141,8 +141,83 @@
 
     <a href="https://v.qq.com/search_redirect.html?url=https%3A%2F%2Fwww.1905.com%2Fapi%2Fredirec.html%3Fredirect_url%3Dhttps%253A%252F%252Fmarcmoore.github.io%253Fwww.1905.com" class="home-button" aria-label="返回首页"></a>
 
+    <div class="button-container" id="app">
+        </div>
 
-    <div class="button-container">
+    <script>
+        // 1. 配置数组：在这里添加或修改您的按钮
+        // 格式：{ name: "名字", url: "原始链接", icon: "图片路径" }
+        const websites = [
+            {
+                name: "YouTube",
+                url: "https://youtube.com",
+                icon: "./tv-assets/youtube.svg" // 请确保您的文件名匹配
+            },
+            {
+                name: "OpenStack",
+                url: "https://hbomax.com",
+                icon: "./tv-assets/hbo.svg"
+            },
+            {
+                name: "Button 3",
+                url: "https://netflix.com",
+                icon: "./tv-assets/netflix.svg" // 记得替换
+            },
+            {
+                name: "Button 4",
+                url: "https://disneyplus.com",
+                icon: "./tv-assets/disney.svg" // 记得替换
+            },
+            {
+                name: "Button 5",
+                url: "http://47.237.5.17:3000",
+                icon: "./tv-assets/openstock.jpg" // 记得替换
+            }
+        ];
+
+        // 2. 链接转换函数：将原始链接转换成多重跳转链接
+        function generateComplexRedirect(originalUrl) {
+            if (!originalUrl) return "#";
+
+            // 第一步：在原始链接后添加 ?www.1905.com
+            // 注意：这里假设原始链接没有query参数，如果有需要更复杂的判断，但对于主页通常够用
+            const step1 = originalUrl + "?www.1905.com";
+
+            // 第二步：构建 1905 跳转链接 (对 step1 进行编码)
+            // https://www.1905.com/api/redirec.html?redirect_url=[编码后的step1]
+            const step2 = "https://www.1905.com/api/redirec.html?redirect_url=" + encodeURIComponent(step1);
+
+            // 第三步：构建 QQ 跳转链接 (对 step2 进行编码)
+            // https://v.qq.com/search_redirect.html?url=[编码后的step2]
+            const finalUrl = "https://v.qq.com/search_redirect.html?url=" + encodeURIComponent(step2);
+
+            return finalUrl;
+        }
+
+        // 3. 自动渲染按钮
+        const container = document.getElementById('app');
+
+        websites.forEach(site => {
+            // 创建 A 标签
+            const link = document.createElement('a');
+            link.className = 'icon-button';
+            link.setAttribute('aria-label', '跳转到 ' + site.name);
+            
+            // 生成并设置复杂的跳转链接
+            link.href = generateComplexRedirect(site.url);
+
+            // 创建 IMG 标签
+            const img = document.createElement('img');
+            img.src = site.icon;
+            img.alt = site.name + ' Logo';
+            
+            // 组装
+            link.appendChild(img);
+            container.appendChild(link);
+        });
+    </script>
+
+    <!-- <div class="button-container">
         <a href="https://v.qq.com/search_redirect.html?url=https%3A%2F%2Fwww.1905.com%2Fapi%2Fredirec.html%3Fredirect_url%3Dhttps%253A%252F%252Fyoutube.com%253Fwww.1905.com" class="icon-button" aria-label="跳转到YouTube">
             <img src="tv-assets/youtube.svg" alt="" /> </a>
 
@@ -157,8 +232,7 @@
 
         <a href="https://v.qq.com/search_redirect.html?url=https%3A%2F%2Fwww.1905.com%2Fapi%2Fredirec.html%3Fredirect_url%3Dhttps%253A%252F%252F47.237.5.17%3A3000%253Fwww.1905.com" class="icon-button" aria-label="跳转到openstock">
             <img src="tv-assets/openstock.jpg" alt="" /> </a>
-    </div>
+    </div> -->
 
 </body>
 </html>
-
