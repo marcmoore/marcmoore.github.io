@@ -18,10 +18,14 @@
 
         body {
             display: flex;
-            justify-content: center;
-            align-items: center;
+            flex-direction: row;
+            width: 100vw;
+            height: 100vh;
+            margin: 0;
+            padding: 0;
             position: relative;
             background-color: #0d011a;
+            overflow: hidden;
         }
 
         /* 2. 大面积彩色变换背景 (保持不变) */
@@ -92,16 +96,9 @@
 
         /* --- 2.5. 新增：顶部首页按钮 --- */
         .home-button {
-            position: absolute;
-            top: 30px;
-            /* 距离顶部 30px */
-            left: 50%;
-            /* 水平居中 */
-            transform: translateX(-50%);
-            /* 精确居中 */
-
             width: 48px;
             height: 48px;
+            flex-shrink: 0;
 
             /* 关键：羽化边缘效果 */
             background: radial-gradient(circle,
@@ -118,11 +115,14 @@
 
             /* 触摸反馈 */
             transition: transform 0.15s ease, background 0.15s ease;
+
+            /* Layout in sidebar */
+            margin-bottom: 10px;
         }
 
         /* 顶部按钮的触摸效果 */
         .home-button:active {
-            transform: translateX(-50%) scale(0.90);
+            transform: scale(0.90);
             /* 按下时缩小 */
             background: radial-gradient(circle,
                     rgba(0, 0, 0, 0.8) 40%,
@@ -132,21 +132,148 @@
 
         /* -------------------------- */
 
+        /* Layout Panels */
+        .left-panel {
+            width: 25%;
+            height: 100%;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: flex-start;
+            padding-top: 30px;
+            background: rgba(0, 0, 0, 0.2);
+            border-right: 1px solid rgba(255, 255, 255, 0.1);
+            backdrop-filter: blur(10px);
+            z-index: 2;
+            position: relative;
+            box-sizing: border-box;
+            overflow-y: auto;
+
+            /* Enable vertical scrolling */
+            /* Hide scrollbar for Chrome/Safari/Opera */
+            &::-webkit-scrollbar {
+                display: none;
+            }
+
+            /* Hide scrollbar for IE, Edge and Firefox */
+            -ms-overflow-style: none;
+            /* IE and Edge */
+            scrollbar-width: none;
+            /* Firefox */
+        }
+
+        .right-panel {
+            width: 75%;
+            height: 100%;
+            position: relative;
+            z-index: 1;
+            overflow-y: auto;
+            /* Scrollable for many widgets */
+        }
+
+        /* Widget Grid Layout */
+        .widget-grid {
+            display: grid;
+            /* Responsive columns: min 300px allows 2 columns on iPad landscape (approx 768px wide right panel) */
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 24px;
+            padding: 30px;
+            box-sizing: border-box;
+            width: 100%;
+        }
+
+        /* Widget Card Styling */
+        .widget-card {
+            width: 100%;
+            aspect-ratio: 1.618 / 1;
+            /* Golden Ratio */
+            background: rgba(20, 20, 20, 0.6);
+            backdrop-filter: blur(16px);
+            border-radius: 24px;
+            border: 1px solid rgba(255, 255, 255, 0.08);
+            box-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.3);
+            display: flex;
+            flex-direction: column;
+            overflow: hidden;
+            transition: transform 0.2s ease, box-shadow 0.2s ease;
+        }
+
+        .widget-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 12px 40px 0 rgba(0, 0, 0, 0.5);
+            border-color: rgba(255, 255, 255, 0.15);
+        }
+
+        /* Widget Header */
+        .widget-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 15px 20px;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+            background: rgba(255, 255, 255, 0.02);
+        }
+
+        .widget-title {
+            color: #fff;
+            font-size: 16px;
+            font-weight: 600;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        /* Stock Tabs */
+        .stock-tabs {
+            display: flex;
+            gap: 5px;
+            background: rgba(0, 0, 0, 0.3);
+            padding: 3px;
+            border-radius: 8px;
+        }
+
+        .stock-tab {
+            padding: 4px 12px;
+            font-size: 12px;
+            color: rgba(255, 255, 255, 0.6);
+            cursor: pointer;
+            border-radius: 6px;
+            transition: all 0.2s;
+        }
+
+        .stock-tab.active {
+            background: rgba(255, 255, 255, 0.15);
+            color: #fff;
+            font-weight: 500;
+        }
+
+        /* Chart Container */
+        .chart-container {
+            flex: 1;
+            width: 100%;
+            position: relative;
+        }
+
         /* 3. 按钮容器 */
         .button-container {
             display: flex;
-            flex-wrap: wrap;
-            justify-content: center;
-            gap: 50px;
+            flex-direction: column;
+            justify-content: flex-start;
+            /* Prevent top clipping when scrolling */
+            align-items: center;
+            gap: 30px;
             padding: 20px;
-            z-index: 1;
-            max-width: 800px;
+            width: 100%;
+            /* Allow container to grow with content */
+            flex-shrink: 0;
+            box-sizing: border-box;
         }
 
         /* 4. "黑灰玻璃" 按钮样式 */
         .icon-button {
-            width: 180px;
-            height: 180px;
+            width: 140px;
+            height: 140px;
+            flex-shrink: 0;
             display: flex;
             justify-content: center;
             align-items: center;
@@ -162,8 +289,8 @@
 
         /* 5. IMG 标签的样式 */
         .icon-button img {
-            width: 100px;
-            height: 100px;
+            width: 80px;
+            height: 80px;
             object-fit: contain;
             padding: 10px;
             box-sizing: border-box;
@@ -180,14 +307,50 @@
             transition-duration: 0.1s;
         }
     </style>
+    <script src="https://unpkg.com/lightweight-charts/dist/lightweight-charts.standalone.production.js"></script>
 </head>
 
 <body>
 
-    <a href="https://v.qq.com/search_redirect.html?url=https%3A%2F%2Fwww.1905.com%2Fapi%2Fredirec.html%3Fredirect_url%3Dhttps%253A%252F%252Fmarcmoore.github.io%252Ftv%253Fwww.1905.com"
-        class="home-button" aria-label="返回首页"></a>
+    <div class="left-panel">
+        <a href="https://v.qq.com/search_redirect.html?url=https%3A%2F%2Fwww.1905.com%2Fapi%2Fredirec.html%3Fredirect_url%3Dhttps%253A%252F%252Fmarcmoore.github.io%252Ftv%253Fwww.1905.com"
+            class="home-button" aria-label="返回首页"></a>
+        <div class="button-container" id="app">
+        </div>
+    </div>
 
-    <div class="button-container" id="app">
+    <div class="right-panel">
+        <div class="widget-grid">
+            <!-- Widget 1: US Stock Market -->
+            <div class="widget-card">
+                <div class="widget-header">
+                    <div class="widget-title">
+                        <span>📈</span> US Market
+                    </div>
+                    <div class="stock-tabs">
+                        <div class="stock-tab active" onclick="switchStock('DJI')">Dow Jones</div>
+                        <div class="stock-tab" onclick="switchStock('SPX')">S&P 500</div>
+                        <div class="stock-tab" onclick="switchStock('NDX')">Nasdaq</div>
+                    </div>
+                </div>
+                <div class="chart-container" id="stockChart"></div>
+            </div>
+
+            <!-- Widget 2: Crypto Market -->
+            <div class="widget-card">
+                <div class="widget-header">
+                    <div class="widget-title">
+                        <span>🪙</span> Crypto
+                    </div>
+                    <div class="stock-tabs">
+                        <div class="stock-tab active" onclick="switchCrypto('BTC')">BTC</div>
+                        <div class="stock-tab" onclick="switchCrypto('ETH')">ETH</div>
+                        <div class="stock-tab" onclick="switchCrypto('SOL')">SOL</div>
+                    </div>
+                </div>
+                <div class="chart-container" id="cryptoChart"></div>
+            </div>
+        </div>
     </div>
 
     <script>
@@ -261,6 +424,276 @@
             link.appendChild(img);
             container.appendChild(link);
         });
+
+        // --- 4. Stock Widget Logic ---
+        let chart;
+        let candleSeries;
+        let currentSymbol = '^DJI'; // Yahoo Finance symbols: ^DJI, ^GSPC, ^IXIC
+
+        // Initialize Chart
+        function initChart() {
+            const chartContainer = document.getElementById('stockChart');
+
+            chart = LightweightCharts.createChart(chartContainer, {
+                layout: {
+                    background: { type: 'solid', color: 'transparent' },
+                    textColor: 'rgba(255, 255, 255, 0.9)',
+                },
+                grid: {
+                    vertLines: { color: 'rgba(255, 255, 255, 0.05)' },
+                    horzLines: { color: 'rgba(255, 255, 255, 0.05)' },
+                },
+                rightPriceScale: {
+                    borderColor: 'rgba(255, 255, 255, 0.1)',
+                },
+                timeScale: {
+                    borderColor: 'rgba(255, 255, 255, 0.1)',
+                },
+                crosshair: {
+                    mode: LightweightCharts.CrosshairMode.Normal,
+                },
+            });
+
+            candleSeries = chart.addCandlestickSeries({
+                upColor: '#26a69a',
+                downColor: '#ef5350',
+                borderVisible: false,
+                wickUpColor: '#26a69a',
+                wickDownColor: '#ef5350',
+            });
+
+            // Handle Resize
+            new ResizeObserver(entries => {
+                if (entries.length === 0 || entries[0].target !== chartContainer) { return; }
+                const newRect = entries[0].contentRect;
+                chart.applyOptions({ width: newRect.width, height: newRect.height });
+            }).observe(chartContainer);
+
+            // Load initial data
+            loadStockData('^DJI');
+        }
+
+        // Fetch Real Data from Yahoo Finance via CORS Proxy
+        async function fetchStockData(symbol) {
+            // Using allorigins.win as a more reliable proxy for local development
+            const targetUrl = `https://query1.finance.yahoo.com/v8/finance/chart/${symbol}?interval=1d&range=3mo`;
+            const proxyUrl = 'https://api.allorigins.win/raw?url=' + encodeURIComponent(targetUrl);
+
+            try {
+                console.log(`Fetching stock data for ${symbol}...`);
+                const response = await fetch(proxyUrl);
+                if (!response.ok) throw new Error(`HTTP error! status: ${response.status}`);
+
+                const json = await response.json();
+                if (!json.chart || !json.chart.result || json.chart.result.length === 0) {
+                    throw new Error('Invalid API response structure');
+                }
+
+                const result = json.chart.result[0];
+                const timestamps = result.timestamp;
+                const quotes = result.indicators.quote[0];
+
+                const data = [];
+                for (let i = 0; i < timestamps.length; i++) {
+                    if (!quotes.open[i] || !quotes.high[i] || !quotes.low[i] || !quotes.close[i]) continue;
+
+                    // Convert Unix timestamp to YYYY-MM-DD string to avoid timezone issues
+                    const date = new Date(timestamps[i] * 1000);
+                    const timeString = date.toISOString().split('T')[0];
+
+                    data.push({
+                        time: timeString,
+                        open: Number(quotes.open[i].toFixed(2)),
+                        high: Number(quotes.high[i].toFixed(2)),
+                        low: Number(quotes.low[i].toFixed(2)),
+                        close: Number(quotes.close[i].toFixed(2))
+                    });
+                }
+                console.log(`Loaded ${data.length} stock candles for ${symbol}`);
+                return data;
+            } catch (error) {
+                console.warn('Error fetching stock data, falling back to mock data:', error);
+                return null;
+            }
+        }
+
+        // Mock Data Generator (Fallback)
+        function generateMockData(basePrice, volatility) {
+            const data = [];
+            let time = new Date();
+            time.setMonth(time.getMonth() - 3);
+
+            for (let i = 0; i < 90; i++) {
+                time.setDate(time.getDate() + 1);
+                if (time.getDay() === 0 || time.getDay() === 6) continue;
+
+                const open = basePrice + (Math.random() - 0.5) * volatility;
+                const high = open + Math.random() * volatility;
+                const low = open - Math.random() * volatility;
+                const close = (open + high + low) / 3 + (Math.random() - 0.5) * volatility;
+
+                data.push({
+                    time: time.toISOString().split('T')[0],
+                    open: open,
+                    high: high,
+                    low: low,
+                    close: close,
+                });
+                basePrice = close;
+            }
+            return data;
+        }
+
+        async function loadStockData(symbol) {
+            let data = await fetchStockData(symbol);
+
+            // Fallback if API fails
+            if (!data || data.length === 0) {
+                const basePrice = symbol === '^DJI' ? 34000 : (symbol === '^GSPC' ? 4400 : 15000);
+                data = generateMockData(basePrice, basePrice * 0.015);
+            }
+
+            if (data && data.length > 0) {
+                candleSeries.setData(data);
+                chart.timeScale().fitContent();
+            }
+        }
+
+        function switchStock(symbol) {
+            // Map UI keys to Yahoo Symbols
+            const map = {
+                'DJI': '^DJI',
+                'SPX': '^GSPC',
+                'NDX': '^IXIC'
+            };
+            const yahooSymbol = map[symbol] || symbol;
+            currentSymbol = yahooSymbol;
+
+            // Update UI
+            document.querySelectorAll('.stock-tab').forEach(el => {
+                el.classList.remove('active');
+                // Simple check to highlight correct tab
+                if (el.getAttribute('onclick').includes(symbol)) {
+                    el.classList.add('active');
+                }
+            });
+
+            loadStockData(yahooSymbol);
+        }
+
+        // Start
+        initChart();
+
+        // --- 5. Crypto Widget Logic ---
+        let cryptoChart;
+        let cryptoSeries;
+        let currentCrypto = 'bitcoin';
+
+        function initCryptoChart() {
+            const chartContainer = document.getElementById('cryptoChart');
+
+            cryptoChart = LightweightCharts.createChart(chartContainer, {
+                layout: {
+                    background: { type: 'solid', color: 'transparent' },
+                    textColor: 'rgba(255, 255, 255, 0.9)',
+                },
+                grid: {
+                    vertLines: { color: 'rgba(255, 255, 255, 0.05)' },
+                    horzLines: { color: 'rgba(255, 255, 255, 0.05)' },
+                },
+                rightPriceScale: {
+                    borderColor: 'rgba(255, 255, 255, 0.1)',
+                },
+                timeScale: {
+                    borderColor: 'rgba(255, 255, 255, 0.1)',
+                },
+                crosshair: {
+                    mode: LightweightCharts.CrosshairMode.Normal,
+                },
+            });
+
+            cryptoSeries = cryptoChart.addCandlestickSeries({
+                upColor: '#26a69a',
+                downColor: '#ef5350',
+                borderVisible: false,
+                wickUpColor: '#26a69a',
+                wickDownColor: '#ef5350',
+            });
+
+            new ResizeObserver(entries => {
+                if (entries.length === 0 || entries[0].target !== chartContainer) { return; }
+                const newRect = entries[0].contentRect;
+                cryptoChart.applyOptions({ width: newRect.width, height: newRect.height });
+            }).observe(chartContainer);
+
+            loadCryptoData('bitcoin');
+        }
+
+        // Fetch Real Crypto Data from Binance (More reliable, no proxy needed usually)
+        async function fetchCryptoData(symbol) {
+            // Binance API: https://api.binance.com/api/v3/klines
+            // Symbol mapping: BTC -> BTCUSDT
+            const pair = symbol.toUpperCase() + 'USDT';
+            const url = `https://api.binance.com/api/v3/klines?symbol=${pair}&interval=1d&limit=90`;
+
+            try {
+                console.log(`Fetching crypto data for ${pair}...`);
+                const response = await fetch(url);
+                if (!response.ok) throw new Error(`HTTP error! status: ${response.status}`);
+
+                const data = await response.json();
+
+                // Binance format: [ [open_time, open, high, low, close, volume, ...], ... ]
+                return data.map(item => {
+                    const date = new Date(item[0]);
+                    const timeString = date.toISOString().split('T')[0];
+                    return {
+                        time: timeString,
+                        open: parseFloat(item[1]),
+                        high: parseFloat(item[2]),
+                        low: parseFloat(item[3]),
+                        close: parseFloat(item[4])
+                    };
+                });
+            } catch (error) {
+                console.warn('Error fetching crypto data, falling back to mock data:', error);
+                return null;
+            }
+        }
+
+        async function loadCryptoData(symbol) {
+            // Map UI symbols to Binance Symbols (BTC, ETH, SOL are already correct prefixes)
+            let data = await fetchCryptoData(symbol);
+
+            // Fallback if API fails
+            if (!data || data.length === 0) {
+                console.log('Using mock crypto data');
+                const basePrice = symbol === 'BTC' ? 65000 : (symbol === 'ETH' ? 3500 : 140);
+                data = generateMockData(basePrice, basePrice * 0.04);
+            }
+
+            if (data && data.length > 0) {
+                cryptoSeries.setData(data);
+                cryptoChart.timeScale().fitContent();
+            }
+        }
+
+        function switchCrypto(symbol) {
+            currentCrypto = symbol;
+
+            // Update UI (Scoped to this widget's tabs)
+            const tabs = document.getElementById('cryptoChart').parentElement.querySelectorAll('.stock-tab');
+            tabs.forEach(el => {
+                el.classList.remove('active');
+                if (el.textContent === symbol) {
+                    el.classList.add('active');
+                }
+            });
+
+            loadCryptoData(symbol);
+        }
+
+        initCryptoChart();
     </script>
 
     <!-- <div class="button-container">
