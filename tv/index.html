@@ -94,75 +94,133 @@
             }
         }
 
-        /* --- 2.5. 新增：顶部首页按钮 --- */
+        /* Rotating Border Animation */
+        @keyframes rotate-border {
+            0% {
+                transform: rotate(0deg);
+            }
+
+            100% {
+                transform: rotate(360deg);
+            }
+        }
+
+        /* Home Button (Dark with Colorful Rotating Border) */
         .home-button {
             width: 48px;
             height: 48px;
             flex-shrink: 0;
-
-            /* 关键：羽化边缘效果 */
-            background: radial-gradient(circle,
-                    rgba(10, 10, 10, 0.7) 40%,
-                    /* 中心是 70% 透明的深黑色 */
-                    transparent 70%
-                    /* 边缘 70% 处开始完全透明 */
-                );
-
-            border-radius: 50%;
-            /* 确保是圆形 */
+            position: relative;
             z-index: 10;
-            /* 确保在其他内容之上 */
+            margin-bottom: 20px;
+            border-radius: 50%;
 
-            /* 触摸反馈 */
-            transition: transform 0.15s ease, background 0.15s ease;
+            /* Layout */
+            display: flex;
+            justify-content: center;
+            align-items: center;
 
-            /* Layout in sidebar */
-            margin-bottom: 10px;
+            /* Base */
+            background: transparent;
+            overflow: hidden;
+            /* Clip the spinning gradient */
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.5);
+            border: none;
         }
 
-        /* 顶部按钮的触摸效果 */
-        .home-button:active {
-            transform: scale(0.90);
-            /* 按下时缩小 */
-            background: radial-gradient(circle,
-                    rgba(0, 0, 0, 0.8) 40%,
-                    /* 按下时颜色更深 */
-                    transparent 70%);
+        /* The Spinning Gradient Layer */
+        .home-button::before {
+            content: '';
+            position: absolute;
+            top: -50%;
+            left: -50%;
+            width: 200%;
+            height: 200%;
+            /* Gradient matching the widget themes with reduced opacity (0.5) */
+            background: conic-gradient(from 0deg,
+                    rgba(33, 150, 243, 0.5),
+                    /* Stock Blue */
+                    rgba(156, 39, 176, 0.5),
+                    /* News Purple */
+                    rgba(255, 152, 0, 0.5),
+                    /* Crypto Orange */
+                    rgba(76, 175, 80, 0.5),
+                    /* Watchlist Green */
+                    rgba(33, 150, 243, 0.5)
+                    /* Loop back to Blue */
+                );
+            animation: rotate-border 4s linear infinite;
+            z-index: 1;
+        }
+
+        /* The Inner Dark Circle (Clickable Surface) */
+        .home-button::after {
+            content: '';
+            position: absolute;
+            inset: 2px;
+            /* Border thickness */
+            background: #1a1a1a;
+            /* Dark button color */
+            border-radius: 50%;
+            z-index: 2;
+            transition: background 0.2s;
+        }
+
+        .home-button:hover::after {
+            background: #252525;
+            /* Lighter on hover */
+        }
+
+        .home-button:active::after {
+            background: #000000;
+            /* Darker on active */
         }
 
         /* -------------------------- */
 
         /* Layout Panels */
         .left-panel {
-            width: 200px;
-            /* Reduced from 25% to fixed narrow width */
+            width: 140px;
+            /* Reduced from 200px */
             flex-shrink: 0;
-            /* Prevent shrinking */
+            /* Reduced from 25% to fixed narrow width */
             height: 100%;
             display: flex;
             flex-direction: column;
             align-items: center;
             justify-content: flex-start;
             padding-top: 30px;
+            padding-bottom: 20px;
             background: rgba(0, 0, 0, 0.2);
             border-right: 1px solid rgba(255, 255, 255, 0.1);
             backdrop-filter: blur(10px);
             z-index: 2;
             position: relative;
             box-sizing: border-box;
+            overflow: hidden;
+            /* Prevent panel itself from scrolling */
+        }
+
+        .button-container {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            width: 100%;
+            flex: 1;
+            /* Take up all available space */
             overflow-y: auto;
+            /* Scroll internally */
+            min-height: 0;
+            /* Critical for flex scrolling */
+            padding-bottom: 20px;
 
-            /* Enable vertical scrolling */
-            /* Hide scrollbar for Chrome/Safari/Opera */
-            &::-webkit-scrollbar {
-                display: none;
-            }
-
-            /* Hide scrollbar for IE, Edge and Firefox */
-            -ms-overflow-style: none;
-            /* IE and Edge */
+            /* Hide scrollbar */
             scrollbar-width: none;
-            /* Firefox */
+            -ms-overflow-style: none;
+        }
+
+        .button-container::-webkit-scrollbar {
+            display: none;
         }
 
         .right-panel {
@@ -217,11 +275,35 @@
             }
 
             .left-panel {
-                display: none;
-                /* Hide sidebar on mobile if needed, or adjust */
-                /* For now, let's keep it but maybe smaller or toggleable. 
-                   User didn't ask to hide it, but 200px is a lot on phone. 
-                   Let's assume iPad context mostly. */
+                justify-content: flex-start;
+                padding-top: 30px;
+                padding-bottom: 20px;
+                background: rgba(0, 0, 0, 0.2);
+                border-right: 1px solid rgba(255, 255, 255, 0.1);
+                backdrop-filter: blur(10px);
+                z-index: 2;
+                position: relative;
+                box-sizing: border-box;
+                overflow: hidden;
+                /* Prevent panel itself from scrolling */
+            }
+
+            .button-container {
+                display: flex;
+                flex-direction: column;
+                align-items: center;
+                width: 100%;
+                flex: 1;
+                /* Take up all available space */
+                overflow-y: auto;
+                /* Scroll internally */
+                min-height: 0;
+                /* Critical for flex scrolling */
+                padding-bottom: 20px;
+
+                /* Hide scrollbar */
+                scrollbar-width: none;
+                -ms-overflow-style: none;
             }
         }
 
@@ -359,16 +441,19 @@
         }
 
         /* 4. "黑灰玻璃" 按钮样式 */
+        /* 4. "黑灰玻璃" 按钮样式 */
         .icon-button {
-            width: 140px;
-            height: 140px;
+            width: 84px;
+            /* 140 * 0.6 */
+            height: 84px;
             flex-shrink: 0;
             display: flex;
             justify-content: center;
             align-items: center;
             background: rgba(20, 20, 20, 0.4);
             backdrop-filter: blur(12px);
-            border-radius: 35px;
+            border-radius: 24px;
+            /* Scaled radius */
             border: 1px solid rgba(100, 100, 100, 0.3);
             box-shadow: 0 8px 20px 0 rgba(0, 0, 0, 0.4);
             text-decoration: none;
@@ -377,11 +462,14 @@
         }
 
         /* 5. IMG 标签的样式 */
+        /* 5. IMG 标签的样式 */
         .icon-button img {
-            width: 80px;
-            height: 80px;
+            width: 60px;
+            /* Increased icon size */
+            height: 60px;
             object-fit: contain;
-            padding: 10px;
+            padding: 5px;
+            /* Reduced padding */
             box-sizing: border-box;
             -webkit-user-drag: none;
             user-select: none;
@@ -507,10 +595,11 @@
 <body>
 
     <div class="left-panel">
-        <a href="https://v.qq.com/search_redirect.html?url=https%3A%2F%2Fwww.1905.com%2Fapi%2Fredirec.html%3Fredirect_url%3Dhttps%253A%252F%252Fmarcmoore.github.io%252Ftv%253Fwww.1905.com"
-            class="home-button" aria-label="返回首页"></a>
         <div class="button-container" id="app">
         </div>
+        <!-- Home Button at Bottom -->
+        <a href="https://v.qq.com/search_redirect.html?url=https%3A%2F%2Fwww.1905.com%2Fapi%2Fredirec.html%3Fredirect_url%3Dhttps%253A%252F%252Fmarcmoore.github.io%252Ftv%253Fwww.1905.com"
+            class="home-button" aria-label="返回首页"></a>
     </div>
 
     <div class="right-panel">
