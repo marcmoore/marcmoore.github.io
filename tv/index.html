@@ -134,7 +134,10 @@
 
         /* Layout Panels */
         .left-panel {
-            width: 25%;
+            width: 200px;
+            /* Reduced from 25% to fixed narrow width */
+            flex-shrink: 0;
+            /* Prevent shrinking */
             height: 100%;
             display: flex;
             flex-direction: column;
@@ -163,7 +166,8 @@
         }
 
         .right-panel {
-            width: 75%;
+            flex: 1;
+            /* Take remaining space */
             height: 100%;
             position: relative;
             z-index: 1;
@@ -223,23 +227,51 @@
             border-color: rgba(255, 255, 255, 0.15);
         }
 
+        /* Expanded Widget State */
+        .widget-card.expanded {
+            grid-row: span 2;
+            height: 100%;
+            /* Fill the grid area defined by span 2 */
+            aspect-ratio: unset;
+            /* Let grid define height */
+        }
+
         /* Widget Header */
         .widget-header {
             display: flex;
             justify-content: space-between;
             align-items: center;
-            padding: 15px 20px;
+            padding: 8px 15px;
             border-bottom: 1px solid rgba(255, 255, 255, 0.05);
-            background: rgba(255, 255, 255, 0.02);
+            /* Default background removed, will be set by specific classes */
+        }
+
+        /* Header Color Variants */
+        .header-stock {
+            background: linear-gradient(90deg, rgba(33, 150, 243, 0.2), transparent);
+        }
+
+        .header-crypto {
+            background: linear-gradient(90deg, rgba(255, 152, 0, 0.2), transparent);
+        }
+
+        .header-watchlist {
+            background: linear-gradient(90deg, rgba(76, 175, 80, 0.2), transparent);
+        }
+
+        .header-news {
+            background: linear-gradient(90deg, rgba(156, 39, 176, 0.2), transparent);
         }
 
         .widget-title {
             color: #fff;
-            font-size: 16px;
+            font-size: 13px;
             font-weight: 600;
             display: flex;
             align-items: center;
             gap: 8px;
+            text-transform: uppercase;
+            letter-spacing: 1px;
         }
 
         /* Stock Tabs */
@@ -337,6 +369,92 @@
             box-shadow: 0 4px 15px 0 rgba(0, 0, 0, 0.3);
             transition-duration: 0.1s;
         }
+
+        /* Drag and Drop Styles */
+        .draggable {
+            cursor: grab;
+        }
+
+        .draggable:active {
+            cursor: grabbing;
+        }
+
+        .dragging {
+            opacity: 0.5;
+            border: 2px dashed rgba(255, 255, 255, 0.5);
+        }
+
+        /* 7. News Widget Styles */
+        .news-list {
+            height: 100%;
+            overflow-y: auto;
+            padding-right: 5px;
+            display: flex;
+            flex-direction: column;
+            gap: 0;
+            /* Ensure it doesn't overflow parent */
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+        }
+
+        .news-list::-webkit-scrollbar {
+            width: 4px;
+        }
+
+        .news-list::-webkit-scrollbar-thumb {
+            background: rgba(255, 255, 255, 0.2);
+            border-radius: 2px;
+        }
+
+        .news-item {
+            padding: 15px;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+            text-decoration: none;
+            transition: background 0.2s;
+            display: block;
+        }
+
+        .news-item:last-child {
+            border-bottom: none;
+        }
+
+        .news-item:hover {
+            background: rgba(255, 255, 255, 0.05);
+        }
+
+        .news-title {
+            color: rgba(255, 255, 255, 0.9);
+            font-size: 14px;
+            font-weight: 500;
+            line-height: 1.4;
+            margin-bottom: 6px;
+            display: -webkit-box;
+            -webkit-line-clamp: 2;
+            -webkit-box-orient: vertical;
+            overflow: hidden;
+        }
+
+        .news-meta {
+            display: flex;
+            justify-content: space-between;
+            font-size: 11px;
+            color: rgba(255, 255, 255, 0.4);
+        }
+
+        /* Highlight for relevant news */
+        .news-item.highlight {
+            border-left: 3px solid #ffd700;
+            /* Gold border */
+            background: rgba(255, 215, 0, 0.05);
+        }
+
+        .news-item.highlight .news-title {
+            color: #fff;
+            font-weight: 600;
+        }
     </style>
     <script src="https://unpkg.com/lightweight-charts@4.1.1/dist/lightweight-charts.standalone.production.js"></script>
 </head>
@@ -351,12 +469,12 @@
     </div>
 
     <div class="right-panel">
-        <div class="widget-grid">
+        <div class="widget-grid" id="widgetGrid">
             <!-- Widget 1: US Stock Market -->
-            <div class="widget-card">
-                <div class="widget-header">
+            <div class="widget-card draggable" id="widget-stock" draggable="true">
+                <div class="widget-header header-stock">
                     <div class="widget-title">
-                        <span>📈</span> US Market
+                        US Market
                     </div>
                     <div class="stock-tabs">
                         <div class="stock-tab active" onclick="switchStock('DJI')">Dow Jones</div>
@@ -368,10 +486,10 @@
             </div>
 
             <!-- Widget 2: Crypto Market -->
-            <div class="widget-card">
-                <div class="widget-header">
+            <div class="widget-card draggable" id="widget-crypto" draggable="true">
+                <div class="widget-header header-crypto">
                     <div class="widget-title">
-                        <span>🪙</span> Crypto
+                        Crypto
                     </div>
                     <div class="stock-tabs">
                         <div class="stock-tab active" onclick="switchCrypto('BTC')">BTC</div>
@@ -383,10 +501,10 @@
             </div>
 
             <!-- Widget 3: Watchlist -->
-            <div class="widget-card">
-                <div class="widget-header">
+            <div class="widget-card draggable" id="widget-watchlist" draggable="true">
+                <div class="widget-header header-watchlist">
                     <div class="widget-title">
-                        <span>🚀</span> Watchlist
+                        Watchlist
                     </div>
                     <div class="stock-tabs" style="max-width: 70%;">
                         <div class="stock-tab active" onclick="switchIndividualStock('TSLA')">TSLA</div>
@@ -398,6 +516,24 @@
                     </div>
                 </div>
                 <div class="chart-container" id="watchlistChart"></div>
+            </div>
+
+            <!-- Widget 4: Market News -->
+            <div class="widget-card draggable" id="widget-news" draggable="true">
+                <div class="widget-header header-news">
+                    <div class="widget-title">
+                        News
+                    </div>
+                    <div class="stock-tabs">
+                        <div class="stock-tab" onclick="toggleNewsHeight(this)" title="Toggle Height">⤢</div>
+                    </div>
+                </div>
+                <div class="chart-container" style="position: relative;">
+                    <div id="newsList" class="news-list">
+                        <div style="padding: 20px; text-align: center; color: rgba(255,255,255,0.3);">Loading news...
+                        </div>
+                    </div>
+                </div>
             </div>
         </div>
     </div>
@@ -455,24 +591,200 @@
         // 3. 自动渲染按钮
         const container = document.getElementById('app');
 
-        websites.forEach(site => {
-            // 创建 A 标签
-            const link = document.createElement('a');
-            link.className = 'icon-button';
-            link.setAttribute('aria-label', '跳转到 ' + site.name);
+        function renderButtons() {
+            container.innerHTML = '';
+            // Load order from LocalStorage
+            const savedOrder = JSON.parse(localStorage.getItem('buttonOrder'));
+            let displayList = websites;
 
-            // 生成并设置复杂的跳转链接
-            link.href = generateComplexRedirect(site.url);
+            if (savedOrder) {
+                // Sort websites based on saved names
+                const ordered = [];
+                savedOrder.forEach(name => {
+                    const site = websites.find(w => w.name === name);
+                    if (site) ordered.push(site);
+                });
+                // Add any new sites not in saved order
+                websites.forEach(site => {
+                    if (!ordered.includes(site)) ordered.push(site);
+                });
+                displayList = ordered;
+            }
 
-            // 创建 IMG 标签
-            const img = document.createElement('img');
-            img.src = site.icon;
-            img.alt = site.name + ' Logo';
+            displayList.forEach(site => {
+                const link = document.createElement('a');
+                link.className = 'icon-button draggable';
+                link.draggable = true; // Enable drag
+                link.setAttribute('data-name', site.name); // ID for tracking
+                link.setAttribute('aria-label', '跳转到 ' + site.name);
+                link.href = generateComplexRedirect(site.url);
 
-            // 组装
-            link.appendChild(img);
-            container.appendChild(link);
-        });
+                const img = document.createElement('img');
+                img.src = site.icon;
+                img.alt = site.name + ' Logo';
+
+                link.appendChild(img);
+                container.appendChild(link);
+            });
+
+            // Re-init drag events for new buttons
+            initDragAndDrop(container, 'buttonOrder');
+        }
+
+        renderButtons();
+
+        // --- Drag and Drop Logic (Robust Grid Support + Touch) ---
+        function initDragAndDrop(container, storageKey) {
+            let draggedItem = null;
+
+            // Mouse Events
+            container.addEventListener('dragstart', (e) => {
+                draggedItem = e.target.closest('.draggable');
+                if (draggedItem) {
+                    draggedItem.classList.add('dragging');
+                    e.dataTransfer.effectAllowed = 'move';
+                }
+            });
+
+            container.addEventListener('dragend', (e) => {
+                if (draggedItem) {
+                    draggedItem.classList.remove('dragging');
+                    draggedItem = null;
+                    saveOrder(container, storageKey);
+                }
+            });
+
+            container.addEventListener('dragover', (e) => {
+                e.preventDefault();
+                const afterElement = getDragAfterElement(container, e.clientX, e.clientY);
+                const draggable = document.querySelector('.dragging');
+                if (afterElement == null) {
+                    container.appendChild(draggable);
+                } else {
+                    container.insertBefore(draggable, afterElement);
+                }
+            });
+
+            // Touch Events (Long Press to Drag)
+            let longPressTimer = null;
+            let isTouchDragging = false;
+            let touchItem = null;
+
+            container.addEventListener('touchstart', (e) => {
+                const target = e.target.closest('.draggable');
+                if (!target) return;
+
+                touchItem = target;
+
+                // Start Long Press Timer (500ms)
+                longPressTimer = setTimeout(() => {
+                    isTouchDragging = true;
+                    touchItem.classList.add('dragging');
+                    if (navigator.vibrate) navigator.vibrate(50); // Haptic feedback
+                }, 500);
+            }, { passive: false });
+
+            container.addEventListener('touchmove', (e) => {
+                if (!touchItem) return;
+
+                if (isTouchDragging) {
+                    if (e.cancelable) e.preventDefault(); // Stop scrolling
+
+                    const touch = e.touches[0];
+                    const afterElement = getDragAfterElement(container, touch.clientX, touch.clientY);
+
+                    if (afterElement == null) {
+                        container.appendChild(touchItem);
+                    } else {
+                        container.insertBefore(touchItem, afterElement);
+                    }
+                } else {
+                    // If moved before timer fires, it's likely a scroll -> cancel drag
+                    clearTimeout(longPressTimer);
+                    longPressTimer = null;
+                }
+            }, { passive: false });
+
+            container.addEventListener('touchend', (e) => {
+                if (longPressTimer) clearTimeout(longPressTimer);
+
+                if (isTouchDragging && touchItem) {
+                    touchItem.classList.remove('dragging');
+                    saveOrder(container, storageKey);
+                }
+
+                isTouchDragging = false;
+                touchItem = null;
+                longPressTimer = null;
+            });
+        }
+
+        function getDragAfterElement(container, x, y) {
+            // Get all draggable elements except the one currently being dragged
+            const draggableElements = [...container.querySelectorAll('.draggable:not(.dragging)')];
+
+            return draggableElements.reduce((closest, child) => {
+                const box = child.getBoundingClientRect();
+
+                // Calculate distance from mouse to the center of the box
+                // We want to find the element whose center is closest to the mouse cursor
+                // But specifically, we want to know if we are "before" it in the flow.
+
+                // For a grid, "before" means to the left OR above.
+                // A robust way is to find the element that is immediately *after* the cursor position in visual flow.
+
+                // Let's use a simple distance metric to the CENTER of the box.
+                // If the cursor is to the left/top of the center, we are likely trying to insert before it.
+
+                const offsetX = x - (box.left + box.width / 2);
+                const offsetY = y - (box.top + box.height / 2);
+
+                // Euclidean distance to center
+                const dist = Math.hypot(offsetX, offsetY);
+
+                // We need to determine if we are "before" this element.
+                // In a grid (LTR, TTB), we are before if we are to the left or above.
+                // However, simple "closest center" usually works best for "swap" feel.
+                // But insertBefore needs the NEXT element.
+
+                // Let's try the standard 1D logic extended to 2D visual flow?
+                // Actually, just finding the closest element center and inserting before it works well if we assume the cursor is "approaching" the slot.
+
+                if (dist < closest.offset) {
+                    return { offset: dist, element: child };
+                } else {
+                    return closest;
+                }
+            }, { offset: Number.POSITIVE_INFINITY }).element;
+        }
+
+        function saveOrder(container, key) {
+            const items = [...container.querySelectorAll('.draggable')];
+            let order;
+            if (key === 'buttonOrder') {
+                order = items.map(item => item.getAttribute('data-name'));
+            } else {
+                order = items.map(item => item.id);
+            }
+            localStorage.setItem(key, JSON.stringify(order));
+        }
+
+        // Restore Widget Order
+        function restoreWidgetOrder() {
+            const container = document.getElementById('widgetGrid');
+            const savedOrder = JSON.parse(localStorage.getItem('widgetOrder'));
+            if (savedOrder) {
+                savedOrder.forEach(id => {
+                    const widget = document.getElementById(id);
+                    if (widget) {
+                        container.appendChild(widget);
+                    }
+                });
+            }
+            initDragAndDrop(container, 'widgetOrder');
+        }
+
+        restoreWidgetOrder();
 
         // --- 4. Stock Widget Logic ---
         let chart;
@@ -944,6 +1256,175 @@
         }
 
         initWatchlistChart();
+
+        // --- 7. News Widget Logic ---
+        let newsScrollInterval;
+        let isNewsPaused = false;
+
+        async function fetchNews() {
+            const container = document.getElementById('newsList');
+
+            // 1. Define Sources (Prioritize JSON APIs for speed)
+            // CryptoCompare: Fast, JSON, covers Crypto & Tech
+            const cryptoCompareUrl = 'https://min-api.cryptocompare.com/data/v2/news/?lang=EN';
+
+            // Yahoo Finance (JSON endpoint via proxy is faster than parsing XML)
+            // We'll stick to a reliable proxy for Yahoo
+            // Note: Yahoo RSS is often slow. Let's try to use a more direct JSON if available, 
+            // but for now, let's optimize the proxy usage or switch to a different aggregator.
+            // Let's use a "TechCrunch" or similar fast RSS via a JSON converter.
+
+            // Actually, let's use `rss2json` online converter for better speed than raw XML parsing
+            const yahooRss = `https://finance.yahoo.com/rss/headline?s=TSLA,BABA,AAPL,META,NVDA,TSM,BTC-USD`;
+            const yahooJsonUrl = `https://api.rss2json.com/v1/api.json?rss_url=${encodeURIComponent(yahooRss)}`;
+
+            const sources = [
+                { name: 'CryptoCompare', url: cryptoCompareUrl, type: 'cc' },
+                { name: 'Yahoo Finance', url: yahooJsonUrl, type: 'rss2json' }
+            ];
+
+            const fetchPromises = sources.map(async (source) => {
+                try {
+                    const response = await fetch(source.url);
+                    if (!response.ok) return [];
+                    const json = await response.json();
+
+                    if (source.type === 'cc') {
+                        // CryptoCompare format
+                        return json.Data.map(item => ({
+                            source: item.source_info.name,
+                            title: item.title,
+                            link: item.url,
+                            pubDate: new Date(item.published_on * 1000)
+                        }));
+                    } else if (source.type === 'rss2json') {
+                        // rss2json format
+                        if (json.status !== 'ok') return [];
+                        return json.items.map(item => ({
+                            source: 'Yahoo',
+                            title: item.title,
+                            link: item.link,
+                            pubDate: new Date(item.pubDate)
+                        }));
+                    }
+                    return [];
+                } catch (e) {
+                    console.warn(`Failed to fetch ${source.name}:`, e);
+                    return [];
+                }
+            });
+
+            try {
+                const results = await Promise.all(fetchPromises);
+                const allNews = results.flat();
+
+                if (allNews.length === 0) {
+                    container.innerHTML = '<div style="padding: 20px; text-align: center; color: rgba(255,255,255,0.3);">No news found</div>';
+                    return;
+                }
+
+                // 3. Sort by Date (Newest First)
+                allNews.sort((a, b) => b.pubDate - a.pubDate);
+
+                // 4. Highlight Keywords
+                const keywords = ['TSLA', 'Tesla', 'BABA', 'Alibaba', 'AAPL', 'Apple', 'META', 'Facebook', 'NVDA', 'Nvidia', 'TSM', 'TSMC', 'BTC', 'Bitcoin', 'ETH', 'Ethereum', 'SOL', 'Solana'];
+
+                let html = '';
+                // Limit to top 40 items
+                allNews.slice(0, 40).forEach(item => {
+                    // Check for highlight
+                    const isRelevant = keywords.some(k => item.title.includes(k));
+                    const highlightClass = isRelevant ? 'highlight' : '';
+
+                    // Format time
+                    const now = new Date();
+                    const diffMs = now - item.pubDate;
+                    const diffMins = Math.floor(diffMs / 60000);
+                    const diffHours = Math.floor(diffMins / 60);
+                    let timeDisplay = diffMins < 60 ? `${diffMins}m ago` : (diffHours < 24 ? `${diffHours}h ago` : item.pubDate.toLocaleDateString());
+
+                    html += `
+                        <a href="${item.link}" target="_blank" class="news-item ${highlightClass}">
+                            <div class="news-title">${item.title}</div>
+                            <div class="news-meta">
+                                <span>${item.source}</span>
+                                <span>${timeDisplay}</span>
+                            </div>
+                        </a>
+                    `;
+                });
+
+                container.innerHTML = html;
+                console.log(`Loaded ${allNews.length} news items`);
+
+                // Start Scrolling Logic
+                setupAutoScroll(container);
+
+            } catch (error) {
+                console.error('Error fetching news:', error);
+                container.innerHTML = '<div style="padding: 20px; text-align: center; color: rgba(255,255,255,0.3);">Failed to load news</div>';
+            }
+        }
+
+        function setupAutoScroll(container) {
+            // Clear existing interval if any
+            if (newsScrollInterval) clearInterval(newsScrollInterval);
+
+            // Scroll function
+            const scrollStep = () => {
+                if (isNewsPaused) return;
+
+                // Simple logic: Scroll down by ~80px (approx one item height)
+                // If we reach bottom, reset to top (or we could implement infinite loop by moving DOM nodes, but let's keep it simple first)
+
+                const currentScroll = container.scrollTop;
+                const maxScroll = container.scrollHeight - container.clientHeight;
+
+                if (currentScroll >= maxScroll - 5) {
+                    // Reset to top smoothly
+                    container.scrollTo({ top: 0, behavior: 'smooth' });
+                } else {
+                    container.scrollBy({ top: 80, behavior: 'smooth' });
+                }
+            };
+
+            // Set Interval: 6 seconds
+            newsScrollInterval = setInterval(scrollStep, 6000);
+
+            // Event Listeners for Pause
+            container.onmouseenter = () => { isNewsPaused = true; };
+            container.onmouseleave = () => { isNewsPaused = false; };
+            container.ontouchstart = () => { isNewsPaused = true; };
+            container.ontouchend = () => { isNewsPaused = false; };
+
+            // Also detect manual scroll to pause temporarily? 
+            // The hover/touch logic covers most user intent.
+        }
+
+        // Init and Auto-refresh News every 15 minutes
+        fetchNews();
+        setInterval(fetchNews, 900000);
+
+        // Toggle News Height
+        function toggleNewsHeight(btn) {
+            const widget = document.getElementById('widget-news');
+            widget.classList.toggle('expanded');
+
+            const isExpanded = widget.classList.contains('expanded');
+            btn.textContent = isExpanded ? '⤡' : '⤢';
+
+            // Save state
+            localStorage.setItem('newsExpanded', isExpanded);
+        }
+
+        // Restore News Height
+        const savedNewsExpanded = localStorage.getItem('newsExpanded') === 'true';
+        if (savedNewsExpanded) {
+            const widget = document.getElementById('widget-news');
+            const btn = widget.querySelector('.stock-tab');
+            widget.classList.add('expanded');
+            btn.textContent = '⤡';
+        }
     </script>
 
     <!-- <div class="button-container">
