@@ -176,15 +176,16 @@
         }
 
         /* Widget Grid Layout */
-        /* Widget Grid Layout */
         .widget-grid {
             display: grid;
             /* Increased min-width to 460px to force 2 columns on standard 1080p screens (less crowded) */
             grid-template-columns: repeat(auto-fit, minmax(460px, 1fr));
             gap: 32px;
+            /* Default Gap */
             padding: 40px;
             box-sizing: border-box;
             width: 100%;
+            /* grid-auto-rows removed to let aspect-ratio dictate height */
         }
 
         /* Large Laptop / Small Desktop */
@@ -249,10 +250,16 @@
         /* Expanded Widget State */
         .widget-card.expanded {
             grid-row: span 2;
-            height: 100%;
-            /* Fill the grid area defined by span 2 */
-            aspect-ratio: unset;
-            /* Let grid define height */
+            height: auto;
+            /* 
+               Force height to be approx 2x standard card + gap.
+               Standard ratio is 1.618 (Golden Ratio).
+               Height = Width / 1.618.
+               Target Height = 2 * (Width / 1.618) + Gap.
+               New Ratio = Width / Target Height ~= 0.75 to 0.8 depending on gap.
+               0.75 is a safe bet to ensure it's tall enough to span 2 rows visually.
+            */
+            aspect-ratio: 0.75;
         }
 
         /* Widget Header */
@@ -391,21 +398,34 @@
 
         /* Drag and Drop Styles */
         .draggable {
-            cursor: grab;
+            /* cursor: grab; Removed global grab cursor */
             user-select: none;
-            /* Prevent text selection during touch */
             -webkit-user-select: none;
             touch-action: pan-y;
-            /* Allow vertical scroll, but we'll intercept for drag */
         }
 
-        .draggable:active {
+        /* Drag Handles */
+        .widget-header {
+            cursor: grab;
+        }
+
+        .widget-header:active {
+            cursor: grabbing;
+        }
+
+        .icon-button.draggable {
+            cursor: grab;
+        }
+
+        .icon-button.draggable:active {
             cursor: grabbing;
         }
 
         .dragging {
             opacity: 0.5;
             border: 2px dashed rgba(255, 255, 255, 0.5);
+            pointer-events: none;
+            /* Critical for stable dragover detection */
         }
 
         /* 7. News Widget Styles */
@@ -659,34 +679,70 @@
         renderButtons();
 
         // --- Drag and Drop Logic (Robust Grid Support + Touch) ---
-        function initDragAndDrop(container, storageKey) {
-            let draggedItem = null;
+        // Global variable to track dragged item across scopes if needed, 
+        // but we can also rely on document.querySelector('.dragging')
 
+        function initDragAndDrop(container, storageKey) {
             // Mouse Events
             container.addEventListener('dragstart', (e) => {
-                draggedItem = e.target.closest('.draggable');
-                if (draggedItem) {
-                    draggedItem.classList.add('dragging');
-                    e.dataTransfer.effectAllowed = 'move';
+                const draggable = e.target.closest('.draggable');
+                if (!draggable) return;
+
+                // For widgets, restrict drag to non-interactive areas
+                if (draggable.classList.contains('widget-card')) {
+                    if (e.target.closest('.chart-container') || e.target.closest('.stock-tab') || e.target.tagName === 'BUTTON') {
+                        e.preventDefault();
+                        return;
+                    }
                 }
+
+                // Delay adding the class so drag initialization completes
+                setTimeout(() => {
+                    draggable.classList.add('dragging');
+                }, 0);
+
+                e.dataTransfer.effectAllowed = 'move';
+                e.dataTransfer.setData('text/plain', ''); // Required for Firefox
             });
 
             container.addEventListener('dragend', (e) => {
-                if (draggedItem) {
-                    draggedItem.classList.remove('dragging');
-                    draggedItem = null;
+                const draggable = e.target.closest('.draggable');
+                if (draggable) {
+                    draggable.classList.remove('dragging');
                     saveOrder(container, storageKey);
                 }
             });
 
             container.addEventListener('dragover', (e) => {
-                e.preventDefault();
-                const afterElement = getDragAfterElement(container, e.clientX, e.clientY);
-                const draggable = document.querySelector('.dragging');
-                if (afterElement == null) {
-                    container.appendChild(draggable);
-                } else {
-                    container.insertBefore(draggable, afterElement);
+                e.preventDefault(); // Allow drop
+
+                const draggedItem = document.querySelector('.dragging');
+                if (!draggedItem) return;
+
+                // Identify target under cursor
+                const target = e.target.closest('.draggable');
+
+                if (target && target !== draggedItem && container.contains(target)) {
+                    // Zone check
+                    const isWidget = draggedItem.classList.contains('widget-card');
+                    const targetIsWidget = target.classList.contains('widget-card');
+                    // Strict zone isolation
+                    if (isWidget && container.id !== 'widgetGrid') return;
+                    if (!isWidget && container.id !== 'app') return;
+                    if (isWidget !== targetIsWidget) return;
+
+                    // Swap Logic
+                    const children = [...container.children];
+                    const draggedIndex = children.indexOf(draggedItem);
+                    const targetIndex = children.indexOf(target);
+
+                    if (draggedIndex < targetIndex) {
+                        // Dragging downwards/rightwards -> Insert after target
+                        container.insertBefore(draggedItem, target.nextSibling);
+                    } else {
+                        // Dragging upwards/leftwards -> Insert before target
+                        container.insertBefore(draggedItem, target);
+                    }
                 }
             });
 
@@ -701,6 +757,13 @@
                 const target = e.target.closest('.draggable');
                 if (!target) return;
 
+                // For widgets, restrict drag to non-interactive areas
+                if (target.classList.contains('widget-card')) {
+                    if (e.target.closest('.chart-container') || e.target.closest('.stock-tab') || e.target.tagName === 'BUTTON') {
+                        return;
+                    }
+                }
+
                 touchItem = target;
                 const touch = e.touches[0];
                 startX = touch.clientX;
@@ -710,7 +773,7 @@
                 longPressTimer = setTimeout(() => {
                     isTouchDragging = true;
                     touchItem.classList.add('dragging');
-                    if (navigator.vibrate) navigator.vibrate(50); // Haptic feedback
+                    if (navigator.vibrate) navigator.vibrate(50);
                 }, 500);
             }, { passive: false });
 
@@ -719,21 +782,31 @@
                 const touch = e.touches[0];
 
                 if (isTouchDragging) {
-                    if (e.cancelable) e.preventDefault(); // Stop scrolling
+                    if (e.cancelable) e.preventDefault();
 
-                    const afterElement = getDragAfterElement(container, touch.clientX, touch.clientY);
+                    // Manual hit testing for touch
+                    const elementUnderFinger = document.elementFromPoint(touch.clientX, touch.clientY);
+                    const target = elementUnderFinger ? elementUnderFinger.closest('.draggable') : null;
 
-                    if (afterElement == null) {
-                        container.appendChild(touchItem);
-                    } else {
-                        container.insertBefore(touchItem, afterElement);
+                    if (target && target !== touchItem && container.contains(target)) {
+                        // Zone check
+                        const isWidget = touchItem.classList.contains('widget-card');
+                        const targetIsWidget = target.classList.contains('widget-card');
+                        if (isWidget !== targetIsWidget) return;
+
+                        const children = [...container.children];
+                        const draggedIndex = children.indexOf(touchItem);
+                        const targetIndex = children.indexOf(target);
+
+                        if (draggedIndex < targetIndex) {
+                            container.insertBefore(touchItem, target.nextSibling);
+                        } else {
+                            container.insertBefore(touchItem, target);
+                        }
                     }
                 } else {
-                    // Check for movement threshold (slop)
-                    // If user moves finger > 10px before timer fires, it's a scroll -> cancel drag
                     const moveX = Math.abs(touch.clientX - startX);
                     const moveY = Math.abs(touch.clientY - startY);
-
                     if (moveX > 10 || moveY > 10) {
                         clearTimeout(longPressTimer);
                         longPressTimer = null;
@@ -755,48 +828,8 @@
             });
         }
 
-        function getDragAfterElement(container, x, y) {
-            // Get all draggable elements except the one currently being dragged
-            const draggableElements = [...container.querySelectorAll('.draggable:not(.dragging)')];
-
-            return draggableElements.reduce((closest, child) => {
-                const box = child.getBoundingClientRect();
-
-                // Calculate distance from mouse to the center of the box
-                // We want to find the element whose center is closest to the mouse cursor
-                // But specifically, we want to know if we are "before" it in the flow.
-
-                // For a grid, "before" means to the left OR above.
-                // A robust way is to find the element that is immediately *after* the cursor position in visual flow.
-
-                // Let's use a simple distance metric to the CENTER of the box.
-                // If the cursor is to the left/top of the center, we are likely trying to insert before it.
-
-                const offsetX = x - (box.left + box.width / 2);
-                const offsetY = y - (box.top + box.height / 2);
-
-                // Euclidean distance to center
-                const dist = Math.hypot(offsetX, offsetY);
-
-                // We need to determine if we are "before" this element.
-                // In a grid (LTR, TTB), we are before if we are to the left or above.
-                // However, simple "closest center" usually works best for "swap" feel.
-                // But insertBefore needs the NEXT element.
-
-                // Let's try the standard 1D logic extended to 2D visual flow?
-                // Actually, just finding the closest element center and inserting before it works well if we assume the cursor is "approaching" the slot.
-
-                if (dist < closest.offset) {
-                    return { offset: dist, element: child };
-                } else {
-                    return closest;
-                }
-            }, { offset: Number.POSITIVE_INFINITY }).element;
-        }
-
         function saveOrder(container, key) {
             const items = [...container.querySelectorAll('.draggable')];
-            let order;
             if (key === 'buttonOrder') {
                 order = items.map(item => item.getAttribute('data-name'));
             } else {
