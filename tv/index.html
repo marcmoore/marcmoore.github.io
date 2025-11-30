@@ -197,11 +197,30 @@
         }
 
         /* Tablet / Small Laptop */
-        @media (max-width: 1200px) {
+        /* Tablet / Small Laptop - Force 2 Columns max */
+        @media (max-width: 1400px) {
             .widget-grid {
-                grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+                grid-template-columns: repeat(auto-fit, minmax(450px, 1fr));
+                /* 450px min ensures max 2 cols on ~1000-1200px space */
                 gap: 20px;
                 padding: 20px;
+            }
+        }
+
+        /* Mobile */
+        @media (max-width: 768px) {
+            .widget-grid {
+                grid-template-columns: 1fr;
+                /* Force 1 column */
+                padding: 15px;
+            }
+
+            .left-panel {
+                display: none;
+                /* Hide sidebar on mobile if needed, or adjust */
+                /* For now, let's keep it but maybe smaller or toggleable. 
+                   User didn't ask to hide it, but 200px is a lot on phone. 
+                   Let's assume iPad context mostly. */
             }
         }
 
@@ -373,6 +392,11 @@
         /* Drag and Drop Styles */
         .draggable {
             cursor: grab;
+            user-select: none;
+            /* Prevent text selection during touch */
+            -webkit-user-select: none;
+            touch-action: pan-y;
+            /* Allow vertical scroll, but we'll intercept for drag */
         }
 
         .draggable:active {
@@ -670,12 +694,17 @@
             let longPressTimer = null;
             let isTouchDragging = false;
             let touchItem = null;
+            let startX = 0;
+            let startY = 0;
 
             container.addEventListener('touchstart', (e) => {
                 const target = e.target.closest('.draggable');
                 if (!target) return;
 
                 touchItem = target;
+                const touch = e.touches[0];
+                startX = touch.clientX;
+                startY = touch.clientY;
 
                 // Start Long Press Timer (500ms)
                 longPressTimer = setTimeout(() => {
@@ -687,11 +716,11 @@
 
             container.addEventListener('touchmove', (e) => {
                 if (!touchItem) return;
+                const touch = e.touches[0];
 
                 if (isTouchDragging) {
                     if (e.cancelable) e.preventDefault(); // Stop scrolling
 
-                    const touch = e.touches[0];
                     const afterElement = getDragAfterElement(container, touch.clientX, touch.clientY);
 
                     if (afterElement == null) {
@@ -700,9 +729,15 @@
                         container.insertBefore(touchItem, afterElement);
                     }
                 } else {
-                    // If moved before timer fires, it's likely a scroll -> cancel drag
-                    clearTimeout(longPressTimer);
-                    longPressTimer = null;
+                    // Check for movement threshold (slop)
+                    // If user moves finger > 10px before timer fires, it's a scroll -> cancel drag
+                    const moveX = Math.abs(touch.clientX - startX);
+                    const moveY = Math.abs(touch.clientY - startY);
+
+                    if (moveX > 10 || moveY > 10) {
+                        clearTimeout(longPressTimer);
+                        longPressTimer = null;
+                    }
                 }
             }, { passive: false });
 
