@@ -1070,41 +1070,66 @@
             }
         }
 
-        // Mock Data Generator (Fallback)
-        function generateMockData(basePrice, volatility) {
-            const data = [];
-            let time = new Date();
-            time.setMonth(time.getMonth() - 3);
 
-            for (let i = 0; i < 90; i++) {
-                time.setDate(time.getDate() + 1);
-                if (time.getDay() === 0 || time.getDay() === 6) continue;
 
-                const open = basePrice + (Math.random() - 0.5) * volatility;
-                const high = open + Math.random() * volatility;
-                const low = open - Math.random() * volatility;
-                const close = (open + high + low) / 3 + (Math.random() - 0.5) * volatility;
+        // Generic Retry Helper
+        async function fetchWithRetry(fetchFn, containerId) {
+            const container = document.getElementById(containerId);
+            const maxRetries = 20;
+            const interval = 3000; // 3 seconds polling
 
-                data.push({
-                    time: time.toISOString().split('T')[0],
-                    open: open,
-                    high: high,
-                    low: low,
-                    close: close,
-                });
-                basePrice = close;
+            for (let i = 0; i < maxRetries; i++) {
+                try {
+                    const data = await fetchFn();
+                    if (data && data.length > 0) {
+                        // Success: Remove status message
+                        const statusEl = container.querySelector('.status-message');
+                        if (statusEl) statusEl.remove();
+                        return data;
+                    }
+                } catch (e) {
+                    console.warn(`Attempt ${i + 1} failed:`, e);
+                }
+
+                // Show Status
+                let statusEl = container.querySelector('.status-message');
+                if (!statusEl) {
+                    statusEl = document.createElement('div');
+                    statusEl.className = 'status-message';
+                    Object.assign(statusEl.style, {
+                        position: 'absolute',
+                        top: '50%',
+                        left: '50%',
+                        transform: 'translate(-50%, -50%)',
+                        color: 'rgba(255, 255, 255, 0.7)',
+                        fontSize: '14px',
+                        pointerEvents: 'none',
+                        zIndex: '10',
+                        textAlign: 'center',
+                        background: 'rgba(0,0,0,0.6)',
+                        padding: '10px',
+                        borderRadius: '8px'
+                    });
+                    container.appendChild(statusEl);
+                }
+                statusEl.textContent = `数据加载失败，正在重试 (${i + 1}/${maxRetries})...`;
+
+                // Wait
+                await new Promise(r => setTimeout(r, interval));
             }
-            return data;
+
+            // Final Failure
+            const statusEl = container.querySelector('.status-message');
+            if (statusEl) {
+                statusEl.textContent = '数据无法加载，请刷新页面或者检查网络';
+                statusEl.style.color = '#ff5252';
+            }
+            return null;
         }
 
         async function loadStockData(symbol) {
-            let data = await fetchStockData(symbol);
-
-            // Fallback if API fails
-            if (!data || data.length === 0) {
-                const basePrice = symbol === '^DJI' ? 34000 : (symbol === '^GSPC' ? 4400 : 15000);
-                data = generateMockData(basePrice, basePrice * 0.015);
-            }
+            // Use retry logic instead of mock data
+            const data = await fetchWithRetry(() => fetchStockData(symbol), 'stockChart');
 
             if (data && data.length > 0) {
                 const cleanData = processData(data);
@@ -1241,14 +1266,7 @@
 
         async function loadCryptoData(symbol) {
             // Map UI symbols to Binance Symbols (BTC, ETH, SOL are already correct prefixes)
-            let data = await fetchCryptoData(symbol);
-
-            // Fallback if API fails
-            if (!data || data.length === 0) {
-                console.log('Using mock crypto data');
-                const basePrice = symbol === 'BTC' ? 65000 : (symbol === 'ETH' ? 3500 : 140);
-                data = generateMockData(basePrice, basePrice * 0.04);
-            }
+            const data = await fetchWithRetry(() => fetchCryptoData(symbol), 'cryptoChart');
 
             if (data && data.length > 0) {
                 const cleanData = processData(data);
@@ -1378,12 +1396,7 @@
         }
 
         async function loadWatchlistData(symbol) {
-            let data = await fetchWatchlistData(symbol);
-
-            if (!data || data.length === 0) {
-                // Mock data fallback (Hourly-ish)
-                data = generateMockData(150, 2); // Reusing daily mock for now, but it's just a fallback
-            }
+            const data = await fetchWithRetry(() => fetchWatchlistData(symbol), 'watchlistChart');
 
             if (data && data.length > 0) {
                 // Sort by time just in case
@@ -1419,20 +1432,9 @@
         let newsScrollInterval;
         let isNewsPaused = false;
 
-        async function fetchNews() {
-            const container = document.getElementById('newsList');
-
+        async function fetchNewsData() {
             // 1. Define Sources (Prioritize JSON APIs for speed)
-            // CryptoCompare: Fast, JSON, covers Crypto & Tech
             const cryptoCompareUrl = 'https://min-api.cryptocompare.com/data/v2/news/?lang=EN';
-
-            // Yahoo Finance (JSON endpoint via proxy is faster than parsing XML)
-            // We'll stick to a reliable proxy for Yahoo
-            // Note: Yahoo RSS is often slow. Let's try to use a more direct JSON if available, 
-            // but for now, let's optimize the proxy usage or switch to a different aggregator.
-            // Let's use a "TechCrunch" or similar fast RSS via a JSON converter.
-
-            // Actually, let's use `rss2json` online converter for better speed than raw XML parsing
             const yahooRss = `https://finance.yahoo.com/rss/headline?s=TSLA,BABA,AAPL,META,NVDA,TSM,BTC-USD`;
             const yahooJsonUrl = `https://api.rss2json.com/v1/api.json?rss_url=${encodeURIComponent(yahooRss)}`;
 
@@ -1448,7 +1450,6 @@
                     const json = await response.json();
 
                     if (source.type === 'cc') {
-                        // CryptoCompare format
                         return json.Data.map(item => ({
                             source: item.source_info.name,
                             title: item.title,
@@ -1456,7 +1457,6 @@
                             pubDate: new Date(item.published_on * 1000)
                         }));
                     } else if (source.type === 'rss2json') {
-                        // rss2json format
                         if (json.status !== 'ok') return [];
                         return json.items.map(item => ({
                             source: 'Yahoo',
@@ -1472,55 +1472,56 @@
                 }
             });
 
-            try {
-                const results = await Promise.all(fetchPromises);
-                const allNews = results.flat();
+            const results = await Promise.all(fetchPromises);
+            const allNews = results.flat();
+            return allNews;
+        }
 
-                if (allNews.length === 0) {
-                    container.innerHTML = '<div style="padding: 20px; text-align: center; color: rgba(255,255,255,0.3);">No news found</div>';
-                    return;
-                }
+        function renderNews(allNews) {
+            const container = document.getElementById('newsList');
 
-                // 3. Sort by Date (Newest First)
-                allNews.sort((a, b) => b.pubDate - a.pubDate);
+            // 3. Sort by Date (Newest First)
+            allNews.sort((a, b) => b.pubDate - a.pubDate);
 
-                // 4. Highlight Keywords
-                const keywords = ['TSLA', 'Tesla', 'BABA', 'Alibaba', 'AAPL', 'Apple', 'META', 'Facebook', 'NVDA', 'Nvidia', 'TSM', 'TSMC', 'BTC', 'Bitcoin', 'ETH', 'Ethereum', 'SOL', 'Solana'];
+            // 4. Highlight Keywords
+            const keywords = ['TSLA', 'Tesla', 'BABA', 'Alibaba', 'AAPL', 'Apple', 'META', 'Facebook', 'NVDA', 'Nvidia', 'TSM', 'TSMC', 'BTC', 'Bitcoin', 'ETH', 'Ethereum', 'SOL', 'Solana'];
 
-                let html = '';
-                // Limit to top 40 items
-                allNews.slice(0, 40).forEach(item => {
-                    // Check for highlight
-                    const isRelevant = keywords.some(k => item.title.includes(k));
-                    const highlightClass = isRelevant ? 'highlight' : '';
+            let html = '';
+            // Limit to top 40 items
+            allNews.slice(0, 40).forEach(item => {
+                // Check for highlight
+                const isRelevant = keywords.some(k => item.title.includes(k));
+                const highlightClass = isRelevant ? 'highlight' : '';
 
-                    // Format time
-                    const now = new Date();
-                    const diffMs = now - item.pubDate;
-                    const diffMins = Math.floor(diffMs / 60000);
-                    const diffHours = Math.floor(diffMins / 60);
-                    let timeDisplay = diffMins < 60 ? `${diffMins}m ago` : (diffHours < 24 ? `${diffHours}h ago` : item.pubDate.toLocaleDateString());
+                // Format time
+                const now = new Date();
+                const diffMs = now - item.pubDate;
+                const diffMins = Math.floor(diffMs / 60000);
+                const diffHours = Math.floor(diffMins / 60);
+                let timeDisplay = diffMins < 60 ? `${diffMins}m ago` : (diffHours < 24 ? `${diffHours}h ago` : item.pubDate.toLocaleDateString());
 
-                    html += `
-                        <a href="${item.link}" target="_blank" class="news-item ${highlightClass}">
-                            <div class="news-title">${item.title}</div>
-                            <div class="news-meta">
-                                <span>${item.source}</span>
-                                <span>${timeDisplay}</span>
-                            </div>
-                        </a>
-                    `;
-                });
+                html += `
+                    <a href="${item.link}" target="_blank" class="news-item ${highlightClass}">
+                        <div class="news-title">${item.title}</div>
+                        <div class="news-meta">
+                            <span>${item.source}</span>
+                            <span>${timeDisplay}</span>
+                        </div>
+                    </a>
+                `;
+            });
 
-                container.innerHTML = html;
-                console.log(`Loaded ${allNews.length} news items`);
+            container.innerHTML = html;
+            console.log(`Loaded ${allNews.length} news items`);
 
-                // Start Scrolling Logic
-                setupAutoScroll(container);
+            // Start Scrolling Logic
+            setupAutoScroll(container);
+        }
 
-            } catch (error) {
-                console.error('Error fetching news:', error);
-                container.innerHTML = '<div style="padding: 20px; text-align: center; color: rgba(255,255,255,0.3);">Failed to load news</div>';
+        async function loadNews() {
+            const data = await fetchWithRetry(fetchNewsData, 'newsList');
+            if (data) {
+                renderNews(data);
             }
         }
 
@@ -1560,8 +1561,9 @@
         }
 
         // Init and Auto-refresh News every 15 minutes
-        fetchNews();
-        setInterval(fetchNews, 900000);
+        // Init and Auto-refresh News every 15 minutes
+        loadNews();
+        setInterval(loadNews, 900000);
 
         // Toggle News Height
         function toggleNewsHeight(btn) {
